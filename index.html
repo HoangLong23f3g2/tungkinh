@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Trích Xuất PDF - Tụng Kinh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --accent-color: #4f46e5;
+            --pre-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --body-text: #1a202c;
+        }
+
+        /* Định dạng nội dung PDF */
+        #pdf-content {
+            font-family: "Times New Roman", Times, serif !important;
+            color: var(--body-text);
+        }
+
+        #pdf-content h1, #pdf-content h2, #pdf-content h3, #pdf-content h4, #pdf-content h5 {
+            color: black !important;
+            font-weight: bold !important;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            display: block;
+        }
+
+        #pdf-content h1 { 
+            color: #4f46e5 !important;
+            font-size: 2.2rem !important; 
+            text-align: center; 
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        #pdf-content h2 { 
+            font-size: 2rem !important; 
+            color: #4f46e5 !important;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+		
+		#pdf-content h3 { 
+            font-size: 1.5rem !important; 
+            color: #4f46e5 !important;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+		
+		#pdf-content h4 { 
+            font-size: 1rem !important; 
+            color: #4f46e5 !important;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        #pdf-content pre {
+            background-color: var(--pre-bg) !important;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem !important;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--accent-color) !important;
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 1.15rem !important;
+            line-height: 1.8 !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            margin: 1rem 0 !important;
+            border: 1px solid var(--border-color);
+        }
+
+        .selection-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px; height: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 10px; font-weight: bold;
+        }
+
+        html { scroll-behavior: smooth; }
+        .section-block { page-break-inside: avoid; }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+
+    <header class="bg-indigo-900 text-white p-4 sticky top-0 z-50 flex justify-between items-center shadow-lg">
+        <div onclick="window.scrollTo(0,0)" class="cursor-pointer hover:bg-indigo-800 p-2 rounded-lg transition-all flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h4m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span class="text-xs font-bold uppercase tracking-wider">Trang chủ</span>
+        </div>
+        
+        <button onclick="exportToPDF()" class="bg-emerald-500 hover:bg-emerald-600 px-6 py-2 rounded-full font-bold shadow-lg transition-all active:scale-95 text-sm uppercase">
+            XUẤT FILE PDF
+        </button>
+    </header>
+
+    <div class="flex flex-col md:flex-row flex-1 overflow-hidden">
+        
+        <aside class="w-full md:w-96 bg-white border-r overflow-y-auto p-4 space-y-6">
+            <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
+                <h2 class="font-bold text-indigo-800 mb-4 text-sm uppercase tracking-tighter">📝 Thông tin hồ sơ</h2>
+                <div class="space-y-3">
+                    <input type="text" id="input_name" placeholder="Gia chủ" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
+                    <input type="text" id="input_huonglinh" placeholder="Hương Linh" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
+                    <input type="text" id="input_address" placeholder="Địa chỉ" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-bold text-gray-800 mb-3 border-b pb-2 text-sm uppercase">CHỌN NỘI DUNG</h2>
+                <div id="main-checklist" class="space-y-1"></div>
+            </div>
+
+            <div>
+                <h2 class="font-bold text-indigo-700 mb-3 border-b pb-2 text-sm uppercase">DANH SÁCH BÀI KINH</h2>
+                <div id="sutra-checklist" class="space-y-1"></div>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-12 bg-gray-100 overflow-y-auto">
+            <div class="max-w-3xl mx-auto bg-white min-h-full shadow-2xl p-8 md:p-16 rounded-sm">
+                <div id="preview-placeholder" class="text-center py-20 text-gray-300">
+                    <p class="text-xl font-medium">Chọn nội dung để xem trước bản in.</p>
+                </div>
+                <div id="pdf-content" class="hidden"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Cấu trúc dữ liệu tách biệt Main và Sub (Sutra)
+        const fullData = [
+            { 
+                id: 1, 
+                title: "Trang bìa hồ sơ", 
+                type: 'main',
+                content: `<div style="text-align:center; padding: 100px 0;"><h1>HỒ SƠ CÁ NHÂN</h1><div style="margin-top:40px"><p>Gia chủ: {{hoten}}</p><p>Hương linh: {{huonglinh}}</p><p>Tại: {{diachi}}</p></div></div>` 
+            },
+            { 
+                id: 7, 
+                title: "NGHI THỨC TỤNG KINH", 
+                type: 'ritual_wrapper', 
+                content_open: `<div class="section-block">
+				<h2>NGHI THỨC TỤNG KINH</h2>
+				<h3>NGUYỆN HƯƠNG</h3>
+				
+				<pre>Nguyện đem lòng thành kính
+Gửi theo đám mây hương
+Phảng phất khắp mười phương
+Cúng dường ngôi Tam Bảo. O
+
+Thề trọn đời giữ đạo
+Theo Phật Pháp làm lành
+Cùng Pháp Giới chúng sanh
+Cầu Phật từ gia hộ. O
+
+Tâm bồ đề kiên cố
+Chí tu học vững bền
+Xa bể khổ nguồn mê
+Chóng quay về bờ giác. O</pre>
+				
+				<h3>KỲ NGUYỆN</h3>
+<pre>Hôm nay đệ tử.............. chúng con thành tâm quỳ trước Phật đài trì tụng Kinh........................ nguyện Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hiền Thánh Tăng từ bi gia hộ cho đệ tử chúng con tội diệt, phước sanh, thiện căn tăng trưởng, đạo tâm kiên cố, tinh tấn tu hành. O
+Lại nguyện (cầu an hay cầu siêu):
+CẦU AN cho Quý Phật tử: <i><b>{{hoten}}</b></i>, tại địa chỉ: <i><b>{{diachi}}</b></i> (và Quý Phật tử mà đại chúng vừa đọc tên), cùng toàn thể gia quyến, được tai qua nạn khỏi, tật bệnh tiêu trừ, thân tâm thường lạc, tội diệt phước sanh, thiện căn tăng trưởng, gia đạo bình an, mọi việc hanh thông, trên dưới một lòng thực hành Chánh Pháp, tin sâu nhân quả, công đức siêng làm, bồ đề tâm kiên cố, tinh tấn tu hành, đời đời kiếp kiếp sinh ra gặp được Phật Pháp, gặp được Minh Sư dẫn dắt tu hành, tiến tu giải thoát.
+Cũng nguyện hồi hướng công đức này xin được CẦU SIÊU cho hương linh: <i><b>{{huonglinh}}</b></i>, (và các hương linh mà đại chúng vừa đọc tên), chư vị hương linh gần xa quanh đây, (hương linh tại Nhà Linh Chùa...) cùng tất cả các hương linh trong cõi giới siêu hình được yên ổn ấm no, xả bỏ ưu phiền, tự tại về đây quỳ dưới Phật đài nghe Kinh, thính Pháp, được Quy Y Tam Bảo, phát tâm tu hành, tin sâu nhân quả, tránh xa việc ác, làm các việc lành, huân tu đạo đức, thành tựu được lòng tôn kính Phật tuyệt đối, rộng mở Từ Tâm, phát triển trí tuệ, hộ trì Chánh Pháp, rồi nhờ Phật lực sớm được vãng sanh về cõi an lành, đời đời không còn thối chuyển với Chánh Pháp.
+Cùng Pháp giới chúng sinh đồng trọn thành Phật Đạo. O</pre>
+				
+				
+				<h3>DÂNG HƯƠNG</h3>
+<pre>Giới hương, định hương, dữ huệ hương
+Giải thoát, giải thoát tri kiến hương
+Quang minh vân đài biến Pháp Giới
+Cúng dường Thập Phương Vô Thượng Tôn. O
+<b>Nam Mô Hương Cúng Dường Bồ Tát. (3 lần) O</b>
+</pre>
+				<h3>TÁN THÁN PHẬT (chuông khánh)</h3>
+<pre>Đấng Pháp vương vô thượng
+Ba cõi chẳng ai bằng
+Thầy dạy khắp trời người
+Cha lành chung bốn loại. O
+Nay con nguyện quy y
+Diệt trừ vô lượng tội
+Dâng lên lời tán thán
+Ức kiếp vẫn không cùng. O
+Con thì vô nghĩa Phật vô biên
+Cảm ứng sâu xa rất diệu huyền
+Một chỗ dung thông vô lượng cõi
+Mười Phương Chư Phật hiện toàn thân
+Con như quỳ trước từng Đức Phật
+Cúi đầu đảnh lễ đến vô biên. O
+</pre>
+				<h3>LỄ PHẬT (chuông khánh)</h3>
+<pre>Chí tâm đảnh lễ: Nam Mô Thích Ca Mâu Ni Phật và
+Mười phương Phật. O (1 lạy)
+Chí tâm đảnh lễ: Nam Mô những kinh thiêng Thế Tôn
+dạy và Mười phương Pháp. O (1 lạy)
+Chí tâm đảnh lễ: Nam Mô Thánh Tăng theo Thế Tôn học
+và Mười phương Tăng. O (1 lạy
+</pre>			
+				<h3>KHAI KINH</h3>
+<pre>Pháp vi diệu rất sâu vô lượng
+Trăm ngàn muôn kiếp khó tìm cầu
+Con nay nghe được xin trì tụng
+Nguyện hiểu Như Lai nghĩa nhiệm mầu. O
+Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O
+</pre>					
+				
+				
+				</div>`,
+                content_close: `<div class="section-block">
+				
+				<h3>TỔNG HỢP CÁC BÀI PHỤC NGUYỆN</h3>
+				<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Từ Phụ Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát. O</b>
+	<pre>Hôm nay, đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng kinh …………… Nguyện cầu Hồng ân Tam Bảo gia hộ:</pre>
+				<h4>PHỤC NGUYỆN 1</h4>
+				<pre>Cửa thiền nghiêm tịnh, đại chúng an hòa
+Hộ Pháp thiên long, thần uy mạnh mẽ	
+Trấn giữ bốn phương, hưng long Chánh Pháp O
+Kẻ tà khiếp sợ sám hối quay đầu
+Người chánh vững tâm tinh chuyên tu tập. O
+Cũng nguyện:
+Thế giới hòa bình chúng sinh an lạc
+Thời tiết thuận hòa dân lành an ổn
+Đất nước đẹp giàu phát nền đạo đức O
+Phật Pháp xương minh người người thánh thiện
+Cõi âm siêu tịnh, cõi dương thư thái. O
+Nguyện Pháp Giới chúng sinh đồng thành Phật Đạo.
+Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O
+</pre>
+				
+				<h4></h4>
+				<pre></pre>
+				
+				<h4></h4>
+				<pre></pre>
+				
+				<h4></h4>
+				<pre></pre>
+				
+				<h4></h4>
+				<pre></pre>
+				
+				<h4></h4>
+				<pre></pre>
+				
+				</div>`
+            },
+            { 
+                id: 2, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block"><h2>BẢN CAM KẾT</h2><p>Gia đình {{hoten}} thành tâm cam kết...</p></div>` 
+            },
+            // Các bài kinh nằm ở đây
+            { 
+                id: 101, 
+                title: "KINH BÁT CHÁNH ĐẠO", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH BÁT CHÁNH ĐẠO</h3>
+				<pre>
+Kính lạy đấng Chánh Giác
+Như vầy con đã nghe
+Tại Lộc Uyển rừng xanh
+Sau khi vừa chứng ngộ
+
+Thế Tôn đến tận chỗ
+Hóa độ rất tận tình
+Cho nhóm Kiều Trần Như
+Đều thành A la hán
+
+Sau khi khuyên năm vị
+Khéo giữ lý trung dung
+Phật dạy lẽ tột cùng
+Bài Kinh Tứ Diệu Đế
+
+Ai hiểu đời là Khổ
+Tức là đã hiểu rằng
+Có một cõi Niết Bàn
+Vượt ra ngoài sinh tử
+
+Ai hiểu đời là Khổ
+Tức là phải hiểu rằng
+Khổ phải có nguyên nhân
+Bởi Vô minh Ngã chấp
+
+Ai tin có Giải thoát
+Tức là phải tin rằng
+Phải có một con đường
+Đi về nơi cao thượng
+
+Kính lạy đấng Chánh Giác
+Muôn đời con tôn thờ
+Đường Bát Chánh bao la
+Dẫn về nơi Giác ngộ. O
+
+Thứ nhất là Chánh Kiến
+Là hiểu được đường đi
+Của Nhân quả chi li
+Từ đời này đời khác
+
+Nghiệp một lần gây tạo
+Thành quả báo về sau
+Chẳng biết lâu hay mau
+Nhưng không hề nhầm lẫn
+
+Rồi tột cùng giác ngộ
+Là Vô ngã hoàn toàn
+Thành tuyệt đối vị tha
+Từ bi và Trí tuệ
+
+Vô số điều đạo lý
+Khắp pháp giới bao la
+Càng lúc càng hiểu ra
+Theo tháng ngày tu tập. O
+
+Chánh Tư Duy kế tiếp
+Là xây dựng tâm hồn
+Thành đạo đức hiền lương
+Theo từng lần tác ý
+
+Khi khởi tâm bất thiện
+Là quyết chí diệt trừ
+Biết hối hận ăn năn
+Biết canh phòng lần khác
+
+Khi đối duyên tiếp cảnh
+Luôn tác ý thiện lành
+Tự nhắc chẳng có ta
+Để mà tham mà giận
+
+Thường tự răn tự nhắc
+Phải biết sống vị tha
+Luôn cung kính ái hòa
+Không khoe khoang kiêu mạn
+
+Thường khởi tâm tôn kính
+Mười Phương Phật Pháp Tăng
+Như ngưỡng vọng cao sơn
+Còn mình như bụi rác
+
+Thường khởi tâm ban rải
+Từ bi khắp nơi nơi
+Địa ngục hay cõi trời
+Cả cỏ cây vạn loại
+
+Tự nhắc mình tránh khỏi
+Những ô nhiễm thấp hèn
+Giữ giới hạnh sạch trong
+Theo gương bao bậc thánh
+
+Càng ngày càng tinh tế
+Kiểm soát tâm ý mình
+Phát hiện những niệm sai
+Nhỏ như là sợi tóc. O
+
+Thứ ba là Chánh Ngữ
+Là làm chủ từng lời
+Để rơi vào lòng người
+Toàn những điều cao đẹp
+
+Chẳng có gì tốn kém
+Chẳng vất vả công lao
+Nhưng tội phước rất nhiều
+Mỗi khi lên tiếng nói
+
+Đừng chê bai bừa bãi
+Kẻo xúc phạm bậc hiền
+Nhiều kiếp tổn phước duyên
+Có khi sinh cầm thú
+
+Cố gắng khen người tốt
+Khen cho người khác nghe
+Để mọi người phát tâm
+Rồi hướng theo điều thiện
+
+Luôn ngợi ca Phật Pháp
+Kiên nhẫn độ từng người
+Về với bóng từ bi
+Để rời xa đau khổ
+
+Hay nói về nhân quả
+Về nhiều kiếp luân hồi
+Cho người biết tin sâu
+Mà làm lành lánh dữ
+
+Không nói điều dơ bẩn
+Không nói điều khen mình
+Không nói điều đua tranh
+Không nói điều giả dối
+
+Vô số điều phải nói
+Tạo nên công đức lành
+Nên cẩn thận thông minh
+Khi cất lời mở miệng. O
+
+
+Thứ tư là Chánh Nghiệp
+Là vô số việc làm
+Rất cụ thể lợi tha
+Yêu thương và giúp đỡ
+
+Không làm điều ác độc
+Gây đau khổ chúng sinh
+Chỉ làm những việc lành
+Cho chúng sinh an lạc
+
+Có khi là lui lại
+Nhường người tốt tiến lên
+Có khi là bước lên
+Gánh lấy điều nặng nhọc
+
+Có khi là nghiêm khắc
+Ngăn kẻ xấu làm sai
+Có khi là ra tay
+Giúp những ai hành thiện
+
+Dù còn trong khốn khó
+Vẫn cố gắng không ngừng
+Làm từng chút việc lành
+Đắp xây nền công đức
+
+Rất siêng năng lễ Phật
+Sám hối nghiệp nghìn xưa
+Việc bất thiện ngăn chừa
+Điều thiện lành chất chứa
+
+Bồ tát thường gián tiếp
+Giúp mà không ai hay
+Nên phước giữ tròn đầy
+Để chia cho tất cả
+
+Biết bao nhiêu việc tốt
+Khắp ba cõi sáu đường
+Là Chánh nghiệp phi thường
+Thành vô biên phước báo. O
+
+
+Thứ năm là Chánh Mạng
+Là nghề nghiệp mưu sinh
+Nuôi sống bản thân mình
+Qua kiếp người tạm bợ
+
+Nhờ Phước từ Chánh Nghiệp
+Nên người được tự do
+Chọn nghề nghiệp sao cho
+Phước lành sinh thêm mãi
+
+Nghề tốt phải gồm đủ
+Hai yếu tố sau đây
+Là tạo phước từng ngày
+Có thời gian tu tập
+
+Riêng tỳ kheo tu sĩ
+Chỉ khất thực xin ăn
+Chớ suy tính kinh doanh
+Mà sai đường xuất thế
+
+Nhưng sa môn khất thực
+Không luồn cúi thấp hèn
+Mà đĩnh đạc uy nghi
+Bất cần và thanh thản
+
+Đem cuộc đời thanh tịnh
+Giáo hóa khắp chúng sinh
+Đổi lấy bát cơm lành
+Ung dung đường thiên lý. O
+
+Sáu là Chánh Tinh Tấn
+Thực hành cách nhiếp tâm
+Trong thiền định thậm thâm
+Vô vàn điều gian khó
+
+Lúc này tâm chưa nhiếp
+Vọng tưởng còn chập chùng
+Thân đau mỏi không ngưng
+Nhưng không hề thoái chí
+
+Có khi là thân quyến
+Gây trở ngại đủ điều
+Hoặc bệnh tật triền miên
+Nạn tai không lường hết
+
+Dù còn nhiều chướng ngại
+Nhưng hành giả vững lòng
+Như núi đá ung dung
+Giữa bão giông sấm sét
+
+Lòng dặn lòng đã quyết
+Dù trăm kiếp ngàn đời
+Tinh tấn mãi không thôi
+Đi về nơi Vô ngã
+
+Ngồi kiết già phu tọa
+An trú khắp toàn thân
+Cảm giác khắp toàn thân
+Thân nghiêm trang bất động
+
+Rồi nhẹ nhàng quán chiếu
+Thân tạm bợ vô thường
+Già bệnh chết thảm thương
+Theo bụi xương bay mất
+
+Biết thân này đang thở
+Thân này đang thở vào
+Thân này đang thở ra
+Rõ ràng từng chút một
+
+Mỗi phút giây cuộc sống
+Vẫn an trú toàn thân
+Vẫn nhớ thân vô thường
+Đêm ngày không gián đoạn. O
+
+
+Bảy là vào Chánh Niệm
+Tâm tỉnh giác rỗng rang
+Lòng thanh thoát nhẹ nhàng
+Nhưng vẫn còn niệm khởi
+
+Nhờ vào sức tỉnh giác
+Hành giả kiểm soát tâm
+Không mờ mịt mê lầm
+Chạy theo ngoài thanh sắc
+
+Hành giả biết tác ý
+Theo Vô ngã Từ bi
+Gắng trừ diệt sân si
+Tâm càng thêm đạo đức
+
+Dù bắt đầu an lạc
+Nhưng chỉ mới bắt đầu
+Chưa phải đã vào sâu
+Trong cõi thiền vi diệu
+
+Như đi trên băng mỏng
+Hay chông nhọn than hồng
+Xin cẩn thận vô cùng
+Lúc này đầy nguy hiểm
+
+Nếu sai lầm tác ý
+Với kiêu mạn ngấm ngầm
+Len lỏi trong nội tâm
+Ắt có ngày điên loạn
+
+Càng thêm tôn kính Phật
+Đến tuyệt đối vô biên
+Nguyện thân mạng cúng dường
+Lên Mười Phương Tam Bảo
+
+Hành giả còn vất vả
+Mấy mươi kiếp tái sinh
+Lên xuống giữa trời người
+Mới hết đường Chánh niệm
+
+Diệt trừ Năm Triền Cái
+Nóng giận và Tham lam
+Trạo cử với Hôn trầm
+Thứ năm là Nghi hối
+
+Vào thời kỳ mạt pháp
+Người tu đến chỗ này
+Nhầm tưởng đã đủ đầy
+An trú nơi thánh quả
+
+Có khi bị ảo giác
+Hiện đủ điều lạ kỳ
+Khiến kiêu mạn hoang mang
+Để rồi tan vỡ hết
+
+Có khi được thần trí
+Biết nhiều việc lạ thường
+Càng tưởng chứng cao siêu
+Rồi lạc vào ma đạo
+
+Vì vậy càng cố gắng
+Lễ Phật lòng khiêm cung
+Quán vô ngã hư không
+Để đi qua vực thẳm. O
+
+
+Thứ tám là Chánh Định
+Bậc thứ nhất Sơ Thiền
+Thân an lạc vô biên
+Dứt xong điều ái dục
+
+Nhưng vẫn còn tầm tứ
+Niệm vi tế sâu xa
+Về đạo lý bao la
+Nên cũng còn chướng ngại
+
+Nhị Thiền tâm sạch niệm
+Thân tỉnh giác tuôn trào
+Như mạch nước dâng cao
+Không bao giờ vơi cạn
+
+Tam Thiền trùm pháp giới
+Thân đồng cõi hư không
+Vật chất cũng là tâm
+Khắp đất trời an lạc
+
+Tứ Thiền là tuyệt đối
+Tâm tịch tịnh như như
+Cả vũ trụ thái hư
+Đã vào nơi bản thể
+
+Nếu tiếp theo quán chiếu
+Để chứng đạt Tam Minh
+Hành giả sẽ trở thành
+Thánh nhân A la hán
+
+Kính lạy Mười Phương Phật
+Đường Bát Chánh cao siêu
+Con chẳng thể hiểu nhiều
+Nhưng nguyện lòng tu tập
+
+Bao chúng sinh lạc lối
+Trong tà kiến si mê
+Chưa biết chỗ đi về
+Dòng luân hồi trôi mãi
+
+Cúi xin Mười Phương Phật
+Cho Bát Chánh đạo này
+Đến mọi chốn nghìn nơi
+Cho chúng sinh tỉnh ngộ
+
+Nguyện chúng con dũng cảm
+Đem Bát Chánh đạo này
+Nói với cả mọi người
+Như món quà cao quý. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O </b>
+</pre></div>` 
+            },
+            { 
+                id: 91, 
+                title: "KINH VÔ NGÃ TƯỚNG", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH VÔ NGÃ TƯỚNG</h3>
+				<pre>Kính lạy Đấng Chánh Giác
+Như vầy con đã nghe
+Dưới cội cây Bồ Đề
+Phật thành Vô Thượng Đạo.
+
+Sau khi thành Chánh Giác
+Phật tìm đến Vườn Nai
+Độ nhóm Kiều Trần Như
+Lần lượt vào thánh quả.
+
+Bằng bài Tứ Diệu Đế
+Phật độ năm anh em
+Chứng được Tu Đà Hoàn
+Là nhập vào dòng Thánh
+
+Đợi năm người thuần thục
+Trong thiền định thâm sâu
+Phật mới giảng cho nghe
+Bài Kinh Vô Ngã Tướng.
+
+Ôi bài Kinh thần thánh
+Rất mầu nhiệm thiêng liêng
+Mở cánh cửa diệu huyền
+Tạo thành A la hán.
+
+Kiều Trần Như thứ nhất
+Nghe được bài Kinh thiêng
+Hết ngã chấp vô minh
+Chứng thành A la hán.
+
+Bốn người kia còn lại
+Cũng lần lượt nối theo
+Diệt ngã chấp vô minh
+Chứng thành A la hán. O
+
+Kính lạy Đấng Chánh Giác
+Con cúi lạy bài Kinh
+Vô Ngã Tướng phi thường
+Ánh mặt trời chói sáng.
+
+Khi còn là đạo sĩ
+Tu với Uddaka
+Nhập Phi phi tưởng rồi
+Thần thông khá quảng đại.
+
+Nhưng thẳm sâu Phật thấy
+Bản ngã vẫn chưa tan
+Tâm ray rứt không an
+Nên tìm đường đi khác.
+
+Suốt sáu năm khổ hạnh
+Nhiều tư thế luyện thân
+Vất vả cả nghìn lần
+Vẫn không tan chấp ngã.
+
+Rồi nhịn ăn nhịn thở
+Mạng sống tưởng như tàn
+Bản ngã vẫn không tan
+Đã cùng đường bí lối.
+
+Phật phải đành thay đổi
+Tìm lại con đường thiền
+An trú nơi tự thân
+Mà đi tìm vô ngã.
+
+Bốn chín ngày nhập định
+Dưới cội cây Bồ Đề
+Phá sạch hết si mê
+Chứng thành Vô thượng đạo
+
+Kẻ xây nhà bí ẩn
+Từ bản ngã thẳm sâu
+Tạo thành những kiếp sau
+Ngày hôm nay chấm dứt.
+
+Hết vô minh chấp ngã
+Thành tựu sáu thần thông
+Khắp vũ trụ mênh mông
+Đã vào nơi bản thể. O
+
+Con cúi đầu lạy Phật
+Đấng Đại Thánh siêu phàm
+Thầy của cả trời người
+Dạy con đường vô ngã.
+
+Rất sâu là chấp ngã
+Khiến như có cái ta
+Khác với cả mọi người
+Luôn tìm cầu mong muốn.
+
+Ngay cả khi thanh thản
+Như chẳng có việc gì
+Nhưng cái muốn âm thầm
+Chưa bao giờ chấm dứt.
+
+Ngay cả khi say ngủ
+Tạm quên cảnh bên ngoài
+Nhưng mãnh liệt bên trong
+Vẫn tràn đầy bản ngã.
+
+Người nội tâm trống rỗng
+Tỉnh giác và thông minh
+Tưởng như sắp đến bờ
+Nhưng vẫn đầy bản ngã.
+
+Người nhu hòa hiền thiện
+Chẳng sống mích lòng ai
+Chẳng xúc phạm chê bai
+Nhưng vẫn đầy bản ngã.
+
+Người sống đời tử tế
+Hay giúp đỡ mọi người
+Chết sẽ lên cõi trời
+Vẫn trong vòng chấp ngã. O
+
+Từ bản năng chấp ngã
+Con người sẽ tham lam
+Thích sở hữu cho nhiều
+Nên tạo nhiều nghiệp chướng.
+
+Từ bản năng chấp ngã
+Con người khởi ghét ganh
+Tự ái hay nổi sân
+Hận thù rồi hung ác.
+
+Càng công lao vất vả
+Càng kiêu mạn chấp công
+Thường tự khen lấy mình
+Muốn ai cũng phải biết
+
+Nhìn thấy người tài giỏi
+Hay may mắn thành công
+Lòng đố kỵ khởi lên
+Muốn người đổ vỡ hết
+
+Thấy những người khả ái
+Dễ được chúng bạn yêu
+Lòng ganh tị tự nhiên
+Muốn cho người khổ sở.
+
+Cả khi vào cửa đạo
+Đáng lẽ phải từ bi
+Nhưng bản ngã sân si
+Cứ hơn thua thù ghét.
+
+Thấy ai mà tinh tấn
+Được thầy bạn mến yêu
+Lòng ganh tức càng nhiều
+Khởi những tâm bất thiện. O
+
+Hoặc siêng năng tạo phước
+Để mong cho đời sau
+Quả báo thật dồi dào
+Chứ không đành hồi hướng.
+
+Nếu thông minh tài giỏi
+Thì kiêu mạn tràn đầy
+Chê bai hết mọi người
+Lòng dương dương tự đắc.
+
+Nếu bất tài kém cỏi
+Thì thù ghét thế nhân
+Oán trách cả trời xanh
+Sao bất công bạc ác.
+
+Tâm hẹp hòi ích kỷ
+Chỉ nghĩ lợi phần mình
+Chỉ biết có đua tranh
+Trong dòng đời cuộc sống.
+
+Chấp thân là bản ngã
+Nên bồi đắp nuông chiều
+Lo tô vẽ nâng niu
+Không cho ai đụng đến.
+
+Chấp danh xưng là ngã
+Nên bảo vệ điểm tô
+Tìm uy tín tiếng tăm
+Cầu lời khen phù phiếm. O
+
+Rồi bạc tiền tài sản
+Là máu thịt của ta
+Chấp giữ chẳng buông ra
+Tưởng đâu là vĩnh cửu.
+
+Kẻ ngất trời tham vọng
+Tìm quyền lực bao la
+Mọi cái thuộc về ta
+Để chỉ tay sai khiến.
+
+Bản ngã này phủ hết
+Ý nghĩ này của tôi
+Danh dự này của tôi
+Quyến thân hay phe phái.
+
+Cả trong cùng một đạo
+Cũng phân biệt từng chùa
+Dòng phái hay tông môn
+Để mà xa mà cách.
+
+Tưởng mình đã thành Phật
+Khi chứng đạt nội tâm
+Rất định tĩnh hư vô
+Đâu ngờ đầy bản ngã. O
+
+Hai hạng người đáng kính
+Một diệt ngã chấp rồi
+Được giải thoát cao vời
+Thánh nhân A la hán
+
+Hai là người khao khát
+Tìm vô ngã sâu xa
+Cẩn thận với cái Ta
+Để tránh điều tội lỗi.
+
+Phật dạy tìm Vô ngã
+Trước hết là quán thân
+Khối Tứ Đại vô thường
+Chịu sinh già bệnh chết.
+
+Chết rồi thân mục rữa
+Còn lại chút xương tàn
+Xương thành bụi bay đi
+Tan vào trong gió thoảng.
+
+Kế đó quán Năm Uẩn
+Hợp lại thành thân tâm
+Từ cảm xúc tình thâm
+Đến vô biên cái Biết.
+
+Giác tri hay tình cảm
+Quyện chặt lại với nhau
+Thành bản ngã thẳm sâu
+Với Vô minh phiền não.
+
+Hiểu cái Ta như thế
+Hành giả gắng khiêm cung
+Thường tự nhủ trong lòng
+Mình chỉ là đất bụi.
+
+Những khi tâm tỉnh giác
+Không được tự khen mình
+Mà càng phải nhớ rằng
+Mình chỉ là đất bụi. O
+
+Nguyện khởi tâm yêu quý
+Hết tất cả chúng sinh
+Bởi lẽ tâm từ bi
+Giúp diệt trừ bản ngã.
+
+Nguyện tận cùng tuyệt đối
+Tôn kính Phật Pháp Tăng
+Dù thịt nát xương tan
+Muôn đời không thay đổi.
+
+Rất siêng năng tạo phúc
+Nhưng kín đáo khiêm cung
+Không kiêu mạn chấp công
+Để đủ đầy công đức.
+
+Khi thấy ai tài đức
+Lòng tán thán vui mừng
+Diệt đố kỵ nhỏ nhen
+Để cùng vui hưởng phúc.
+
+Không sống đời nhàn rỗi
+Lo giáo hóa độ sinh
+Mong tất cả chúng sinh
+Đều quy y Tam Bảo.
+
+Nguyện rời xa thương ghét
+Chẳng thiên vị riêng tư
+Chỉ giữ tâm từ bi
+Để tung bay giải thoát. O
+
+Đến viếng thăm gặp gỡ
+Cả những người chưa quen
+Để được kết duyên lành
+Dẫn đường về Phật Pháp.
+
+Diệt bản năng hưởng thụ
+Tránh dục lạc tầm thường
+Vì dục lạc thế gian
+Chỉ làm tăng ngã chấp.
+
+Thường vâng lời nhu thuận
+Không cố chấp ý mình
+Không bướng bỉnh hung hăng
+Để không tăng ngã chấp.
+
+Thường lo cho người trước
+Mà ít lo cho mình
+Nếu phải lo cho mình
+Cũng chỉ vì đại sự.
+
+Không cúi luồn xu nịnh
+Không khiếp nhược ươn hèn
+Chỉ cung kính cúi đầu
+Trước những điều cao thượng.
+
+Việc thiện dù rất nhỏ
+Cũng cố gắng để làm
+Bòn từng chút phước duyên
+Để đi về giải thoát.
+
+Việc bậy dù rất nhỏ
+Cũng cố gắng lìa xa
+Tránh từng chút lỗi lầm
+Để đi về giải thoát. O
+
+Lúc nào cũng an trú
+Cảm giác khắp toàn thân
+Để biết thân Vô thường
+Mở đường vào chánh niệm.
+
+Khi tâm hơi yên tĩnh
+Ngồi bất động kiết già
+Xem hơi thở vào ra
+Để lắng tâm vào định.
+
+Biết thân này đang thở
+Thân thở vào thở ra
+Là từng bước về xa
+Trên con đường Vô Ngã.
+
+Bốn tầng bậc thiền định
+Rất vi diệu nhiệm mầu
+Cảnh giới lạ chưa từng
+Dễ lầm là xong việc.
+
+Hành giả nhờ công đức
+Tôn kính Phật vô biên
+Nên thôi thúc tiến lên
+Đến tận cùng Vô ngã.
+
+Từ Vô minh Chấp ngã
+Đến giải thoát hoàn toàn
+Không thể tính thời gian
+Bằng bao nhiêu năm tháng.
+
+Nguyện lòng là đi mãi
+Dù vạn kiếp nghìn đời
+Tinh tấn chẳng hề vơi
+Trên con đường thánh đạo.
+
+Nguyện Kinh Vô Ngã Tướng
+Đến khắp cả chúng sinh
+Đều trì tụng thực hành
+Để chứng thành quả thánh
+
+Nguyện ai lòng tin hiểu
+Gắng trì tụng thực hành
+Được rất nhiều phúc lành
+Tam bảo thường gia hộ
+
+Nguyện cho khắp pháp giới
+Cùng tinh tấn tu hành
+Thoát chấp ngã vô minh
+Đồng viên thành Phật đạo. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
+            },
+            { 
+                id: 92, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy
+Một thời, Xá Vệ, tại ngay Kỳ Hoàn
+Thế Tôn cho gọi chúng Tăng
+Các Thầy cung kính thưa vâng đáp lời. O
+
+Thế Tôn dạy chuyện ở đời
+Liên quan tu tập nên người từ tâm
+Là người rất đỗi ân cần
+Thương yêu trải khắp kẻ gần người xa
+Tấm lòng nhân ái bao la
+Thật là thuần khiết, thật là cao thâm
+Hướng về tất cả chúng sinh
+Người từ tâm trọn quên mình mà thương. O
+
+Không vì ái luyến vấn vương
+Không vì mong đợi chút đường lợi danh
+Không vì ân nghĩa riêng dành
+Không vì cân nhắc với mình lạ quen
+Thương người quen lẽ tất nhiên
+Cũng thương những kẻ chưa quen bao giờ
+Xóa đi ngăn cách lạ xa
+Xóa đi ngần ngại hững hờ bấy lâu. O
+
+Tình thương lan tỏa đến đâu
+Giúp xây nơi ấy nhịp cầu cảm thông
+Người từ tâm đủ bao dung
+Đủ lòng độ lượng, đủ lòng thương yêu
+Với người mưu hại đủ điều
+Bất nhân, ác cảm, gây bao hận thù
+Người từ tâm trước như sau
+Trải lòng ra mãi đậm sâu thương người. O
+
+Với người oán ghét bao đời
+Nguồn thương yêu ấy làm vơi tị hiềm
+Chuyện không hay chẳng trách phiền
+Cho vơi bớt những nghiệp duyên với người
+Người từ tâm trước muôn loài
+Đem lòng thương xót cảnh đời không may
+Thương người sống kiếp đọa đày
+Làm thân cầm thú nghiệp gây chẳng lành
+Hoặc loài ngạ quỷ vô hình
+Hoặc trong địa ngục tội tình vương mang. O
+
+Từ tâm như ánh trăng ngàn
+Dịu dàng soi thấu mọi đường trầm luân
+Ở đâu có chúng hữu tình
+Thì nơi ấy có từ tâm hướng về
+Như tàn lá mát rộng che
+Chúng sanh vô lượng tâm từ vô biên
+Tâm từ như suối triền miên
+Thấm vào mạch sống mọi miền an vui
+Tâm từ làm gốc vun bồi
+Cho người cao thượng cho đời thăng hoa. O
+
+Thấy người khổ nạn khó qua
+Lòng mình đau xót như là khổ chung
+Thấy người hạnh phúc thành công
+Lòng mình vui sướng như cùng vui theo
+Thấy người lầm lỗi ít nhiều
+Lòng mình tha thứ mến trìu càng hơn
+Người từ tâm sống vẹn tròn
+Thương yêu bình đẳng sắt son bền lòng
+Cho dù không ước không mong
+Phước lành tự đến do công đức thành. O
+
+Một là ngủ được an lành
+Bởi lòng mình đã chân thành thương yêu
+Bởi không lừa lọc dệt thêu
+Bởi không toan tính lắm điều chua ngoa
+Tâm mình không gợn xấu xa
+Tham lam, sân hận, si mê mịt mờ
+Đầu hôm đến lúc tinh mơ
+Khổ ưu lặng tắt thới thơ giấc nồng. O
+
+Hai là rời bước khỏi giường
+Lòng mình một mực bình thường yên vui
+Khi đi đứng, lúc nằm ngồi
+Không còn tiếc nhớ, đua đòi, ước ao
+Từ tâm hóa giải đẹp sao
+Muộn phiền, sân hận tan vào hư không
+Lòng mình luôn giữ trắng trong
+Nguồn an lạc trải tựa đồng bao la. O
+
+Ba là từ ái lan xa
+Làm cho cảm ứng chan hòa rộng theo
+Ai ai cũng thấy mến yêu
+Đem lòng ngưỡng mộ người nêu tâm từ
+Bốn là loài chẳng phải người
+Một khi cảm nhận biết người từ tâm
+Cũng dành cho những tình thâm
+Hộ trì người được những thành tựu vui. O
+
+Năm là thiên chúng cõi trời
+Xưa kia tu tập nên người từ tâm
+Thấy người nào tính ai lân
+Nay theo gia hộ để cùng tiến tu
+Sáu là hiểm nạn đang chờ
+Dầu sôi lửa bỏng mịt mờ kiếm cung
+Cùng bao nhiêu thứ độc trùng
+Không sao xâm phạm đến vùng trú thân. O
+
+Bảy do huân tập từ tâm
+Thác sanh phạm chúng làm dân cõi trời
+Được nhiều phước báo tuyệt vời
+Và tâm từ được trau giồi hơn thêm
+Tám là đầy đủ thiện duyên
+Người từ tâm biết thường xuyên chuyên cần
+Làm cho đức hạnh được thuần
+Thành vườn ruộng tốt gieo trồng đại bi. O
+
+Đượm nhuần vô ngã vô si
+Con đường giải thoát bước đi thêm gần
+Khéo an trú, khéo tác thành
+Thân tâm an ổn, vững vàng lắng sâu
+Tâm từ khi được khéo tu
+Làm cho kiết sử bị mau yếu dần
+Không còn dấu vết tham sân
+Niết Bàn hiển lộ thênh thang giữa đời
+Thế Tôn thuyết giảng mấy lời
+Các Thầy vui nhận, tin, rồi làm theo. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 93, 
+                title: "KINH SỐNG HOÀ HỢP", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH SỐNG HOÀ HỢP</h3><pre>Con từng nghe như vầy
+Có một thời Thế Tôn
+Ở tại Na-di-ka
+đi đến thăm khu rừng
+trồng nhiều cây Tala
+tên gọi Go-sin-ga. O
+
+Ở đó có ba Thầy
+Thầy A-nu-rud-dha
+với Thầy Nan-di-ya
+và Thầy Kim-bi-la
+đang cùng sống chung nhau
+tu tập trong an lành
+Thấy Thế Tôn từ xa,
+ba Thầy lo tiếp đón
+người đỡ lấy y bát
+người sửa soạn chỗ ngồi
+người đem nước rửa chân.
+Rồi đảnh lễ cung kính
+xong, ngồi xuống một bên. O
+
+Thế Tôn mở lời hỏi:
+- Này, các Thầy Tỳ kheo
+Cuộc sống ở nơi đây
+an lành, yên vui chăng?
+hằng ngày đi khất thực
+có mệt nhọc lắm chăng?
+các Thầy đã sống chung
+có thật sự hòa hợp
+như thể nước với sữa,
+lòng hoan hỷ tràn đầy
+không hề tranh cãi chăng? O
+
+Khi nghe hỏi như vậy,
+ba Thầy đã thưa rằng:
+- Kính bạch Đức Thế Tôn!
+thật sự là như vậy.
+chúng con sống an lành
+cảm thấy rất yên vui
+đi khất thực dễ dàng
+chúng con rất hòa hợp
+nói lời thuận thảo nhau
+tràn đầy niềm hoan hỷ. O
+
+Thế Tôn khen, hỏi tiếp:
+- Các Thầy bằng cách nào
+thực hiện đời sống ấy?
+- Kính bạch Đức Thế Tôn!
+Chúng con hiểu được rằng
+thật vô cùng lợi ích
+khi chúng con sống chung
+với bạn đồng phạm hạnh
+nên xử sự với nhau
+dù trước mặt, sau lưng
+vẫn một mực tốt đẹp
+vẫn một niềm quý trọng
+KINH SỐNG HÒA HỢP
+ở trong từng việc làm
+ở trong từng lời nói
+ngay cả trong suy nghĩ. O
+
+Kính bạch Đức Thế Tôn!
+Chúng con đã thật sự
+từ bỏ tâm ý mình
+để sống tùy thuận theo
+tâm của bạn đồng tu.
+Vì thực hiện như thế
+chúng con tuy khác thân
+mà tâm vẫn tương đồng.
+Do “khác thân, giống tâm”
+nên chúng con nhìn nhau
+trong ánh mắt thiện cảm
+vui sống ở bên nhau
+không một lời tranh cãi
+như nước sữa hợp hòa. O
+
+- Này, các thầy Tỳ kheo
+đời sống của các Thầy
+có nhiệt tâm, tinh cần
+không hề phóng dật chăng?
+- Kính bạch Đức Thế Tôn!
+Chúng con sống như sau:
+ai khất thực về trước
+lo soạn sẵn nước uống
+soạn cả nước rửa chân
+bớt phần ăn của mình
+dành cho người về muộn. O
+
+Ai khất thực về sau
+có thể dùng, nếu cần
+sau đó, sẽ xếp dọn
+mọi thứ cho gọn gàng.
+Khi cần được giúp đỡ,
+chúng con chỉ đưa tay
+ra hiệu chứ không nói.
+Lời nói chỉ được dùng
+đàm luận chuyện đạo pháp
+vào những lúc thích hợp
+nhằm chia sẻ cho nhau
+điều chúng con tu tập. O
+
+Thế Tôn hết lời khen,
+tiếp tục hỏi các Thầy,
+- Này, các thầy Tỳ kheo
+các Thầy có thể nào
+chứng được pháp cao thượng
+được tri kiến thánh nhân
+được thoải mái an lạc
+với cuộc sống như thế? O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con sẽ nhiếp tâm
+lìa xa các ham muốn
+lìa xa các vọng tưởng
+không khởi Tham Sân Si
+để trú Thiền thứ nhất.28
+Đó là tâm an ổn
+với hỷ được phát sinh
+dùng chút ý nhỏ nhiệm
+thường hằng kiểm soát tâm. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+lúc chúng con nhiếp tâm
+ý thức của chúng con
+sẽ đạt đến bất động
+để trú Thiền thứ hai.
+Đó là tâm an định
+với hỷ lạc phát sinh
+dù không còn kiểm soát
+tâm ý chẳng lung lay. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con sẽ nhiếp tâm
+để trú Thiền thứ ba.
+Đó là tâm thanh tịnh
+với an lạc vi diệu
+và tỉnh giác hoàn toàn
+sâu vào trong Chánh Định
+tâm Sở đắc tan biến. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con sẽ nhiếp tâm
+vượt các lớp tâm thức
+để trú Thiền thứ tư.
+Đó là một trạng thái
+đã bất động hoàn toàn
+không cảm thọ khổ vui
+và vô cùng sáng suốt. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con hướng tâm về
+hư không rộng vô biên
+với tâm rộng vô lượng
+không chi phối bởi Tưởng
+để trú định thứ nhất
+là Không Vô Biên Xứ. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con trải cái biết
+phủ trùm không bến bờ
+để trú định thứ hai
+là Thức Vô Biên Xứ. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+tâm lượng càng rộng mở
+vượt thoát mọi đối tượng
+sai biệt trong Pháp Giới
+thấy rõ “không có gì”
+để trú định thứ ba
+là Vô Sở Hữu Xứ. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con vượt ra khỏi
+Vô Sở Hữu Xứ Định
+dùng tâm vô lượng ấy
+thấy biết cả Pháp Giới
+để trú định thứ tư
+Phi Tưởng Phi Phi Tưởng. O
+
+- Kính bạch Đức Thế Tôn!
+Nếu như chúng con muốn
+chúng con sẽ tiếp tục
+an trú Diệt Tận Định
+thể tĩnh lặng tuyệt đối
+từ đó, với Trí tuệ
+thấy biết đúng như thật
+mà đoạn trừ vô minh. O
+
+- Kính bạch Đức Thế Tôn!
+Đó là hạnh phúc lớn
+là an trú tối thượng
+chúng con cùng thành tựu
+không thấy hạnh phúc nào
+bằng hạnh phúc ấy cả.
+- Này, các Thầy Tỳ kheo
+Các Thầy đã thật sự
+có hạnh phúc tuyệt vời
+đã biết sống hòa hợp
+giữa huynh đệ với nhau. O
+
+Sau khi đã ngợi khen
+Đức Thế Tôn ra về
+các Thầy ngồi quanh nhau
+thầy A-nu-rud-dha
+lên tiếng rằng: - Chẳng ai
+nói về điều sở đắc
+về quả vị chứng đạt
+nhưng tâm Tôi vẫn biết
+tâm huynh đệ như thế
+mà bạch cùng Thế Tôn
+mọi chuyện rất rõ ràng. O
+
+Lúc đó, có Dạ xoa
+tên Pa-ra-ja-na
+đến chỗ Thế Tôn ở
+đảnh lễ và tán thán
+sự có mặt của Người
+cùng với các Thầy đây
+đem hạnh phúc lợi ích
+cho dân chúng Vaj-ji
+đồng thời, các cõi trời
+cùng chung nhau ca ngợi
+Thế Tôn và các Thầy. O
+
+Thế Tôn bảo Dạ xoa:
+- Này Di-gha hãy nhớ
+nếu ai trong loài Trời
+cũng như trong loài người
+nhớ đến ba Thầy đây
+với tâm niệm hoan hỷ30
+với tâm niệm cung kính
+là tạo công đức lớn
+người đó sẽ an lạc
+sẽ hạnh phúc lâu dài. O
+
+Hãy nhìn xem ba Thầy
+đã sống như thế nào
+để thể hiện trọn vẹn
+“lòng thương tưởng chúng sanh
+vì an lạc, hạnh phúc
+loài Trời và loài người”
+Được Thế Tôn chỉ dạy
+Dạ xoa rất vui mừng
+tin nhận và làm theo
+cuộc sống khéo hòa hợp
+gương mẫu nhất trên đời. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 94, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+			{ 
+                id: 95, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+			{ 
+                id: 96, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+			{ 
+                id: 97, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+			{ 
+                id: 98, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+			{ 
+                id: 99, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+        ];
+
+        let selectedOrder = [];
+
+        function renderChecklists() {
+            const mainContainer = document.getElementById('main-checklist');
+            const sutraContainer = document.getElementById('sutra-checklist');
+            
+            let mainHtml = "";
+            let sutraHtml = "";
+
+            fullData.forEach(item => {
+                const orderIndex = selectedOrder.indexOf(item.id);
+                const isChecked = orderIndex !== -1;
+                const rowHtml = `
+                    <label class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-all border-b border-gray-50">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} class="w-4 h-4 rounded text-indigo-600" onchange="toggleSection(${item.id})">
+                            <span class="text-sm ${isChecked ? 'text-indigo-800 font-bold' : 'text-gray-600'}">${item.title}</span>
+                        </div>
+                        ${isChecked ? `<span class="selection-number">${orderIndex + 1}</span>` : ''}
+                    </label>`;
+                
+                if (item.type === 'sub') sutraHtml += rowHtml;
+                else mainHtml += rowHtml;
+            });
+
+            mainContainer.innerHTML = mainHtml;
+            sutraContainer.innerHTML = sutraHtml;
+        }
+
+        function toggleSection(id) {
+            const index = selectedOrder.indexOf(id);
+            if (index > -1) selectedOrder.splice(index, 1);
+            else selectedOrder.push(id);
+            renderChecklists();
+            updateUI();
+        }
+
+        function updateUI() {
+            const previewArea = document.getElementById('pdf-content');
+            const placeholder = document.getElementById('preview-placeholder');
+            const userData = {
+                hoten: document.getElementById('input_name').value || "................",
+                huonglinh: document.getElementById('input_huonglinh').value || "................",
+                diachi: document.getElementById('input_address').value || "................"
+            };
+
+            if (selectedOrder.length === 0) {
+                previewArea.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                return;
+            }
+
+            placeholder.classList.add('hidden');
+            previewArea.classList.remove('hidden');
+
+            // 1. Lấy tất cả nội dung bài kinh được chọn
+            const selectedSubs = fullData.filter(d => d.type === 'sub' && selectedOrder.includes(d.id));
+            const subContent = selectedSubs.map(s => s.content).join('');
+
+            let finalHtml = "";
+            
+            // 2. Duyệt theo thứ tự user đã chọn
+            selectedOrder.forEach(id => {
+                const item = fullData.find(d => d.id === id);
+                
+                if (item.type === 'ritual_wrapper') {
+                    // Nếu chọn Nghi thức: Mở + Kinh đã chọn + Kết
+                    finalHtml += item.content_open + subContent + item.content_close;
+                } else if (item.type === 'main') {
+                    // Các mục chính khác như Bìa, Cam kết
+                    finalHtml += item.content;
+                } else if (item.type === 'sub') {
+                    // Chỉ hiển thị bài kinh lẻ nếu NGƯỜI DÙNG KHÔNG CHỌN Nghi thức
+                    const isRitualSelected = selectedOrder.includes(7);
+                    if (!isRitualSelected) {
+                        finalHtml += item.content;
+                    }
+                }
+                
+                finalHtml += '<div style="page-break-after: always; margin: 10px 0;"></div>';
+            });
+
+            previewArea.innerHTML = finalHtml.replace(/{{hoten}}/g, userData.hoten)
+                                             .replace(/{{huonglinh}}/g, userData.huonglinh)
+                                             .replace(/{{diachi}}/g, userData.diachi);
+        }
+
+        function exportToPDF() {
+            const element = document.getElementById('pdf-content');
+            if (selectedOrder.length === 0) return alert("Vui lòng chọn nội dung!");
+            const opt = {
+                margin: 0.5,
+                filename: 'Tai-Lieu-Tung-Kinh.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        renderChecklists();
+    </script>
+</body>
+</html>
