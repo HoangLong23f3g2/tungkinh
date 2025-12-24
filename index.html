@@ -89,6 +89,17 @@
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-[60] flex gap-2 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-xl border border-indigo-100">
+    <button onclick="changeFontSize(-0.1)" class="w-10 h-10 flex items-center justify-center bg-white hover:bg-red-50 text-red-600 rounded-full font-bold shadow-sm transition-all active:scale-90 border border-gray-200">
+        A-
+    </button>
+    <div id="font-size-display" class="flex items-center px-2 text-xs font-bold text-indigo-900 min-w-[40px] justify-center">
+        1.15
+    </div>
+    <button onclick="changeFontSize(0.1)" class="w-10 h-10 flex items-center justify-center bg-white hover:bg-emerald-50 text-emerald-600 rounded-full font-bold shadow-sm transition-all active:scale-90 border border-gray-200">
+        A+
+    </button>
+</div>
 
     <header class="bg-indigo-900 text-white p-4 sticky top-0 z-50 flex justify-between items-center shadow-lg">
         <div onclick="window.scrollTo(0,0)" class="cursor-pointer hover:bg-indigo-800 p-2 rounded-lg transition-all flex items-center gap-2">
@@ -220,12 +231,12 @@ Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O
                 content_close: `<div class="section-block">
 				
 				<h3>TỔNG HỢP CÁC BÀI PHỤC NGUYỆN</h3>
-				<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+				<pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
 <b>Nam Mô Đương Lai Từ Phụ Di Lặc Tôn Phật</b>
 <b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát. O</b>
-	<pre>Hôm nay, đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng kinh …………… Nguyện cầu Hồng ân Tam Bảo gia hộ:</pre>
-				<h4>PHỤC NGUYỆN 1</h4>
-				<pre>Cửa thiền nghiêm tịnh, đại chúng an hòa
+Hôm nay, đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng kinh ........... Nguyện cầu Hồng ân Tam Bảo gia hộ:</pre>
+<h4>PHỤC NGUYỆN 1</h4>
+<pre>Cửa thiền nghiêm tịnh, đại chúng an hòa
 Hộ Pháp thiên long, thần uy mạnh mẽ	
 Trấn giữ bốn phương, hưng long Chánh Pháp O
 Kẻ tà khiếp sợ sám hối quay đầu
@@ -237,23 +248,104 @@ Thời tiết thuận hòa dân lành an ổn
 Phật Pháp xương minh người người thánh thiện
 Cõi âm siêu tịnh, cõi dương thư thái. O
 Nguyện Pháp Giới chúng sinh đồng thành Phật Đạo.
-Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b>
 </pre>
 				
-				<h4></h4>
-				<pre></pre>
+<h4>PHỤC NGUYỆN 2</h4>
+<pre>Thiền môn nghiêm tịnh, đại chúng an hòa
+Mưa nắng phải thì, nhà nhà no ấm O
+Đèn thiền thắp sáng, tỏ rạng tông môn
+Phật Pháp hưng long, núi sông bền vững O
+Trên hòa dưới thuận, trăm họ quy y,
+Một dạ khắc ghi, tin sâu Nhân quả O
+Nhớ đến Vô thường, tìm về Vô Ngã,
+Nguyện mãi tinh chuyên, siêng tu đạo đức O
+Chung lòng gắng sức, bồi đắp phước điền
+Sám hối thường xuyên, trọn lòng hồi hướng O
+Người còn khỏe mạnh, kẻ thác siêu sinh,
+Đồng nguyện tu hành, đồng thành Phật Đạo.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b>
+</pre>
 				
-				<h4></h4>
-				<pre></pre>
+<h4>PHỤC NGUYỆN 3</h4>
+<pre>Trời giác ngộ muôn nơi sáng tỏ
+Bánh xe pháp vận chuyển không dừng O
+Hoa Ưu đàm nở khắp mười phương
+Đuốc trí tuệ soi đường dẫn lối O
+Ngàn thu vẻ vang tổ nghiệp
+Muôn thuở rạng rỡ tông phong. O
+Tăng Ni đạo lực thậm thâm
+Phật tử tín tâm kiên cố   O
+Nguyện nhà nhà hạnh phúc an khang
+Cầu đất nước hòa bình hưng thịnh O
+Năm châu an định, bốn biển thanh bình
+Tình với vô tình đồng thành Phật đạo.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b>
+</pre>
 				
-				<h4></h4>
-				<pre></pre>
+<h4>PHỤC NGUYỆN 4</h4>
+<pre>Phật Pháp sáng soi, giáo lý rộng truyền
+Vì đạo quên mình, bốn ân nặng nhớ. O
+Thế giới hòa bình hết khổ đao binh
+Mưa nắng thuận hòa chúng sanh an lạc.	 O
+Chúng con nguyện đi theo bước Phật
+Sống tu hành nẻo thật đường ngay	 	 O
+Tĩnh tâm từng phút từng giây
+Dù bao gian khổ không thay đổi lòng	 O
+Lạy Chư Phật Mười Phương gia hộ
+Cho chúng con kiên cố đạo tâm O
+Tu hành tinh tấn cần chuyên
+Dựng xây Phật Pháp mọi miền an vui.	 O
+Nguyện pháp giới chúng sinh đồng thành Phật đạo
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b>
+</pre>
 				
-				<h4></h4>
-				<pre></pre>
+<h4>PHỤC NGUYỆN 5</h4>
+<pre>Đạo pháp sáng soi giáo lý rộng truyền,
+Vì đạo quên mình bốn ơn nặng nhớ. O
+Thế giới hòa bình hết khổ đao binh,
+Mưa nắng thuận hòa chúng sinh an lạc. O
+Đại chúng tiến tu tỉnh rõ lỗi lầm,
+Rộng mở từ tâm vì người làm gốc. O
+Chốn chốn già lam tỏa hương đạo đức,
+Cho cả muôn loài quy phục tựa nương. O
+Hết thảy vong linh trong cõi siêu hình,
+Bỏ ác làm lành quy y Tam Bảo. O
+Nguyện pháp giới chúng sinh đồng thành Phật đạo
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b>
+</pre>
 				
-				<h4></h4>
-				<pre></pre>
+<h4>PHỤC NGUYỆN 6</h4>
+<pre>(dành cho các bài kính sám hối)
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.
+Nam Mô Đương Lai Từ Phụ Di Lặc Tôn Phật
+Nam Mô Đại Bi Quán Thế Âm Bồ Tát. O</b>
+Hôm nay, đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng kinh Lạy Phật Sám Hối / Từ Bi Sám Hối:
+Đã nhiều kiếp si mê điên đảo
+Tạo vô biên vô lượng lỗi lầm
+Hôm nay tha thiết ăn năn
+Thành tâm sám hối tội căn sâu dày.
+<b>Nam Mô Cầu Sám Hối Bồ Tát. (3 lần)
+Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b></pre>
+
+<h4>PHỤC NGUYỆN 7</h4>
+<pre>(dành cho bài kinh Chánh Tinh Tấn)
+Cúi nguyện mười phương khắp chúng sinh
+Ai cũng tinh chuyên hết sức mình
+Thiền định đúng theo lời Phật dạy
+Để khỏi sai lầm uổng nhất sinh
+Như tấm bản đồ đã vẽ ra
+Dẫn lối về nơi cõi thái hòa
+Nguyện ước cùng nhau chung chí hướng
+Vô ngã từ bi đến bao la.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b></pre>
+
+
+<h4>TAM TỰ QUY Y (chuông mõ)</h4>
+<pre><b>Tự quy y Phật</b>, xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp</b>, xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng</b>, xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+</pre>
 				
 				</div>`
             },
@@ -265,7 +357,7 @@ Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O
             },
             // Các bài kinh nằm ở đây
             { 
-                id: 101, 
+                id: 90, 
                 title: "KINH BÁT CHÁNH ĐẠO", 
                 type: 'sub',
                 content: `<div class="section-block"><h3>KINH BÁT CHÁNH ĐẠO</h3>
@@ -1397,36 +1489,1816 @@ gương mẫu nhất trên đời. O
             },
 			{ 
                 id: 94, 
-                title: "KINH TỪ TÂM", 
+                title: "KINH HẠNH NGƯỜI XUẤT GIA", 
                 type: 'sub',
-                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+                content: `<div class="section-block"><h3>KINH HẠNH NGƯỜI XUẤT GIA</h3><pre>Con đã nghe như vầy
+giữa thế gian triền phược
+Đức Như Lai ra đời
+là bậc A La Hán
+là vị Phật Thế Tôn
+sau khi đã chứng ngộ
+Ngài tuyên giảng con đường
+đưa đến bờ giải thoát. O
+
+Rồi một người cư sĩ
+dù thuộc giai cấp nào
+sau khi nghe pháp ấy
+khởi lên lòng kính ngưỡng
+đối với đức Như Lai
+tự nghĩ sống ở đời
+đầy những điều ràng buộc
+bụi bặm và khổ đau
+khó thể nào đạt được
+hạnh thanh tịnh hoàn toàn
+trắng trong như vỏ ốc
+chỉ đời sống xuất gia
+phóng khoáng như hư không
+mới có thể giúp ta
+đến bến bờ giải thoát. O
+
+Rồi vị ấy từ bỏ
+tài sản và gia đình
+khoác Ca-sa cạo tóc
+làm một vị Sa-môn.
+Sau khi đã xuất gia
+vị ấy sống chế ngự
+bằng giới bổn Mộc-xoa (Mokkha)
+đủ oai nghi Chánh Hạnh.
+Vị ấy thấy nguy hiểm
+trong từng lỗi nhỏ nhặt
+KINH HẠNH NGƯỜI XUẤT GIA
+lời nói và việc làm
+luôn giữ gìn thanh tịnh,
+thủ hộ các giác quan
+không đắm nhiễm bên ngoài,
+sống cuộc đời thanh bai
+giản đơn và tri túc. O
+
+Thế nào là Tỳ kheo
+có giới hạnh cụ túc?
+Đó là một Tỳ kheo
+đã từ bỏ sát sanh
+xa lìa các vũ khí
+và thương yêu tất cả.
+Đó là vị Tỳ kheo
+đã từ bỏ gian tham
+không trộm cắp của người
+không mong nhiều sở hữu. O
+
+Đó là vị Tỳ kheo
+đã xa lìa tính dục
+phạm hạnh được giữ gìn
+trắng trong và trọn vẹn.
+Đó là vị Tỳ kheo
+tránh xa sự nói dối
+chỉ nói bằng sự thật
+cho những người đáng nghe.
+Không nói lời chia rẽ
+làm thù hận phát sinh
+chỉ nói lời hòa vui
+để yêu thương xuất hiện. O
+
+Vị ấy không bao giờ
+nói lên lời ác độc
+chỉ nói lời từ ái
+tao nhã đẹp lòng người.
+Vị ấy cũng tránh xa
+những lời nói khoe khoang
+hơn thua và hiếu thắng
+để gìn giữ khiêm cung. O
+
+Đó là vị Tỳ kheo
+biết tôn trọng cỏ cây
+biết giữ gìn sự sống
+của tất cả mọi loài.
+Không ăn uống phi thời
+không dự xem nhạc kịch
+Từ bỏ các vòng hoa
+hương thơm và vàng bạc. O
+
+Vị ấy cũng khước từ
+chăn nuôi và buôn bán
+tôi tớ và đất đai
+tham lam hay lừa đảo.
+Vị Tỳ kheo như thế
+tâm bình thản an vui
+không ăn năn lo sợ
+vì không phạm lỗi lầm. O
+
+Rồi vị Tỳ kheo ấy
+gìn giữ các giác quan
+không đắm theo ngoại cảnh
+dù ít hay là nhiều.
+Vị ấy luôn tự xét
+từ một nguyên nhân nào
+khiến tâm chìm theo cảnh
+để mà tự khắc phục.
+Vị Tỳ kheo như thế
+tâm tự tại an vui
+không tối tăm vẩn đục
+vì không nhiễm thế trần. O
+
+Rồi vị Tỳ kheo ấy
+khi đi tới, đi lui
+khi nhìn quanh, nhìn thẳng
+đều rõ ràng tỉnh giác
+thường hằng kiểm soát tâm.
+Khi co tay, duỗi tay
+khi đắp y, mang bát
+đều rõ ràng tỉnh giác
+thường hằng kiểm soát tâm. O
+
+Khi uống ăn nhai nuốt
+khi đi đứng nằm ngồi
+khi lặng yên, lên tiếng
+đều rõ ràng tỉnh giác
+thường hằng kiểm soát tâm.
+Từ bao nhiêu công hạnh
+của một người xuất gia
+như giữ gìn giới luật
+sống đời sống giản đơn
+thủ hộ các giác quan
+và tinh tấn Chánh Niệm.
+Vị Tỳ kheo như thế
+sẽ tìm chốn hoang vu
+như gốc cây, khe suối
+hoặc hang núi, chòi tranh
+ngồi như một đóa sen
+thẳng lưng và bất động
+với Chánh Niệm rạng ngời
+rõ ràng ngay trước mắt. O
+
+Rồi từ một nội tâm
+sáng trong và yên tĩnh
+tham ái được diệt trừ
+sân hận được vượt qua
+lòng từ mẫn bao la
+thương yêu cho tất cả.
+Rồi từ một nội tâm
+sáng trong và yên tĩnh
+nên hôn trầm, trạo hối
+và do dự lìa xa
+Như một người thoát ra
+khỏi gông cùm xiềng xích
+như một người vượt qua
+khỏi sa mạc khô khan
+gặp dòng sông nước mát
+cũng vậy, Tỳ kheo ấy
+diệt năm triền cái rồi
+được hân hoan hạnh phúc. O
+
+Từ niềm hân hoan trên
+Tâm càng thêm định tĩnh
+Bất thiện pháp xa lìa
+Sơ thiền được chứng đạt.
+Đó là một trạng thái
+tham dục được vượt qua
+nên hỷ lạc tràn đầy
+dù vẫn còn niệm tế.
+Không tự mãn Sơ thiền
+Tỳ kheo ấy nhiếp tâm
+diệt trừ niệm vi tế
+và chứng đạt Nhị thiền.
+Đó là một trạng thái
+hỷ lạc do định sanh
+rất thênh thang mầu nhiệm
+tâm cực kỳ yên tĩnh. O
+
+Không tự mãn Nhị thiền
+Tỳ kheo ấy nhiếp tâm
+dừng hoạt động giác quan
+để chứng đạt Tam thiền.
+Đó là một trạng thái
+vào Chánh Định rất sâu
+với an lạc vi diệu
+tận cùng không bờ bến.
+Không tự mãn Tam thiền
+Tỳ kheo ấy nhiếp tâm
+trừ mọi cảm thọ trước
+để chứng đạt Tứ thiền.
+Đó là một trạng thái
+đã bất động hoàn toàn
+không cảm thọ khổ vui
+và vô cùng sáng suốt. O
+
+Rồi từ một nội tâm
+đã bất động hoàn toàn
+Tỳ kheo ấy hướng tâm
+nhớ về vô lượng kiếp
+qua từng chỗ thọ sanh
+với giai cấp, dòng họ
+khổ vui và tên tuổi
+rất chi tiết rõ ràng
+và như vậy, Vị ấy
+thành tựu Túc Mạng Minh.
+Rồi từ một nội tâm
+đã bất động hoàn toàn
+Tỳ kheo ấy hướng tâm
+xem chúng sanh lưu chuyển
+qua mỗi kiếp luân hồi
+nhận quả báo khổ vui
+theo nghiệp duyên thiện ác
+không một chút sai lầm
+và như vậy, Vị ấy
+thành tựu Thiên Nhãn Minh. O
+
+Rồi từ một nội tâm
+đã bất động hoàn toàn
+Trí tuệ được khởi lên
+vô minh được chấm dứt.
+Vị ấy biết rõ ràng
+như thế nào là Khổ34
+hay Nguyên Nhân Của Khổ
+thế nào là Giải Thoát
+và Đường Về Giải Thoát
+và như vậy, Vị ấy
+chứng đạt Lậu Tận Minh.
+Từ Chánh Trí như trên
+Vị ấy tự biết mình
+đã dừng lại Luân hồi
+đã viên thành Phạm hạnh
+đã hoàn toàn giải thoát. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
             },
 			{ 
                 id: 95, 
-                title: "KINH TỪ TÂM", 
+                title: "NHẤT DẠ HIỀN GIẢ", 
                 type: 'sub',
-                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+                content: `<div class="section-block"><h3>NHẤT DẠ HIỀN GIẢ</h3><pre>Không truy tìm quá khứ
+Không ước vọng tương lai
+Quá khứ đã qua rồi
+Tương lai lại chưa đến
+Chỉ có pháp hiện tại
+Tuệ quán chính là đây
+Bất động chẳng lung lay
+Hãy thực hành như thế O
+
+Không một ai biết trước
+Cái chết đến lúc nào
+Tử thần có đợi đâu
+Làm sao điều đình được
+Vì thế nên nỗ lực
+Tinh tấn suốt đêm ngày
+Tỉnh giác từng phút giây
+An trú bằng Chánh Niệm O
+
+Như vậy mới xứng đáng
+Người biết sống một mình
+Kẻ ấy đã tôn vinh
+Đạo nhiệm mầu vô thượng. O
+</pre></div>` 
             },
 			{ 
                 id: 96, 
-                title: "KINH TỪ TÂM", 
+                title: "CHÁNH NIỆM TRONG ĐỜI SỐNG", 
                 type: 'sub',
-                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+                content: `<div class="section-block"><h3>CHÁNH NIỆM TRONG ĐỜI SỐNG</h3><pre>Tam Bảo gia hộ cho con
+Lúc thức cũng như lúc ngủ
+Ban ngày cũng như ban đêm
+Luôn nhớ thân này vô thường.
+Khi đi hoặc là khi đứng
+Khi ngồi hoặc là khi nằm
+Lúc làm việc hay nghỉ ngơi
+Luôn nhớ thân này vô thường.
+Khi nghe cũng như khi nói
+Đông người hay ở một mình
+Xem phim hay là đọc sách
+Luôn nhớ thân này vô thường.
+Lúc ăn cơm hay uống nước
+Khi tắm rửa hay vệ sinh
+Đắp y hay mang giày dép
+Luôn nhớ thân này vô thường.
+Những khi tâm con tỉnh giác
+Càng nhớ thân này vô thường
+Nguyện cho chúng sinh khắp chốn
+Luôn biết thân này vô thường.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
             },
 			{ 
                 id: 97, 
-                title: "KINH TỪ TÂM", 
+                title: "LỜI KHẤN NGUYỆN", 
                 type: 'sub',
-                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+                content: `<div class="section-block"><h3>LỜI KHẤN NGUYỆN</h3><pre><b>Kính lạy Mười Phương Phật
+Kính lạy Mười Phương Pháp
+Kính lạy Mười Phương Tăng</b>
+Xin chứng giám lòng con
+Với tất cả tâm thành
+Dâng lên lời khấn nguyện O
+
+Xin cho con mãi mãi
+Lòng tôn kính vô biên
+Hơn núi biển mông mênh
+Dâng lên Mười Phương Phật. O
+
+Xin cho con mãi mãi
+Lòng thương yêu không cùng
+Trải thế giới Tam Thiên
+Đến chúng sinh vô tận.
+Xin cho khắp muôn loài
+Sống yên lành bên nhau
+Không ganh ghét oán thù
+Không chiến tranh giết chóc.
+Xin cho kẻ bất thiện
+Biết tin có luân hồi
+Có nghiệp báo trả vay
+Để hồi đầu hướng thiện. O
+
+Xin kẻ mù được sáng
+Kẻ điếc lại được nghe
+Kẻ nghèo được ấm no
+Kẻ ốm đau bình phục.
+Xin cho loài cầm thú
+Thoát được nghiệp ngu si
+Tái sinh vào cõi người
+Biết tu theo Phật Pháp.
+Các vong linh vất vưởng
+Trong cõi giới u huyền
+Thoát nghiệp đói triền miên
+Quy y và siêu thoát. O
+
+Xin cho nơi địa ngục
+Chúng sinh đang đọa đày
+Khởi được tâm từ bi
+Để xa lìa cảnh khổ.
+Cúi xin Mười Phương Phật
+Chư Bồ Tát Thánh Hiền
+Đem Chánh Pháp thiêng liêng
+Sáng soi nghìn thế giới.
+Cho chúng con mãi mãi
+Dù sinh về nơi đâu
+Đều gặp pháp nhiệm mầu
+Để nương theo tu tập. O
+
+Cho con biết khiêm hạ
+Biết tôn trọng mọi người
+Tự thấy mình nhỏ thôi
+Việc tu còn kém cỏi.
+Cho tay con rộng mở
+Biết san sẻ cúng dường
+Biết giúp đỡ yêu thương
+Đến những người khốn khó.
+Xin cho con bình thản
+Trước nghịch cảnh cuộc đời
+Dù bị mắng bằng lời
+Hay bằng điều mưu hại. O
+
+Xin tâm con sung sướng
+Khi thấy người thành công
+Hoặc gây tạo phước lành
+Như chính con làm được.
+Cho con biết im lặng
+Không nói lỗi của người
+Chỉ lặng lẽ dùng lời
+Cầu cho người hết lỗi.
+Xin vòng dây tham ái
+Rời khỏi cuộc đời con
+Để cho trái tim con
+Biết yêu thương tất cả. O
+
+Cúi lạy Mười Phương Phật
+Đau khổ đã nhiều rồi
+Vô lượng kiếp luân hồi
+Đắng cay và mỏi mệt.
+Nay con dâng lời nguyện
+Giải thoát, quyết tìm về
+Giác ngộ, quyết lìa mê
+Độ sinh, đền ơn Phật.
+Xin cho con giữ vững
+Được chí nguyện tu hành
+Không một phút buông lơi
+Không một giờ xao lãng. O
+
+Xin vẹn toàn giới hạnh
+Với thiền định lắng sâu
+Với trí tuệ nhiệm mầu
+Xóa tan dần chấp ngã.
+Xin cho con tỉnh táo
+Không kiêu mạn tự hào
+Dù tu tiến đến đâu
+Vẫn tự tìm chỗ dở.
+Nguyện cho con đi mãi
+Không đứng lại giữa đường
+Đến tuyệt đối vô biên
+Tâm đồng tâm Chư Phật. O
+
+Rồi trong muôn vạn nẻo
+Của sinh tử luân hồi
+Con mãi mãi không thôi
+Độ sinh không dừng nghỉ.
+Cúi lạy Mười Phương Phật
+Xin chứng giám lòng con
+Lời khấn nguyện sắt son
+Dâng lên ngôi Tam Bảo. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
             },
 			{ 
                 id: 98, 
+                title: "THÁNH TRÍ BÁT NHÃ", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>THÁNH TRÍ BÁT NHÃ</h3><pre>Khi Bồ Tát Quán Tự Tại thành tựu được Chánh Định thẳm sâu, phát sinh trí tuệ Bát Nhã vi diệu, liền thấy thân tâm năm uẩn này trống rỗng, không quan trọng nữa, và ngay đó vượt qua tất cả đau khổ.
+Này Xá Lợi Phất, Bồ Tát thành tựu được Chánh Định vĩ đại an lành nên không còn chấp vào sắc thân, tự tại đối với sắc thân; không còn bị chi phối bởi cảm giác, tự tại đối với cảm giác; không còn vướng mắc nơi tâm tưởng, tự tại đối với tâm tưởng; không còn lệ thuộc vào tâm năng, tự tại đối với tâm năng; không còn bị giới hạn bởi cái biết, tự tại đối với cái biết.
+Này Xá Lợi Phất, với sự tự tại an lành như thế, Bồ Tát đi vào sinh tử mang hạnh nguyện hóa độ chúng sinh. Khi ở trong sinh tử, Bồ Tát không bị dính mắc bởi bất cứ điều gì, không cần bất cứ điều gì, không xao động theo bất cứ sự biến dịch nào của cuộc đời. Bồ Tát đến với chúng sinh bằng tâm từ bi vô hạn, không phân biệt kẻ sang người hèn, kẻ dở người hay, thậm chí thương yêu cả kẻ xấu ác để tìm cách hóa độ. Bồ Tát sẽ phải chấp nhận mọi điều tôn vinh hay nhục mạ, vinh quang hay cay đắng một cách bình thản. Dũng lực của Bồ Tát là vô biên vô hạn.
+Bồ Tát sẽ tùy theo tâm tình, sở thích, ngôn ngữ của chúng sinh mà tìm cách hóa độ chứ không chấp cứng vào văn tự Kinh điển vì cả cuộc sống của Bồ Tát là một bài Kinh thiêng liêng bất tận; những việc làm của Bồ Tát là tấm gương sáng ngời, ngay cả một cái nhìn hay sự im lặng của Bồ Tát cũng như sấm sét có thể làm thay đổi tâm hồn người đối diện.
+Tâm của Bồ Tát chính là vô lượng đạo lý; lời nói của Bồ Tát chính là vô lượng Kinh điển, nghe không giống như ngôn ngữ cổ thư nhưng không hề sai khác với ý Phật.
+Bồ Tát thực hành Bát Nhã như thế nên thành tựu vô lượngcông đức. Những công đức này  khiến cho Bồ Tát trở nên một vị Thánh đầy uy lực, không một chướng ngại nào, khổ nạn nào có thể xâm phạm được nữa. Bồ Tát đạt được sự bình an vô hạn cả nội tâm và ngoại cảnh.
+Chư Phật từ xưa đến nay hay sau này đều thực hành Bát Nhã như thế, thành tựu Chánh Định như thế, có được tự tại như thế, giáo hóa chúng sinh như thế để đắc thành Vô Thượng Chánh Đẳng Chánh Giác.
+Thần lực phi thường của Phật và Đại Bồ Tát có thể cứu giúp chúng sinh qua khỏi khổ nạn cấp thời để chúng sinh có cơ hội tu tập và gây tạo phước lành đền bù ác nghiệp quá khứ.
+Phải biết Bát Nhã là bờ bến hiền lành an ổn, là thuyền to lớn giữa biển sóng lao xao, là ánh sáng soi rọi giữa đêm đen mờ mịt, là sự cao thượng vượt hơn mọi điều cao thượng trên đời.
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 99, 
+                title: "KHẨU QUYẾT TU THIỀN", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KHẨU QUYẾT TU THIỀN</h3><pre>
+Thiền là điều phục tâm
+Nhưng muốn điều phục tâm
+Phải điều hòa hơi thở
+Muốn điều hòa hơi thở
+Phải điều hòa được thân
+Cộng với phước vô ngần
+Vì vậy lúc ban đầu
+Trồng công đức thật sâu
+Sống hiền lành chân chánh
+Theo Thánh Đạo nhiệm mầu. O
+
+Vào thiền ngồi kiết già
+Đúng tư thế Phật Đà
+Giữ toàn thân mềm mại
+Và bất động sâu xa.
+Khi vọng tưởng khởi lên
+Khiến hiện tại bị quên
+Lúc đó nhờ Công Đức
+Giúp ta quay lại liền. O
+
+Rồi trở lại Điều Thân
+Xem khắp cả tay chân
+Có chỗ nào gồng cứng
+Hay nhúc nhích gì chăng
+Rồi biết Thân Vô Thường
+Ngày nào sẽ lên đường
+Rã tan thành cát bụi
+Xương thành bột bay luôn. O
+
+Cứ kiên nhẫn Điều Thân
+Không cần phải đi nhanh
+Điều Thân thật thuần thục
+Đường đạo đã đến gần
+Rồi nhìn thấy trong thân
+Có hơi thở vào ra
+Để giữ gìn mạng sống
+Không một phút lìa xa. O
+
+Có hai điều cực đoan
+Khiến hơi thở bất toàn
+Một là quên hơi thở
+Hai là thở rộn ràng
+Quên hơi thở, quên tu
+Tâm chìm đắm mịt mù.
+Vì vậy luôn gắng nhớ
+Từng hơi thở nhiệm mầu. O
+
+Hơi thở vào, biết vào
+Hơi thở ra, biết ra
+Không cố gắng điều khiển
+Theo ý muốn của ta
+Có lúc hơi thở nhiều
+Có lúc chẳng bao nhiêu
+Nhưng chỉ cần biết rõ
+Chẳng cần thêm một điều. O
+
+Hơi thở là của thân
+Khi Biết Rõ Toàn Thân
+Là biết luôn hơi thở
+Không cần phải phân vân.
+Nhớ thật kỹ một điều
+Dù hơi thở thế nào
+Cũng không được điều khiển
+Chỉ cần biết mà thôi. O
+
+Biết thật rõ hơi vào
+Biết thật rõ hơi ra
+Biết toàn thân phía dưới
+Tỉnh giác và an hòa
+Vẫn giữ thân vững vàng
+Bất động và nhẹ nhàng
+Và biết từng hơi thở
+Tâm dừng bước lang thang. O
+
+Nhiều trạng thái của tâm
+Vi diệu và lạ lùng
+Thay phiên nhau xuất hiện
+Sẽ khiến ta hiểu lầm
+Thấy tâm thức rỗng không
+Lòng thanh thoát vô cùng
+Ta sẽ tưởng mình đắc
+Một quả Thánh nào chăng. O
+
+Thật ra, ta hãy còn
+Đứng ngoài cửa mỏi mòn
+Chưa vào được cánh cổng
+Của ngôi đền Chí Tôn
+Trong ngôi đền thẳm sâu
+Có chiếc ghế nhiệm mầu
+Tên gọi là Vô Ngã
+Chờ đợi ta đã lâu. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 100, 
+                title: "LẠY PHẬT SÁM HỐI", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>LẠY PHẬT SÁM HỐI</h3><pre>Kính lạy Đấng Giác Ngộ
+Giữa thế gian tối tăm
+Người là vầng ánh sáng
+Giữa biển đời khổ đau
+Người, đảo cồn nương tựa
+Chúng con xin kính dâng
+Lên Người lòng tôn kính
+Vô biên và mãi mãi
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Trí tuệ Người vô cùng
+Chiếu soi cả Pháp Giới
+Suốt ba cõi chúng sinh
+Không điều gì chẳng biết
+Biết làm sao nói lên
+Lòng chúng con kính ngưỡng
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Chúng con sống yên vui
+Trong Từ Bi của Người
+Ngập tràn như không khí
+Trùm phủ khắp muôn loài
+Tha thứ và độ lượng
+Bao la và gần gũi
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Nơi trí giác tuyệt vời
+Người vượt qua chấp ngã
+Không còn là chính mình
+Người đã là tất cả
+Là hạt bụi cánh hoa
+Là trăng sao mây gió
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Núi có thể lung lay
+Nhưng Người là bất động
+Tâm bình an của người
+Còn hơn cả hư không
+Rất nhỏ nhiệm sâu mầu
+Đến tận cùng tuyệt đối
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Người cao cả thiêng liêng
+Người bao la vời vợi
+Mà chúng con nhỏ bé
+Tầm thường và tội lỗi
+Biết bao kiếp si mê
+Trong tham lam thù hận
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Từ chấp ngã ban đầu
+Biến thành tâm ích kỷ
+Chỉ nghĩ lợi phần mình
+Mà quên đi tất cả
+Bây giờ con ăn năn
+Xin nguyện chừa lỗi trước
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Từ chấp ngã ban đầu
+Biến thành tâm kiêu mạn
+Thấy mình hơn mọi người
+Rồi khinh thường tất cả
+Hôm nay trước muôn loài
+Con cúi đầu sám hối	
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Có ai ngờ được rằng
+Tâm kiêu mạn khởi lên
+Là nhiễm ô nối bước
+Khiến chúng con chìm trong
+Đam mê và dục vọng
+Thấp hèn và tội lỗi
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Tâm ích kỷ trước kia
+Đưa đến lòng ác độc
+Khiến chúng con nhẫn tâm
+Gây tổn hại muôn loài
+Bằng lời nói, gươm đao
+Hoặc âm mưu đen tối
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Vì không biết thương người
+Nên muốn ai cũng xấu
+Nên chỉ thích chê bai
+Để làm người nhục nhã
+Ôi! Lời nói chê bai
+Làm con người chia rẽ
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Tâm tự kiêu ngự trị
+Nên nóng giận dễ dàng
+Mỗi khi có người nào
+Làm cho con trái ý
+Hoặc xúc phạm đến con
+Hoặc điều con ưa thích
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Làm được chút điều lành
+Chưa có đáng là bao
+Mà con tưởng rất nhiều
+Nên khởi tâm tự mãn
+Làm đóng lại con đường
+Đi về nơi cao thượng	
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Rồi Phật Pháp cao siêu
+Con hiểu được đôi điều
+Đã thích thú khoe khoang
+Không khiêm cung kín đáo
+Làm hao tổn thiện căn
+Phát sinh nhiều trở ngại
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O</b>
+
+Ôi! Lầm lỗi chập chùng
+Giăng kín cả tâm con
+Dù tha thiết ăn năn
+Vẫn khó trừ diệt được
+Cúi xin Mười Phương Phật
+Soi sáng cả lòng con
+Để trong mỗi phút giây
+Con luôn luôn tỉnh giác
+Xét được lầm lỗi mình
+Từ nội tâm sâu kín
+Con nguyện mãi về sau
+Dù sinh về nơi đâu
+Sẽ đem trọn đời mình
+Hiến dâng cho tất cả.
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần, 3 lạy) O</b></pre></div>` 
+            },
+			{ 
+                id: 101, 
+                title: "KINH TỪ BI SÁM HỐI", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ BI SÁM HỐI</h3><pre>Ai cũng thế, ít nhiều đều tội
+Chỉ khác nhau biết lỗi hay không
+Đời là bể khổ mênh mông
+Khéo nương Phật Pháp thoát vòng trầm luân
+
+<b>Nam Mô Cầu Sám Hối Bồ Tát. (3 lần, 1 lạy) O</b>
+
+Kính lạy Mười Phương Phật,
+Kính lạy Mười Phương Pháp,
+Kính lạy Mười Phương Tăng
+Rất nhiều người thiếu thốn
+Biết đâu trong quá khứ,
+Con đã lừa gạt người,
+Người đau khổ cả đời,
+Tội lỗi càng chồng chất
+Nay quay về nẻo Chánh,
+Hiểu lầm lỗi ngày xưa,
+Lòng ray rứt vô bờ,
+Xin cúi đầu sám hối
+<b>Nam Mô Cầu Sám Hối Bồ Tát.(1 lạy) O</b>
+
+Nếu trước kia khờ dại,
+Chẳng biết điều đúng sai,
+Mãi lo lắng sinh nhai,
+Tâm mịt mờ loạn động
+Không hướng đi cao thượng,
+Nghĩ những việc thấp hèn,
+Đời lăn lộn bon chen,
+Tầm thường và vô nghĩa
+Không tin vào Nghiệp báo,
+Chẳng biết có Luân hồi,
+Gây tội mãi không thôi,
+Đi dần vào tăm tối
+Chẳng kính tin Tam Bảo,
+Những bậc Thánh phi thường,
+Nên sống rất tầm thường,
+Kiếm tìm điều hư ảo
+Nay quay về nẻo Chánh,
+Hiểu lầm lỗi ngày xưa,
+Lòng ray rứt vô bờ,
+Xin cúi đầu sám hối
+<b>Nam Mô Cầu Sám Hối Bồ Tát.(1 lạy) O</b>
+
+Nếu trước kia kiêu ngạo,
+Chẳng biết tôn trọng người,
+Miệng chỉ thích chê cười,
+Để cho mình là giỏi
+Kiêu căng nhìn tất cả,
+Cố tìm bới lỗi lầm,
+Lời nói như dao đâm,
+Khinh thị người thái quá
+Thành công được chút ít,
+Tưởng mình tài lắm rồi,
+Nuôi lớn mãi cái Tôi,
+Trong kiêu căng tự đắc
+Khi lòng đầy tự mãn,
+Dễ nóng nảy hung hăng,
+Tâm dục vọng trào dâng,
+Khó mà kiềm chế được
+Nay tìm về Chánh Đạo,
+Hiểu Nhân Quả nghiệp duyên,
+Lòng ray rứt triền miên,
+Xin cúi đầu sám hối
+<b>Nam Mô Cầu Sám Hối Bồ Tát.(1 lạy) O</b>
+
+Kính lạy Mười Phương Phật,
+Nhiều kiếp phạm sai lầm,
+Con sám hối ăn năn,
+Rất chân thành tha thiết
+Nguyện theo lời Phật dạy,
+Yêu thương khắp muôn loài,
+Như biển lớn sông dài,
+Bao la và vô tận
+Nguyện tình thương bát ngát,
+Như tâm Phật từ bi,
+Trên mọi nẻo đường đi,
+Trong mênh mông Pháp Giới
+Xin vượt qua thù hận,
+Để mãi mãi về sau,
+Oan trái chẳng theo nhau,
+Lòng an vui thanh thản
+Xin mở lòng rộng lớn,
+Như trời đất thênh thang,
+Soi sáng cả mười phương,
+Với tình thương đầm ấm
+<b>Nam Mô Vô Lượng Từ Bi Bồ Tát. (1 lạy) O</b>
+
+Xin tâm con yêu mến,
+Cả những người chẳng quen,
+Trên đường đời nhiều phen,
+Gặp nhau mà không biết
+Xin tâm con thương hết,
+Cả những người ghét con,
+Thậm chí đã đưa con,
+Vào khốn cùng đau khổ
+Xin thương người già yếu,
+Kiếp sống đã đi qua,
+Lắm vinh nhục phong ba,
+Tuổi trời không xa nữa
+Xin thương những em bé,
+Từng đôi mắt ngây thơ,
+Những vui khổ đang chờ,
+Kiếp người không biết trước
+Nguyện lòng đầy thương cảm,
+Những thân phận tật nguyền,
+Làm người ít phước duyên,
+Thiệt thòi và bất hạnh
+<b>Nam Mô Vô Lượng Từ Bi Bồ Tát. (1 lạy) O</b>
+
+Xin Phật Từ gia hộ,
+Lòng con như đại dương,
+Đầy ắp những tình thương,
+Dành cho muôn cầm thú,
+Chim trời đang tung cánh,
+Từng đàn đi về xa,
+Hoặc chen chúc lá hoa,
+Tìm thức ăn vất vả
+Thú hoang trong rừng thẳm,
+Trú ẩn trong hang sâu,
+Hoặc bờ bụi cành cao,
+Cả một đời ngây dại
+Cá tôm dưới sông biển,
+Từng giây phút tìm mồi,
+Sống cực khổ nổi trôi,
+Đoạt lẫn nhau sự sống
+Xin lòng con thương hết,
+Mong muôn loài vượt lên,
+Khỏi thân phận thấp hèn,
+Để có ngày giác ngộ
+<b>Nam Mô Vô Lượng Từ Bi Bồ Tát. (1 lạy) O</b>
+
+Rồi những người đã chết,
+Chưa có chỗ đi về,
+Còn vất vưởng sơn khê,
+Đầu đường hay cuối ngõ,
+Những vong linh từ trước,
+Khi sống rất nghĩa tình,
+Vì nước quên thân mình,
+Một tấm lòng trung hiếu
+Cũng có những vong linh,
+Đã sống rất sai lầm,
+Không tìm thấy thiện tâm,
+Chỉ gây ra đau khổ
+Có vong linh u tối,
+Vì tâm thức si mê,
+Lòng ích kỷ nặng nề
+Chết rồi còn hung ác
+Nguyện lòng con soi sáng,
+Tất cả các vong linh,
+Bằng nguyện lực từ bi,
+Cho vong linh an lạc
+<b>Nam Mô Vô Lượng Từ Bi Bồ Tát. (1 lạy) O</b>
+
+Nguyện tất cả muôn loài,
+Biết yêu quý lẫn nhau,
+Đừng gây cảnh khổ đau,
+Để kéo theo oan trái
+Ai cũng biết phòng hộ,
+Những ý niệm của mình,
+Tránh xúc não chúng sinh,
+Bởi ác tâm hung bạo
+Trên đường đời vạn nẻo,
+Gặp nhau kết duyên lành,
+Trong tử tế hân hoan,
+Bằng yêu thương giúp đỡ
+Người với người yêu mến,
+Người khuyên người từ bi,
+Dòng luân hồi cùng đi,
+Bớt được nhiều nỗi khổ
+Pháp Giới là vô ngã,
+Pháp Giới là tình thương,
+Lòng từ trải muôn phương,
+Tâm bồ đề vô thượng.
+
+<b>Nam Mô Vô Lượng Từ Bi Bồ Tát. (3 lần, 3 lạy)</b>
+</pre></div>` 
+            },
+			{ 
+                id: 102, 
+                title: "KINH TỨ NIỆM XỨ", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỨ NIỆM XỨ</h3><pre>
+Con đã từng nghe như thế này
+Ku-ru quốc độ có một ngày
+Thế Tôn nói bốn phần TRÚ NIỆM
+Con đường giác ngộ được hiển bày
+
+Tỳ kheo phải có căn bản thiền
+Kiết già tĩnh tọa ngồi cho yên
+Toàn thân biết rõ không còn sót
+Hơi thở ra vào biết tự nhiên
+
+Giữ thân bất động rất vững vàng
+Nhưng là mềm mại chẳng gồng căng
+Tay chân tụ lại về trước bụng
+Lưng thẳng, chân đan, mắt rõ ràng
+
+
+An trú toàn thân, biết toàn thân
+Cảm giác toàn thân, một khối thân
+Mình mẩy tay chân đều biết rõ
+Rõ nhất xương cùng dưới thắt lưng
+
+Hơi thở đi vào, biết đi vào
+Thở ra, biết rõ như thế nào
+Cơ thể tự nhiên là phải thở
+Chẳng cần điều khiển chậm hay mau
+
+Phật dạy rất nhiều lợi ích hay
+Khi nhìn hơi thở như thế này
+Nội lực âm thầm nuôi thân mạng
+Tinh thần tỉnh sáng thêm từng ngày
+
+Chính thức đi vào bốn NIỆM PHẦN
+Bắt đầu hiểu rõ hết về Thân
+Rồi hiểu rõ về từng cảm Thọ
+Hiểu Tâm, hiểu Pháp rất cân phân
+
+Hiểu rõ rằng THÂN được hợp thành
+Bởi nhiều bộ phận khá hôi tanh
+Thịt xương máu mủ da lông tóc
+Đờm dãi ngày đêm vẫn thải nhanh
+
+Hiểu rõ rằng thân rất mong manh
+Nóng lạnh tai ương chực chờ quanh
+Già bệnh cuối cùng không tránh khỏi
+Xương tàn vùi đất kiếp tử sinh
+
+Hiểu rồi an trú ngay nơi thân
+Đối diện kiếp người rất phù vân
+Ngay tại niềm đau mà ôm lấy
+Sự thật thế nào, thấy rất gần
+
+CẢM THỌ khổ vui nối tiếp nhau
+Sợ Lo Mừng Tủi… những u sầu
+Chúng sinh tìm kiếm niềm hạnh phúc
+Chỉ là lọt bẫy dưới hầm sâu
+
+An trú nơi từng cảm giác qua
+Hiểu rõ buồn vui cũng chỉ là
+Một thoáng vô thường nhưng đắt giá
+Tạo nghiệp vì mê những bóng tà
+
+Những lúc khổ đau đến tột cùng
+Tưởng như đã cạn sức vẫy vùng
+Can đảm niềm đau mà ôm lấy
+Chẳng cần tránh né chỗ mông lung
+
+Những lúc niềm vui đến ngập tràn
+Nhìn xem cảm giác đó rõ ràng
+Như xem người khách từ đâu đến
+Như nhìn sương khói lúc chiều tan
+
+Hiểu rõ về TÂM có ba điều
+Một là Đạo đức được bao nhiêu
+Hai là Động loạn hay Thanh tịnh
+Trí tuệ - Ngu si cái nào nhiều
+
+Chưa chứng cao siêu thánh vị nào
+Chắc rằng Bất thiện vẫn sôi trào
+Ích kỷ, tham lam, và ác độc
+Còn trong sâu kín biết làm sao
+
+Chánh Định chưa từng nhập bao giờ
+Thì tâm loạn động vẫn mịt mờ
+Mà dẫu có yên vài khoảnh khắc
+Vẫn là rất cạn, rất đơn sơ
+
+Trí tuệ thì thôi, đã rõ rồi
+Lỗi lầm ít thấy, cứ buông trôi
+Nghiệp duyên nhân quả càng xa lạ
+Đạo lý chỉ là nhai lại thôi
+
+Niệm PHÁP nghĩa là hiểu bản thân
+Dựa trên tội phúc đã bao lần
+Tính ra tội hẳn nhiều hơn phúc
+Nên lòng luôn sám hối ăn năn
+
+Niệm Pháp nghĩa là biết Vô minh
+Chấp ngã trầm luân kiếp tử sinh
+Tứ Diệu Đế là vầng ánh sáng
+Mục tiêu Vô ngã đón bình minh
+
+QUÁN NIỆM và AN TRÚ bốn phần
+Không rời một chỗ của bản thân
+Mà nghiệm ra mọi điều đạo lý
+Cúi đầu đảnh lễ trước Hồng Ân
+
+Công đức phải huân tập vô ngần
+Con đường giác ngộ mới đến gần
+Tôn kính Phật và chư Hiền Thánh
+Chan rải từ bi khắp chúng dân
+
+An trú ngay nơi có lỗi lầm
+Biết rằng đây chính là lỗi lầm
+Nhẹ nhàng đối diện không tránh né
+Can đảm niềm đau cứ thế ôm
+
+Có một lỗi lầm rất lớn lao
+Đó là chấp ngã rất thẳm sâu
+Tạo nên sinh tử trầm luân mãi
+Nên cần phải an trú dài lâu
+
+Nhưng chẳng dễ tìm chấp ngã đâu
+Vô hình trừu tượng ở tầng sâu
+Nếu không có định và có phước
+Làm sao vào được cửa nhiệm mầu
+
+Tìm thấy chính mình, bước đầu tiên
+Đặt chân lên đạo lộ tịnh thiền
+Lặng lẽ nghìn năm không rời bước
+Bản ngã tầng sâu rất diệu huyền
+
+Nếu muốn tìm ra được chính mình
+Phải nhờ ba cái biết phân minh
+Một là cảm giác toàn thân thể
+Hiểu lẽ vô thường biến dịch nhanh
+
+Kế nữa là hơi thở vào ra
+Chỉ biết mà thôi chẳng bôn ba
+Không can thiệp nhưng không bỏ mất
+Rất rõ từng hơi vào hơi ra
+
+Đặc biệt không quên chỗ Xương Cùng
+Gốc của toàn thân, dưới thắt lưng
+Giúp cho sinh lực dồi dào mãi
+Bình thản trú tâm biết không ngừng
+
+Lúc này tâm có thể lắng yên
+Trạng thái rỗng không rõ một miền
+Nhưng chớ dại khờ nhìn nơi đó
+Vì chẳng khác chi hướng ngoài hiên
+
+Giữ ba cái biết không rời xa
+Thêm chút ưu tư chưa tìm ra
+Chính mình ẩn núp nơi nào đó
+Vì duyên chưa đủ nên lầm qua
+
+Chẳng hẹn thời gian sẽ bao lâu
+Tìm được chính mình ở tầng sâu
+Biết bao kỳ diệu chờ trong đó
+Ta sẽ ngỡ như đắc đạo mầu
+
+Ngoại đạo cũng từng tìm thấy rồi
+Tự xưng chân tánh mãi không thôi
+Chỉ có Như Lai siêu chánh giác
+Vượt qua bản ngã rất tuyệt vời
+
+Ta cũng sẽ đi hết con đường
+Mà bao hiền thánh khắp mười phương
+Đã từng đặt bước chân trên đó
+Tìm thấy chính mình để đảm đương
+
+An trú chính mình đến xa xăm
+Mấy trăm hoặc cả mấy nghìn năm
+Dù rằng trong đó là mầu nhiệm
+Mục tiêu Vô ngã vẫn âm thầm
+
+Nếu chỉ dừng ngang chỗ “chính mình”
+Sẽ không thể hết sạch vô minh
+Nhưng bỏ “chính mình” thì lạc hướng
+Mục tiêu Vô ngã cũng không thành
+
+Đây là Trung đạo khéo đi qua
+An trú chính mình không rời xa
+Nhưng biết “chính mình” còn bản ngã
+Mục tiêu Vô ngã vẫn thiết tha
+
+Đỉnh cao TỨ NIỆM XỨ là đây
+Lỗi lầm tự nó sẽ đổi thay
+Nếu ta thấy rõ và an trú
+Nơi chính lỗi lầm đã từng gây
+
+Cả lúc tâm thiền rất lắng yên
+Vẫn hiểu là chưa hết não phiền
+Nên không vội vã xưng thần thánh
+Còn phước mà đi đến vô biên
+
+Nguyện cho pháp giới khắp chúng sinh
+Ai cũng tìm ra được chính mình
+Để rồi an trú qua nhiều kiếp
+Cuối cùng tan vỡ, hết vô minh.
+
+<b>NAM MÔ ĐẤNG CHÁNH GIÁC ĐẠI TỪ BI ĐẠI TRÍ TUỆ BỔN SƯ THÍCH CA MÂU NI PHẬT. (3 lần)</b></pre></div>` 
+            },
+			{ 
+                id: 103, 
+                title: "LỜI NGUYỆN CẦU BUỔI SÁNG", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>LỜI NGUYỆN CẦU BUỔI SÁNG</h3><pre>(Cha mẹ nên hướng dẫn con trẻ vào buổi sáng, sau khi thức dậy, vệ sinh thân thể, mặc bộ đồ tươm tất, đến trước bàn thờ Phật, lễ Phật 3 lễ thật cung kính rồi quỳ tụng bài “Lời Nguyện Cầu Buổi Sáng”)
+
+Thành tâm quỳ dưới Phật đài
+Cúi đầu lạy Phật đón ngày mới sang
+Phật Đà từ ái nghiêm trang
+Cha lành của khắp mười phương vạn loài
+Xin nghe con trẻ tỏ bày
+Lời cầu nguyện của kiếp này kiếp sau. O
+
+Trước là cha mẹ ơn sâu
+Được nhiều phước đức sống lâu tuổi trời
+Ông bà tiên tổ nhiều đời
+An vui cõi Phật thảnh thơi tu hành
+Xin cho thế giới thanh bình
+Ai ai cũng sống hiền lành với nhau
+Thầy cô vất vả công lao
+Mong sao sẽ được phước cao đức dầy. O
+
+Còn con xin nguyện từ đây
+Siêng năng học tập để ngày lớn khôn
+Đáp đền cha mẹ công ơn
+Đắp xây thế giới đẹp hơn bây giờ
+Hôm nay con trẻ dại khờ
+Biết bao mơ ước còn chờ mai sau.	 O
+
+Nguyện trên ơn Phật nhiệm mầu
+Cho con trí tuệ hiểu sâu mọi điều56
+Cho lòng con biết thương yêu
+Để con giúp đỡ được nhiều tha nhân
+Cho con lễ độ ân cần
+Biết nhường kính với người gần kẻ xa
+Từng ngày cuộc sống đi qua
+Xin cây đạo đức nở hoa trong lòng
+Đôi điều con trẻ ước mong
+Cúi xin đức Phật cảm thông độ trì.	 O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+</pre></div>` 
+            },
+			{ 
+                id: 104, 
+                title: "SÁM NGUYỆN HỘ PHÁP", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>SÁM NGUYỆN HỘ PHÁP</h3><pre>Con cúi lạy Mười Phương Tam Bảo
+Chứng minh con tâm đạo kiên cường
+Nghìn đời chỉ một con đường
+Hướng về giác ngộ phi thường bao la
+
+Nhưng Chánh Pháp đã xa thời Phật
+Biết bao điều giả thật khó lường
+Biết bao những kẻ vô lương
+Âm mưu chống phá đủ đường bất nhân
+
+Kẻ hiểm ác không cần chân lý
+Mà chỉ nuôi ích kỷ hẹp hòi
+Ác tâm thủ đoạn không thôi
+Để gây ra cảnh suy đồi đạo thiêng
+
+Hoặc là chúng dùng gươm dùng súng
+Đập phá chùa, tượng trống nhà không
+Tăng Ni bức hại não nùng
+Sách kinh xé đốt tan cùng bụi tro
+
+Con cúi lạy Mười Phương Tam Bảo
+Chứng minh con tâm đạo kiên cường
+Nghìn đời chỉ một con đường
+Hướng về giác ngộ phi thường bao la
+
+Nhưng Chánh Pháp đã xa thời Phật
+Biết bao điều giả thật khó lường
+Biết bao những kẻ vô lương
+Âm mưu chống phá đủ đường bất nhân
+
+Kẻ hiểm ác không cần chân lý
+Mà chỉ nuôi ích kỷ hẹp hòi
+Ác tâm thủ đoạn không thôi
+Để gây ra cảnh suy đồi đạo thiêng
+
+Hoặc là chúng dùng gươm dùng súng
+Đập phá chùa, tượng trống nhà không
+Tăng Ni bức hại não nùng
+Sách kinh xé đốt tan cùng bụi tro
+
+Nguyện thứ nhất con thôi si ám
+Tinh tấn tu không dám buông lung
+Để nương vào sức đại hùng
+Của Mười Phương Phật mà chung kết đoàn
+
+Nguyện kế tiếp tâm an trí sáng
+Để nhìn ra muôn vạn âm mưu
+Hiểu ra lòng dạ kẻ thù
+Mà lo chống đỡ mặc dù khó khăn
+
+Nguyện gia hộ những lần nguy khốn
+Con phàm phu ngu độn tầm thường
+Phải nhờ Phật lực phi thường
+Dẹp tan hiểm nạn mở đường thoát ra
+
+Nguyện Đạo pháp bao la khắp chốn
+Được xương minh yên ổn tu hành
+Bởi vì tứ chúng nhiệt thành
+Khôn ngoan dũng cảm đấu tranh giữ gìn
+
+Nguyện quốc chủ anh minh ủng hộ
+Để đạo mầu phổ độ chúng dân
+Xây nền đạo đức xa gần
+Làm cho đất nước vạn lần hưng long.
+
+<b>Nam Mô Hộ Pháp Chư Tôn Bồ Tát. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 105, 
+                title: "SÁM NGUYỆN HOẰNG PHÁP", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>SÁM NGUYỆN HOẰNG PHÁP</h3><<pre>Xin kính lạy Thế Tôn cao cả
+Vì chúng sinh nên đã mở ra
+Một trời Chánh Pháp bao la
+Chúng sinh tu tập bước qua khổ sầu.
+
+Con ngẫm lại buổi đầu gặp đạo
+Hiểu cuộc đời hư ảo phù du
+Tâm hồn thoát cõi ngục tù
+Nguyện theo Bát Chánh gắng tu tinh cần.
+
+Có trí tuệ hiểu nhân hiểu quả
+Có trái tim hỷ xả từ bi
+Phật Đà dẫn một đường đi
+Đưa con về chốn diệu kỳ an vui.
+
+Nay nhìn lại bao người cùng sống
+Nơi hành tinh hoa mộng xanh tươi
+Nhưng mà có được mấy người
+
+Biết nương Phật Pháp cho đời thăng hoa.
+Thiếu Phật Pháp đời là bể khổ
+Kiếp nhân sinh vô số lỗi lầm
+Tâm hồn mờ mịt tối tăm
+
+Sa chân lỡ bước trôi lăn đọa đày.
+Đền ơn Phật con nay phát nguyện
+Cả một đời tinh tiến tu hành
+Rồi đem Chánh Pháp quang minh
+
+Gieo vào khắp chốn chúng sinh vạn loài.
+Dù những chỗ chẳng ai mời thỉnh
+Hoặc những người bướng bỉnh ngang tàng
+Lòng con kiên nhẫn yêu thương
+
+Gieo duyên hóa độ mở đường tương lai.
+Con xin Phật điểm khai thần lực
+Vào tâm con thành sức nhiệm mầu
+Để con dù đến nơi đâu
+
+Nói lời Chánh Pháp chuyển sâu lòng người.
+Để từ đó người người quy ngưỡng
+Về con đường cao thượng Như Lai
+Đắp xây cuộc sống ngày mai
+
+An vui giác ngộ vượt ngoài trầm luân.
+Nhưng không phải mùa xuân còn mãi
+Cũng có khi đông lại hè sang
+Đường hoằng pháp sẽ gian nan
+
+Biết bao đố kỵ bạo tàn ghét ganh.
+Vì kính Phật lòng đành nhẫn nhục
+Để đi qua những lúc khó khăn
+Nghiệp xưa sám hối ăn năn
+
+Nguyện nay vững bước ngàn lần hơn lên.
+Phật cho con chí bền tâm sáng
+Xin được làm bè bạn muôn sinh
+Kết duyên lành đậm ân tình
+
+Sẻ chia giáo pháp thiện lành với nhau.
+Nếu còn kẻ đêm sâu chưa tỉnh
+Chưa hiểu gì nẻo chính nẻo tà
+Thì con quyết chẳng bỏ qua
+
+Phải theo hóa độ dù là rất lâu.
+Nếu còn kẻ mong cầu phép lạ
+Chẳng biết gì nhân quả công bằng
+Thì con chẳng chút ngại ngần
+
+Nói cho nghe mãi vạn lần nghiệp duyên.
+Nếu có kẻ trú miền biên địa
+Chưa tìm ra diệu nghĩa Như Lai
+Dù cho núi thẳm sông dài
+
+Con không ngại đến nói bày đạo thiêng.
+Nếu có kẻ nghiệp riêng điên đảo
+Chưa biết tìm Tam Bảo quy y
+Con xin dẫn một lối đi
+
+Về đài sen để được quỳ nương theo.
+Nếu còn kẻ gươm đeo súng vác
+Cả một đời tàn ác điên cuồng
+Lòng con bình thản như thường
+
+Tìm phương tiếp cận dẫn đường hồi tâm.
+Nếu có vị quang lâm thuyết pháp
+Con sẽ kêu gọi khắp xa gần
+Cùng về nghe rất ân cần
+
+Để cho pháp hội thêm phần nghiêm trang.
+Nếu gặp đĩa sách vàng đạo lý
+Xem hoặc nghe khiến trí tuệ khai
+Con xin phát tặng khắp nơi
+
+Để nhiều người được nhận lời kinh hay.
+Hoặc có lúc con thay Tăng chúng
+Đăng pháp tòa trùng tụng tuyên dương
+Nguyện lòng tuyệt đối kính thương
+
+Dâng lên chư Phật mười phương ba đời.
+Nguyện xin nói đúng lời đạo lý
+Mà Thế Tôn đã chỉ dạy nên
+Khiến cho hội chúng bừng lên
+Trái tim trí tuệ vượt trên phàm tình.
+
+Nếu nghe được thanh danh nơi khác
+Có pháp sư lỗi lạc tài ba
+Con xin ngưỡng mộ từ xa
+Tán dương công đức để mà giúp nhau.
+
+Hoặc có kẻ từ lâu khác đạo
+Chưa hiểu gì Tam Bảo thiêng liêng
+Con xin tìm đến gieo duyên
+Giúp người mở lối diệu huyền mênh mông
+
+Con cũng nghĩ đến vùng xa xứ
+Mà con người ngôn ngữ cách chia
+Nên xin học tiếng nước kia
+Để đem Chánh Pháp đi về mọi nơi.
+
+Hạnh hoằng pháp cả đời học tập
+Nhưng nguyện lòng không chấp công lao
+Chỉ đền ơn Phật trên cao
+Đã cho con cả đạo mầu siêu nhiên.
+
+Nghìn muôn kiếp tinh chuyên thiền định
+Để tâm này thanh tịnh yên bình
+Biến thành đạo lực quang minh
+Xuất thành pháp thoại chúng sinh vui mừng.
+
+Nguyện tất cả không ngừng tinh tấn
+Cùng bước vào vô tận bao la
+Dứt trừ hết sạch cái Ta
+Đắc thành thánh quả thoát ra luân hồi.
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 106, 
+                title: "SÁM PHỔ HIỀN", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>SÁM PHỔ HIỀN</h3><pre>Đệ tử chúng đẳng, tùy thuận tu tập Phổ Hiền Bồ Tát, thập chủng đại nguyện:
+Nhất giả lễ kính Chư Phật
+Nhị giả xưng tán Như Lai
+Tam giả quảng tu cúng dường
+Tứ giả sám hối nghiệp chướng
+Ngũ giả tùy hỷ công đức
+Lục giả thỉnh chuyển Pháp luân
+Thất giả thỉnh Phật trụ thế
+Bát giả thường tùy Phật học
+Cửu giả hằng thuận chúng sinh
+Thập giả phổ giai hồi hướng.
+
+<b>Nam Mô Đại Hạnh Phổ Hiền Bồ Tát. (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 107, 
+                title: "KINH QUÁN TỰ NGÃ", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH QUÁN TỰ NGÃ</h3><pre>Kính lạy Mười Phương Phật
+Kính lạy Mười Phương Pháp
+Kính lạy Mười Phương Tăng
+Lạy Hộ Pháp Chư Thiên
+
+Chứng minh con trì tụng
+Kinh Quán Soi Tự Ngã
+Từ muôn kiếp vô minh
+Nên lầm tưởng chính mình
+
+Là vô cùng quan trọng
+Khiến lầm lỗi tăng nhanh
+Tấm thân tạm bợ này
+Yêu quý cả đêm ngày
+
+Chỉ là điều tạm bợ
+Già bệnh chết ai hay
+Tham đắm với lợi danh
+Bằng mọi cách tranh giành
+
+Chỉ là gây thêm tội
+Làm xa cách đạo lành
+Mỗi một miếng ăn ngon
+Nhiều mạng sống không còn
+
+Biết bao công khó nhọc
+Nợ dần chất như non
+Thế cái Ta là gì
+
+Để ta phải nghĩ suy
+Quay cuồng trong lục đạo
+Rồi lệ ướt tràn mi
+
+Ta chỉ là xác thân
+Vô thường réo bên chân
+Khổ đau vì bệnh tật
+Giam giữ kiếp phù vân
+
+Ta là cảm giác thôi
+Những bối rối bồi hồi
+Những buồn thương giận ghét
+Những cay đắng mặn môi
+
+Ta là dòng tâm tư
+Miên man những ngôn từ
+Đắn đo và suy tưởng
+Không giây phút nhàn thư
+
+Ta là nghiệp nhiều đời
+Như biển sóng trùng khơi
+Biết bao nhiêu lầm lỗi
+Sám hối chẳng cạn lời
+
+Ta là những si mê
+Tâm tham lam tràn trề
+Không bao nhiêu là đủ
+Dẫu thần thánh cười chê
+
+Ta là những hận thù
+Nhiều oán giận nghìn thu
+Tâm hồn như thiêu đốt
+Lửa sân hận mịt mù
+
+Ta là sự kiêu căng
+Cứ tưởng không ai bằng
+Chẳng kính trên nhường dưới
+Khiến dục vọng thêm tăng
+
+Ta vị kỷ vô ngần
+Quan tâm điều ta cần
+Ai sao cũng mặc kệ
+Chỉ biết mỗi bản thân
+
+Ta cũng rất nhẫn tâm
+Dù có biết sai lầm
+Vẫn gây bao đau khổ
+Thành thù oán nghìn năm
+
+Ta rốt cuộc chỉ là
+Những ảo tưởng thoáng qua
+Chẳng có gì là thật
+Nhưng nghiệp chẳng buông tha
+
+Nếu trót phạm lỗi lầm
+Dù chạy trốn xa xăm
+Quả báo đều theo mãi
+Phải đền trả vạn lần
+
+Vì sao ta phải luôn
+Nhìn mặt tối của mình
+Trên con đường tu tập
+Vượt thoát cõi vô minh?
+
+Bởi vì có một điều
+Rất độc đáo cao siêu
+Từ trong Luật Nhân Quả
+Mà ta sẽ mến yêu
+
+Đó là, nếu ta xem
+Mình xấu tốt thế nào
+Thì điều đó sẽ hết
+Theo năm tháng hư hao
+
+Ví như ta thấy mình
+Sao mà rất thông minh
+Thì chẳng lâu sau đó
+Làm gì cũng khó thành
+
+Ví như ta nghĩ rằng
+Mình tội lỗi bủa giăng
+Thế rồi qua năm tháng
+Nhiều may mắn đến dần
+
+Ví như ta nghĩ thầm
+Mình đẹp như trăng rằm
+Chợt một hôm soi kính
+Tưởng đâu đã nhìn nhầm
+
+Ví như nghĩ mình giàu
+Đời sang trọng gì đâu
+Chợt một ngày giông bão
+Tiền theo gió cuốn mau
+
+Hoặc tu chưa phải nhiều
+Thiền định được vài điều
+Tưởng mình là thanh tịnh
+Sau đó loạn mất tiêu
+
+Ngộ được bí mật này
+Người con Phật từ nay
+Quán soi về tự ngã
+Để thoát kiếp đọa đày
+
+Thường quán xét lỗi lầm
+Những lỗi ấy âm thầm
+Bớt dần theo năm tháng
+Giúp an định nội tâm
+
+Tuyệt đối là chẳng nên
+Thấy mình đã làm nên
+Được nhiều điều tốt đẹp
+Khiến phước chẳng được bền
+
+Hãy quán chiếu thường xuyên
+Những kém dở triền miên
+Vừa giữ tâm khiêm hạ
+Vừa nhẹ bớt não phiền
+
+Cứ nhìn lỗi bản thân
+Tự nhiên lỗi bớt dần
+Đây là điều kỳ diệu
+Giúp ta thoát trầm luân
+
+Còn cứ nhìn điểm hay
+Điểm đó mòn từng ngày
+Đến lúc nào hết hẳn
+Ta trơ trọi trắng tay
+
+Tự cho mình an nhiên
+Tâm có sẵn vô biên
+Tự cho mình thanh tịnh
+Rất dễ bị phát điên
+
+Ngay cả khi tọa thiền
+Tâm quả thật được yên
+Rồi cứ nhìn vào đấy
+Chẳng mấy chốc đảo điên
+
+Hành giả phải khôn ngoan
+Dẫu có được tĩnh an
+Hay nhiệm mầu trí tuệ
+Vẫn không được lạc quan
+
+Vẫn cứ phải biết rằng
+Vô minh là vạn năng
+Không dễ gì trừ diệt
+Trong sâu thẳm nhập nhằng
+
+Vẫn cứ phải hiểu ra
+Tội lỗi như rừng già
+Góp từ vô lượng kiếp
+Sám hối mãi chưa qua
+
+Đời có lúc vinh quang
+Hay đau khổ lầm than
+Chỉ cần luôn quán chiếu
+Ta tội lỗi kinh hoàng
+
+Thiền có lúc định sâu
+Hay có lúc thảm sầu
+Chỉ cần luôn quán chiếu
+Ta vô minh rất sâu
+
+Quán Tội lỗi Vô minh
+Giúp ngăn ngừa cho mình
+Tâm tự hào kiêu mạn
+Rất nguy hiểm vô hình
+
+Quán Tội lỗi Vô minh
+Khiến xóa dần cho mình
+Bóng đêm của tâm thức
+Chờ đón ánh bình minh
+
+Đi qua những kiếp người
+Tiếng khóc lẫn tiếng cười
+Xin đừng quên quán chiếu
+Tự ngã rất chơi vơi
+
+Xác thân ta chỉ là
+Mảnh vô thường phôi pha
+Nhưng chứa nhiều gánh nặng
+Cho kiếp sống bôn ba
+
+Tìm thực phẩm nuôi thân
+Đã là khổ vô ngần
+Rồi áo quần nhà ở
+Trăm chuyện đuổi bên chân
+
+Thân, cảm xúc vui buồn
+Khiến ta phải luôn luôn
+Đấu tranh và xoay sở
+Để tìm vui tránh buồn
+
+Thân kết nối với tâm
+Sự chấp ngã âm thầm
+Vô hình nhưng mãnh liệt
+Thành ích kỷ tham sân
+
+Chỉ quán chiếu thân này
+Là hiểu nỗi đọa đày
+Mà chúng sinh cam chịu
+Qua nhiều kiếp đổi thay
+
+Đừng vội thấy mình hay
+Dù diệu pháp hiện bày
+Cứ đi tìm lỗi mãi
+Trong sâu thẳm mê say
+
+Đại chúng hãy gẫm suy
+Thấy mình là cái gì
+Thì cái đó sẽ mất
+Để biết chọn đường đi
+
+Hiểu về tự ngã rồi
+Sống không dám buông trôi
+Từng giờ siêng làm phước
+Công đức mãi vun bồi
+
+Vô minh Tội lỗi sâu
+Nghìn muôn kiếp dãi dầu
+Bây giờ hơi gian khó
+Thật có đáng gì đâu
+
+Xin sống đời vị tha
+Vì hạnh phúc muôn nhà
+Vì tinh cầu giác ngộ
+Vì vượt khỏi cái ta
+
+Đêm yên tĩnh trăng soi
+Dưới bóng Phật xin ngồi
+Tọa thiền nhìn tự ngã
+Vô minh Tội lỗi thôi
+
+Thấy hơi thở ra vào
+Khéo thở để làm sao
+Chậm Ít Êm là đúng
+Mặc trần thế lao xao
+
+Đáy bụng là một miền
+Giúp tâm bớt não phiền
+Ngồi để tâm nơi đó
+Vọng tưởng sẽ an yên
+
+Rồi một ngày đẹp trời
+Khi công đức đủ rồi
+Ta tìm ra hơi thở
+Dính với tâm chẳng rời
+
+Ngôn ngữ khó diễn bày
+Thở khéo như thế này
+Tâm dính vào hơi thở
+Cường độ thở thật hay
+
+Kính lạy khắp Mười Phương
+Đấng Giác Ngộ phi thường
+Cho con đường Chánh Pháp
+Cho con biết yêu thương.
+
+<b>NAM MÔ BỔN SƯ THÍCH CA MÂU NI PHẬT (3 lần) O</b>
+</pre></div>` 
+            },
+			{ 
+                id: 108, 
+                title: "KINH CHÁNH TINH TẤN", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH CHÁNH TINH TẤN</h3><pre>
+Như vầy con đã nghe, một thời Thế Tôn trở lại Tinh xá Lộc Uyển. Khi ấy, đại chúng đồng lòng quy tụ, thành kính lắng nghe Thế Tôn thuyết giảng lại bài Pháp Tứ Diệu Đế, như là bản tuyên ngôn bất diệt của mười phương ba đời chư Phật. Sau đó, Tôn giả Xá Lợi Phất thay Thế Tôn giảng giải tường tận về Pháp Tứ Đế vi diệu thâm sâu:
+Này đại chúng, khi Chánh Mạng đã thuận lợi, việc nuôi sống bản thân đã ổn định thoải mái, hành giả bắt đầu bước vào Chánh Tinh Tấn, thực hành thiền định nhiếp tâm để chứng đạt tâm linh giác ngộ.
+Chánh Tinh Tấn chính là giai đoạn dụng công thiền định ban đầu, chưa có kết quả, nhưng cần phải hiểu rõ toàn bộ lộ trình tu tập, giống như người lữ hành trước hành trình cần bản đồ chi tiết rõ ràng, nắm vững từng chặng đường, từng bước đi một cách cẩn thận.
+Trong giai đoạn này, hành giả phải chọn đúng pháp môn theo lời dạy của Thế Tôn, tránh xa những giáo lý huyền hoặc, cao siêu của ngoại đạo. Những tà kiến ấy tuy nghe cao siêu nhưng lại sai lầm, khiến người tu không được lợi ích, thậm chí rơi vào rối loạn tâm thức, đau khổ vô cùng.
+Nhưng dù có pháp môn đúng, hành giả cũng không thể có kết quả thiền định nhanh chóng mà phải rất kiên nhẫn đúng như ý nghĩa Tinh Tấn.
+Này đại chúng, có hai con đường dẫn vào thiền định là Chỉ và Quán. Chỉ là kỹ thuật, Quán là đạo lý quán chiếu. Hành giả phải thực hành một số kỹ thuật từ căn bản đến nâng cao, và cũng phải quán chiếu những đạo lý từ đơn giản đến sâu xa tinh tế.
+Hành giả phải tập ngồi kiết già hoa sen noi theo Mười phương ba đời Chư Phật đã thực hành mà chứng đạo. Ngồi kiết già ban đầu là khó khăn vì tâm chưa yên mà chân bị đau và tê rất khó chịu, nhưng kiên nhẫn chịu đựng cũng là rèn luyện đức tính kham nhẫn. Hành giả tập ngồi đúng tư thế: lưng thẳng, thân mềm mại mà bất động, hai chân đan vào nhau, hai bàn tay đặt ngửa lên nhau trên chân, hai cánh tay không ép sát thân, mắt nhìn xuống, miệng ngậm, lưỡi đặt lên nướu răng trên nhẹ nhàng.
+Hành giả tập Điều Thân cho ổn định, nhờ cố gắng giữ thân đúng tư thế, mềm mại và bất động, mà tạo ra cái biết toàn thân giúp tâm được Tỉnh Giác hơn. 
+Này đại chúng, khi điều thân thuần thục khiến cho tâm có chút tỉnh giác, cảm giác toàn thân hiện ra rõ hơn. Lúc ấy, hãy quán chiếu một sự thật hiển nhiên: thân này là Vô thường, rồi sẽ già, sẽ bệnh, sẽ chết, sau khi chết thân xác từ từ tan hoại, xương cũng mục thành đất bụi.
+Bước đầu quán chiếu đạo lý chính là suy gẫm về sự vô thường của thân. Thân thể này là cuộc sống thực tế nên sự chấp thân là rất mạnh mẽ. Vì chấp thân mà chúng sinh sinh ra biết bao lầm chấp, để rồi tâm bị trói buộc trong vô số phiền não. Thường xuyên quán chiếu về Thân vô thường giúp phá dần chấp thân và nhẹ đi nhiều cái chấp khác. 
+Khi biết rõ toàn thân, cảm giác toàn thân, hành giả quán chiếu suy gẫm về sự vô thường của thân. Tâm có chút yên lắng tỉnh giác, hành giả sẽ nhận ra thân này đang thở vào, thân này đang thở ra. Theo dõi hơi thở như thế, tâm sẽ được an lạc hơn, ít vọng tưởng hơn.
+Điều thân là kỹ thuật (Chỉ), biết rõ toàn thân cũng là kỹ thuật (Chỉ), quán Thân vô thường là đạo lý (Quán), rồi biết hơi thở vào ra lại là kỹ thuật (Chỉ). Các phép Chỉ và Quán cứ dẫn dắt nhau trong tiến trình tu tập thiền định là như vậy.
+Hơi thở là sợi dây kết nối giữa Thân và Tâm, giữa Danh và Sắc. Ai kiểm soát được hơi thở sẽ kiểm soát được nội tâm. Hơi thở vào biết rõ hơi thở vào, hơi thở ra biết rõ hơi thở ra, khéo biết nhưng không dằn ép hay điều khiển hơi thở cho nhiều, cho dài, cho mạnh.
+Khi theo dõi hơi thở như thế, hành giả nhận ra rằng nguồn xung động của vọng tưởng nằm ở dưới thân chứ không phải trên đầu. Chú ý trên đầu không chặn được vọng tưởng, mà còn khiến tâm trí thêm căng thẳng, mệt mỏi. Hành giả chú ý xuống thân, đặc biệt là vùng bụng dưới, tâm bớt vọng tưởng.
+Cảm giác toàn thân cũng là kỹ thuật giúp tăng tỉnh giác nhiều hơn vì các giác quan, xúc giác, đang âm thầm hoạt động trên khắp tấm thân rộng lớn. Cảm giác toàn thân một cách chủ động sẽ hình thành sự tỉnh giác, giúp hành giả không bị vọng tưởng dẫn đi.
+Mười phương Ba đời Chư Phật ngồi kiết già đều đan hai chân và hai bàn tay lại với nhau đặt trước bụng. Tư thế này giúp chú ý nhiều hơn ở bụng dưới, vì đó mới là nguồn xung động của vọng tưởng. An trú dưới bụng giúp vọng tưởng bớt đi rất nhiều.
+Này đại chúng, quán thân vô thường là một đạo lý căn bản để quán chiếu giúp hành giả đối diện với sự thật. Khi đối diện với sự thật, tâm liền tỉnh giác hơn.
+Còn nhiều sự thật cần quán chiếu dần để gột bỏ lầm chấp, giúp tâm từng bước đi sâu vào thiền định. Chẳng hạn như, hành giả quán chiếu: Thế gian này vô thường, hư ảo, đầy rẫy ngang trái và khổ đau; Đời sống muôn loài chỉ là sự bươn chải vất vả, nhọc nhằn khổ đau; Thân này vốn bất tịnh mà hàng ngày ta đều phải đối phó xử lý; Chúng sinh bị chi phối bởi những ham muốn tầm thường, để rồi tạo ra vô số tội lỗi để đạt được những điều tầm thường ấy; Một tâm hồn khô khan, ích kỷ chính là sự bế tắc u mê. Muốn vượt thoát vô minh, phải khởi lòng từ bi, yêu thương tất cả...
+Này đại chúng, tham lam, sân hận, đố kỵ, kiêu mạn, vô trách nhiệm là những tâm bất thiện khiến chúng sinh mãi chìm trong tăm tối.
+Muốn thoát khỏi vô minh, hành giả phải quán chiếu để diệt trừ các tâm bất thiện đó. Nhưng diệt trừ không có nghĩa là làm gì để diệt, vì các tâm bất thiện vô hình, không tìm thấy dấu vết cụ thể. Chỉ cần BIẾT rằng trong tâm này đang bị thiêu đốt bởi kiêu mạn, ích kỷ, tham lam, sân hận, đố kỵ, vô trách nhiệm… thì tự nhiên lâu ngày các tâm bất thiện đó sẽ mất dần. Nhìn thấy sự thật này, tâm xuất hiện tỉnh giác, đó là quy luật tự nhiên.
+Nếu ai hỏi rằng có cần quán chiếu về những thiện tâm như tử tế, rộng lượng, từ bi, khiêm hạ, vị tha, có trách nhiệm… hay không, thì hãy biết rằng, tự cho mình có những phẩm chất ấy là sai lầm. Sai lầm thứ nhất là tập trung nhìn ưu điểm của mình làm phát sinh kiêu mạn. Sai lầm thứ hai là càng nhìn vào ưu điểm của mình thì ưu điểm ấy sẽ mất dần chẳng còn nữa.
+Khi tâm bớt vọng tưởng, tự nhiên sức chú ý của tâm sẽ lắng sâu xuống bụng dưới. Hành giả sẽ hiểu rõ rằng thực sự nguồn xung động của vọng tưởng chính là ở rất sâu từ dưới bụng chứ không phải trên đầu. Ai dù chưa bớt vọng tưởng nhưng đã khéo lắng tâm chú ý ở dưới bụng cũng sẽ dễ kiểm soát vọng tưởng hơn.
+Lúc này, hành giả sẽ hiểu tại sao Mười Phương Ba Đời Chư Phật đều dạy ngồi thiền trong tư thế kiết già, đặt hai lòng bàn tay, hai lòng bàn chân tụ lại ở bụng dưới, giúp cho tâm dễ lắng trụ dưới đó hơn.
+Những ai không hiểu điều này, ngồi thiền trụ tâm lên đầu, chẳng bao lâu phát sinh nhiều bệnh. Trụ tâm ở dưới bụng thấp cũng là một kỹ thuật (Chỉ) hỗ trợ rất lớn cho việc nhiếp tâm thiền định.
+Khi có thêm sức tỉnh giác, hành giả sẽ khéo léo giữ cho hơi thở CHẬM-ÍT-ÊM, chứ không còn thở nhiều, thở mạnh, thở nhanh. Hơi thở có liên quan đến Thân thể và Tâm thức, thế nên khi Hơi thở êm dịu nhỏ nhiệm thì Thân thể và Tâm thức cũng yên tĩnh dần.
+Nhiều người lầm tưởng rằng thở nhiều sẽ giúp tập trung hơn, nhưng không phải vậy, càng cố gắng thở nhiều càng bị căng thẳng, bất an, mất kiểm soát vọng tưởng. Ngược lại, không để ý đến hơi thở, hoặc thở quá ít, cũng làm mất kiểm soát vọng tưởng. Vọng tưởng vô hình đến và đi không đoán trước nên không thể trực tiếp ngăn chặn vọng tưởng, mà chỉ có thể thông qua trung gian hơi thở để nắm được tâm.
+Sau khi khéo léo giữ hơi thở CHẬM - ÍT - ÊM, lúc nào đó, bất ngờ hành giả tìm thấy hơi thở có cường độ vừa đủ để DÍNH VỚI TÂM. Hơi thở nhiều quá, nhanh quá, mạnh quá sẽ vuột khỏi tâm. Khi ấy dù có chú ý vào hơi thở thế nào cũng không nhiếp được tâm, chỉ là chú ý vào một mình hơi thở mà thôi. Nếu hơi thở quá ít, quá chậm, quá yếu cũng không dính với tâm, lại sẽ mệt tim vì thiếu không khí.
+Chỉ với một cường độ thích hợp nhất, HƠI THỞ DÍNH VỚI TÂM. Khi ấy chú ý vào hơi thở cũng là giữ được tâm. Tâm và hơi thở theo nhau, hành giả có một trụ cột vững chắc giữa sóng gió nội tâm. Giống như một người giữa cơn bão tố nhờ có trụ cột để nắm giữ mà không bị giông bão cuốn đi.
+Có một điểm nơi mà hơi thở và tâm dính với nhau, đó là điểm lơ lửng trong bụng dưới. Khi thấy được điểm này, hành giả vừa theo dõi hơi thở, vừa kiểm soát được tâm. Dù vọng tưởng chưa dừng hẳn nhưng không còn kéo tâm đi miên man, hành giả biết vọng tưởng nhưng không bị trôi theo vọng tưởng.
+Khi thực hành thiền định dừng vọng tưởng, nhiều người lầm tưởng phải chú ý trên đầu mới nhiếp được tâm, ít ai ngờ rằng gốc của tâm nằm ở dưới bụng sâu, bộ não trên đầu chỉ là phần ngọn của tâm thức. Ai nôn nóng nhiếp tâm, gắng sức dừng vọng tưởng để vào định, chú ý căng thẳng trên đầu lại dễ sinh bệnh tật, thậm chí tâm thần.
+Kỹ thuật đỉnh cao của Thiền chính là khi tìm được HƠI THỞ DÍNH VỚI TÂM. Hành giả từng bước đi qua các kỹ thuật: Biết rõ toàn thân, Biết thấp dưới bụng, Biết hơi thở mà không điều khiển, thở sao cho Chậm – Ít – Êm, cuối cùng là phải tìm ra Cường Độ Hơi Thở vừa đúng để Hơi Thở Dính Với Tâm. Từ đó chỉ theo dõi hơi thở tức là đã kiểm soát được tâm. Đừng cố tìm cách trực tiếp kiểm soát tâm kẻo sinh nhiều bệnh tật.
+Khi tìm được Hơi thở Dính với Tâm, hành giả dễ kiểm soát tâm, sức tỉnh giác tăng lên và kéo dài, chuẩn bị thành tựu Chánh Niệm.
+Nhưng khi tâm có vẻ yên lắng, hỷ lạc xuất hiện, dễ khởi tâm lý tự khen làm phát sinh kiêu mạn, nguy hiểm vô cùng. Hành giả phải quyết tâm tránh cho bằng được tâm lý kiêu mạn tự khen mình mỗi khi có chút tiến bộ trong thiền.
+Khi tâm có chút yên lắng, sức tỉnh giác hiện ra khắp thân, hành giả biết toàn thân rõ ràng và có cảm giác chỉ cần an trú toàn thân, tâm sẽ yên dần. Nhưng không phải vậy. Nếu chỉ an trú toàn thân, sẽ càng chấp thân, ngược với đạo lý quán thân vô thường mà Thế Tôn đã dạy, nên sẽ bất an trở lại khi cố gắng tiếp tục an trú toàn thân.
+An trú toàn thân là Kỹ thuật (Chỉ), hành giả cần đạo lý quán chiếu bổ sung. Khi toàn thân hiện ra rõ ràng, cảm giác toàn thân giúp hành giả có sức tỉnh giác cưỡng lại vọng tưởng, phải nhanh chóng tác ý Quán Thân Vô Thường, đừng chỉ an trú toàn thân mà đã cho là đủ.
+Này đại chúng, nếu tìm được hơi thở có cường độ thích hợp để Hơi Thở Dính Với Tâm là đỉnh cao của phép Chỉ (kỹ thuật) trong thiền, thì hành giả cũng phải tìm được đạo lý để quán chiếu cho đến tận cùng của sự thật. Quán chiếu nghĩa là tác ý suy gẫm về những sự thật, mà điều đó khiến cho tâm tỉnh giác.
+Nếu suy nghĩ sai lầm, tà tư duy, tâm sẽ từ từ trở nên điên loạn. Nếu suy nghĩ đúng đắn, Chánh tư duy, tâm sẽ dần trở nên điềm tĩnh. Còn nếu suy nghĩ về những sự thật, về bản chất tiêu cực của thân - tâm - cuộc sống sẽ giúp tâm xuất hiện sự tỉnh giác để đi vào thiền định.
+Việc suy xét về bản chất tiêu cực của vạn hữu chính là quán chiếu theo đạo lý. Đây là phép Quán trong thiền định mà hành giả cần am tường.
+Phép Chỉ, kỹ thuật nhiếp tâm không giúp gạn lọc hết vô minh chấp ngã, phải nhờ phép Quán để đạt đến viên mãn giác ngộ.
+Sự thật ban đầu mà hành giả phải suy gẫm quán chiếu là sự vô thường của thân xác. Thân này rồi sẽ già, bệnh, chết, mục rữa chẳng còn gì.
+Phải can đảm đối diện với già, bệnh, chết ngay khi còn khỏe mạnh, để buông bỏ những ham muốn tầm thường.
+Ngày nào còn khỏe, còn sống, phải biết quý thời gian để làm điều thiện, tu hành, chớ uổng phí kiếp người vô nghĩa.
+Sự thật tiếp theo, Thân vốn bất tịnh. Mọi thứ đưa vào miệng là sạch, nhưng khi ra khỏi thân liền thành dơ bẩn. Mọi việc tắm giặt, ăn mặc sạch sẽ chỉ để che đậy đôi chút, không thay đổi được bản chất bất tịnh nơi thân. Hành giả phải chiêm nghiệm sự thật này để biết nhàm chán, không đắm luyến thân này quá đáng, chỉ dùng thân để làm việc thiện và tu hành.
+Thân này cũng là Kết tinh của Nghiệp từ vô lượng kiếp, tội nhiều hơn phước rất rõ ràng. Hành giả phải thấy thân cũng là Khối Tội từ vô lượng kiếp. Đó là sự thật cần quán chiếu sâu xa.
+Thân này mang một kiết sử bản năng mãnh liệt là ham sống sợ chết, và bản năng đó thúc đẩy chúng sinh phải làm tất cả để được sống. Chúng sinh vất vả mưu sinh, giành giật hơn thua, tạo bao nghiệp dữ, vay trả không ngừng. Thân này thật là gánh nặng, nên người hiểu đạo phải biết dùng thân để tạo phúc, tu hành, đừng phí hoài công sức chỉ để giữ thân này tồn tại vô nghĩa.
+Khi tâm có tỉnh giác, tự nhiên có cảm giác bao quanh thân, giúp hành giả dễ an trú tĩnh tâm. Lúc đó, hành giả dễ bị rơi vào lỗi an trú toàn thân, an trú trong cảm giác bình yên đó, thụ hưởng cảm giác bình yên đó, rồi khởi tâm kiêu mạn tự hào mà không hay, dần dần hết phước, lui lại động loạn như xưa.
+Khi tâm xuất hiện trạng thái yên tĩnh, tỉnh giác, có cảm giác biết rõ toàn thân, phải nhanh chóng tác ý quán chiếu thân này là vô thường, thân này là tội lỗi. Sức tỉnh giác kéo dài tới đâu thì sự quán chiếu cũng kéo dài theo tới đó để không bị ngấm ngầm tác ý nắm giữ trạng thái yên tĩnh.
+Khi tâm tỉnh giác yên tĩnh, phải quán chiếu sâu xa đến sự thật cuối cùng: Trạng thái này vẫn còn là Vô Minh và Tội Lỗi. Chừng nào chưa đạt Tam Minh Lục Thông, chừng đó vẫn còn Vô minh và Tội lỗi. Dù thiền định cao sâu đến đâu, tâm thức tiến bộ thế nào, vẫn còn là Vô Minh và Tội Lỗi. Hành giả phải ghi xương khắc cốt sự thật cuối cùng này cho đến ngày hoàn toàn giải thoát.
+Này đại chúng, khi tỉnh giác hiện khắp thân, hành giả phải quán thân này là Vô Thường và Tội Lỗi. Khi tâm yên tĩnh, hỷ lạc phát sinh, phải quán trạng thái này vẫn còn Vô Minh và Tội Lỗi. Nghĩa là sự tiến bộ tới đâu thì sự quán chiếu cũng phải đi theo tới đó để kiềm giữ không cho kiêu mạn trỗi dậy, để giữ gìn đức hạnh hiền lành, để hướng về Vô ngã trọn vẹn.
+Này đại chúng, khi tọa thiền, hành giả cố gắng tìm đến đỉnh cao kỹ thuật (CHỈ) là thở với cường độ thích hợp (Chậm Ít Êm) để Hơi Thở Dính Với Tâm. Từ đó chỉ cần kiểm soát hơi thở là kiểm soát được tâm. Ngoài lúc tọa thiền, mỗi khoảnh khắc thời gian đều quán Thân này Vô Thường Tội Lỗi, Chính mình chỉ là Vô Minh Tội Lỗi. Dù thức hay ngủ, làm việc hay nghỉ ngơi, không phút giây nào buông lơi quán chiếu.
+Này đại chúng, có những người có duyên mặc định là phải đắc đạo, dù dụng công tu hành chưa kỹ lưỡng, chưa đầy đủ, nhưng kết quả vẫn xuất hiện bất ngờ, rồi đem cách dụng công chưa trọn vẹn ấy truyền dạy cho nhiều người, gây nên rất nhiều tai hại. Bao người thực hành theo chẳng những không lợi ích, mà còn thêm tà kiến nguy hiểm.
+Người không có duyên mặc định sẽ đắc đạo, đường tu vất vả gian lao, phải siêng dụng công kỹ lưỡng đầy đủ, chính xác từng chi tiết nhỏ, mới không bị tai hại, bệnh tật. Nhờ vậy về sau dạy người khác chi tiết tỏ tường, chứ không dạy sơ sài, bóng gió xa xôi.
+Này đại chúng, Công Đức Lành là yếu tố quan trọng trong việc tu thiền. Dù có nỗ lực hay có phương pháp đúng, nhưng thiếu công đức lành, thiền định vẫn không thể thành tựu. Vì thế hành giả phải luôn vun bồi công đức lành đến vô lượng vô biên.
+Thiền định là kết tinh của một đời sống thánh thiện, đức hạnh, vị tha, tử tế, độ lượng, siêng năng, chứ không phải là vô trách nhiệm với chúng sinh. Chính đời sống thánh thiện đó giúp hành giả đạt được kết quả thiền định sâu xa.
+Có hai công đức mà hành giả phải vun đắp mãi mãi là: Tôn kính bậc A La Hán Chánh Đẳng Giác, và Độ cho chúng sinh tu hành chứng ngộ.
+Muốn tạo công đức từ việc Tôn kính các bậc A La Hán thì phải cung kính, cúng dường, thừa sự, lễ bái, vâng lời. Nhưng hành giả không thể theo lễ bái mãi làm các Ngài mất thời gian. Có thể thờ kính, lễ bái từ xa qua biểu tượng hoặc họa hình của vị A La Hán, vẫn được nhiều công đức.
+Này đại chúng, khi tâm trở nên yên tĩnh, hành giả dễ khởi ý nghĩ từ bỏ tất cả, nên trở thành vô trách nhiệm với chúng sinh. Tà kiến này là hệ quả tất yếu phát sinh từ thiền định, mà hành giả cần phải vượt qua. Dù tâm có yên tĩnh, nhưng hạnh nguyện độ sinh không bao giờ chấm dứt, trách nhiệm với chúng sinh không bao giờ vơi cạn.
+Chính vì luôn từ bi thương yêu tất cả, mà hành giả luôn cố gắng giúp đỡ hóa độ từng người. Đó cũng là tích lũy công đức cho vô lượng kiếp sau. Thánh quả giải thoát luôn là kết tinh của công đức lành vô lượng, chứ không phải thờ ơ với chúng sinh.
+Này đại chúng, khi tâm có tỉnh giác, hành giả nhanh chóng phát hiện vọng tưởng vừa móng khởi, không bị cuốn theo, khiến nó tự biến mất. Thấy cách này hiệu quả, hành giả rời bỏ dưới bụng, chỉ chú ý trên đầu để canh chừng vọng tưởng khởi lên mà BIẾT cho kịp, đâu ngờ đã bỏ gốc theo ngọn, lâu ngày phát sinh nhiều bệnh tật.
+Dù xuất hiện trạng thái tỉnh giác khiến hành giả dễ dàng phát hiện vọng tưởng từ sớm, thì vẫn phải giữ tâm phía dưới bụng, vì đó mới là gốc của tâm thức. Hành giả vẫn phải khéo léo giữ hơi thở dính với tâm, để kiểm soát tâm bằng cách kiểm soát hơi thở. Rồi sau đó, dẫu đạt được trạng thái tốt đẹp nào, vẫn phải luôn tự nhắc trạng thái này vẫn còn Vô minh và Tội lỗi.
+Này đại chúng, phải có công đức lành rất nhiều, một người mới có thể thường xuyên nhớ mình là Vô Minh Tội Lỗi. Nếu công đức chưa đủ, hành giả sẽ khi nhớ khi quên trong đời sống hằng ngày. Hành giả phải thường lễ kính các bậc A La Hán Chánh Đẳng Giác để xin sám hối các nghiệp bất thiện từ quá khứ, vì chính những nghiệp này khiến hành giả khó thường xuyên nhớ tác ý chính mình chỉ là Vô minh Tội lỗi. Phải đủ quyết tâm để khi tâm đạt được bất cứ trạng thái mầu nhiệm nào cũng phải tự nhắc rằng trạng thái đó vẫn còn Vô minh Tội lỗi. Nhờ vậy mà không bị ý niệm kiêu mạn xuất hiện tàn phá hết công đức.
+Khi luôn nhớ mình chỉ là Vô Minh Tội Lỗi, hành giả sẽ cảm nhận rằng suốt đời chỉ mong được nhớ chính mình là Vô minh Tội lỗi, chứ không còn mong chứng ngộ cao siêu.
+Cúi lạy Phật từ bi gia hộ cho chúng con mãi mãi khắc ghi lời Kinh Chánh Tinh Tấn nhiệm màu, chân lý cao quý mà Chư Phật Mười Phương Ba Đời đều tuyên thuyết. Cúi lạy Ngài Xá Lợi Phất, bậc Đệ Nhất Trí Tuệ đã từ bi giảng giải nghĩa lý thâm sâu, dẫn dắt chúng con vững bước trên con đường giải thoát. Nguyện tất cả chúng sinh thành tựu ý chí kiên định phi thường, từng bước gây tạo vô lượng công đức, tinh tấn thực hành thiền định đúng phương pháp, mãi theo Phật đến bờ giác vô biên.
+<b>Nam Mô Đệ Nhất Trí Tuệ Thống Lĩnh Tăng Đoàn Xá Lợi Phất Tôn Giả
+Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+
+<b>PHỤC NGUYỆN</b>
+(dành cho bài kinh Chánh Tinh Tấn)
+Cúi nguyện mười phương khắp chúng sinh
+Ai cũng tinh chuyên hết sức mình
+Thiền định đúng theo lời Phật dạy
+Để khỏi sai lầm uổng nhất sinh
+Như tấm bản đồ đã vẽ ra
+Dẫn lối về nơi cõi thái hòa
+Nguyện ước cùng nhau chung chí hướng
+Vô ngã từ bi đến bao la.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b></pre></div>` 
+            },
+			{ 
+                id: 109, 
+                title: "KINH PHẬT NHẬP TỨ THIỀN VÔ NGÃ", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH PHẬT NHẬP TỨ THIỀN VÔ NGÃ</h3><pre>Nam mô Bổn Sư Thích Ca Mâu Ni Phật.
+Kính lễ Đấng Giác Ngộ Vô Thượng,
+Bậc Từ Bi soi sáng thế gian.
+
+Ngày xưa, hai đạo sư Alara Kalama và Udduka Ramaputta,
+Đều chứng được sức định thâm sâu,
+Có thần thông phi thường,
+Truyền dạy tận tình cho Sa-môn Gotama.
+Sa-môn Gotama với trí tuệ sáng ngời,
+Nhanh chóng chứng đạt các mức định cao siêu ấy.
+Hai vị đạo sư bấy lâu vẫn mãn nguyện,
+Cho rằng đó là cứu cánh giải thoát.
+
+Nhưng Sa-môn Gotama đã nhận ra:
+Nơi cảnh định ấy vẫn còn bóng dáng bản ngã.
+Người từ biệt đạo sư,
+Độc hành đến rừng Uruvela,
+Tu khổ hạnh suốt sáu năm trời,
+Có năm anh em Kiều Trần Như hộ trì bên cạnh.
+Sáu năm khổ hạnh, thân thể hư hao mà mục tiêu vô ngã vẫn không đến.
+Người chợt nhớ lại thuở mười hai tuổi,
+Khi tâm tự nhiên an trú trong Sơ thiền thanh tịnh.
+Người liền cảm nhận rằng:
+“Muốn đạt vô ngã,
+Không phải rời bỏ bản ngã,
+Mà phải ôm lấy nó đến tận cùng”
+Thế rồi Sa-môn Gotama thọ thực trở lại,
+Hồi phục thân tâm,
+Trong khi năm anh em Kiều Trần Như vì hiểu lầm mà rời đi.
+Người đến gốc cây Bồ-đề,
+Ngồi kiết già, phát nguyện kiên định:
+“Dù xương tan thịt nát,
+Nếu chưa chứng Vô thượng Chánh giác,
+Ta quyết không rời khỏi chỗ này.”
+
+Rồi Người nhập Sơ thiền,
+Tâm tự nhiên yên lắng, vọng tưởng tự nhiên không còn,
+Không cần dụng công gì nữa,
+Chỉ còn giữ nhẹ và kỹ lưỡng hơi thở chậm ít êm,
+nơi một điểm sáng tĩnh lặng dưới bụng,
+
+Rồi Người nhập Nhị thiền,
+Vào sâu trong bản ngã hơn nữa,
+Không hướng ra ngoài để chiêm ngưỡng tịnh cảnh,
+Chỉ an nhiên trong chính mình rất nhỏ nhiệm.
+
+Rồi Người nhập Tam thiền,
+Tới tận cùng bản ngã,
+Chỉ còn cái biết thuần khiết sâu thẳm,
+Không chiêm ngưỡng trạng thái kỳ diệu nào khác,
+Chỉ bám chặt vào cái biết sâu thẳm lặng lẽ ấy.
+
+Rồi Người nhập Tứ thiền,
+Vượt qua bản ngã,
+Không còn chấp ngã, không còn vô minh, không còn cái “Ta” nữa.
+Bản thể vũ trụ hiện bày,
+Từ bi Trí tuệ bao trùm tất cả.
+
+Trong cảnh giới ấy,
+Tam Minh hiển hiện, đó là:
+Túc Mạng Minh, Thiên Nhãn Minh, Lậu Tận Minh.
+Sa-môn Gotama trở thành bậc Giác Ngộ Vô Thượng,
+Mở ra con đường giải thoát chưa từng có cho thế gian.
+Thật vi diệu thay,
+Đức Thế Tôn đã chỉ bày:
+“Nhập bốn tầng thiền định,
+Là bám chặt bản ngã,
+Đi sâu vào bản ngã,
+Rồi vượt qua bản ngã,
+Mà chứng VÔ NGÃ viên mãn.”
+
+Nguyện cho tất cả chúng sinh,
+Hiểu được ý nghĩa thâm sâu này,
+Tôn kính con đường này,
+Tôn thờ Đấng Giác Ngộ này,
+Thực hành đúng lộ trình này,
+Và sẽ cùng chứng đạt VÔ NGÃ này.
+
+<b>Nam mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b></pre></div>` 
+            },
+			{ 
+                id: 110, 
+                title: "LỄ PHẬT BỒ TÁT", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>LỄ PHẬT BỒ TÁT</h3><pre><b>- Chí tâm đảnh lễ, Nam Mô Ta Bà Giáo Chủ Điều Ngự Bổn Sư Thích Ca Mâu Ni Phật. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Long Hoa Giáo Chủ Đương Lai Hạ Sinh Di Lặc Tôn Phật. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đại Trí Văn Thù Sư Lợi Bồ Tát. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đại Hạnh Phổ Hiền Bồ Tát. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đại Bi Quán Thế Âm Bồ Tát. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đệ Nhất Trí Tuệ Thống Lĩnh Tăng Đoàn Xá Lợi Phất Tôn Giả. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đệ Nhất Thần Thông Thống Lĩnh Tăng Đoàn Mục Kiền Liên Tôn Giả. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đệ Nhất Sống Giản Dị, Đệ Nhất Thiền Định Mô Phạm Tăng Đoàn Đại Ca Diếp Tôn Giả. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đệ Nhất Đa Văn Truyền Trì Kinh Tạng A Nan Đà Tôn Giả. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đệ Nhất Mật Hạnh Bảo Hộ Tăng Đoàn La Hầu La Tôn Giả. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Đông Độ Truyền Pháp Sơ Tổ Bồ Đề Đạt Ma Tổ Sư. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Trúc Lâm Thiền Phái Sơ Tổ Điều Ngự Giác Hoàng Tổ Sư. (1 lạy) O
+- Chí tâm đảnh lễ, Nam Mô Thập Phương Tam Thế Nhất Thiết Chư Phật Tôn Pháp Chư Hiền Thánh Tăng. (1 lạy) O</b></pre></div>` 
+            },
+			{ 
+                id: 111, 
                 title: "KINH TỪ TÂM", 
                 type: 'sub',
                 content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
             },
 			{ 
-                id: 99, 
+                id: 112, 
+                title: "KINH TỪ TÂM", 
+                type: 'sub',
+                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+            },
+			{ 
+                id: 113, 
                 title: "KINH TỪ TÂM", 
                 type: 'sub',
                 content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
@@ -1533,6 +3405,36 @@ gương mẫu nhất trên đời. O
         }
 
         renderChecklists();
+		let currentFontSize = 1.15; // Cỡ chữ mặc định ban đầu (rem)
+
+function changeFontSize(delta) {
+    // Cập nhật giá trị cỡ chữ
+    currentFontSize = parseFloat((currentFontSize + delta).toFixed(2));
+    
+    // Giới hạn không cho chữ quá nhỏ (tối thiểu 0.5rem)
+    if (currentFontSize < 0.5) currentFontSize = 0.5;
+    
+    // Hiển thị con số hiện tại lên màn hình
+    document.getElementById('font-size-display').innerText = currentFontSize;
+
+    // Áp dụng cỡ chữ mới cho tất cả thẻ pre bên trong #pdf-content
+    const preTags = document.querySelectorAll('#pdf-content pre');
+    preTags.forEach(pre => {
+        // Sử dụng setProperty để ghi đè thuộc tính !important nếu có trong CSS
+        pre.style.setProperty('font-size', currentFontSize + 'rem', 'important');
+    });
+}
+
+// Chỉnh sửa một chút hàm updateUI cũ để khi render lại vẫn giữ cỡ chữ đã chọn
+const originalUpdateUI = updateUI;
+updateUI = function() {
+    originalUpdateUI();
+    // Sau khi nội dung mới được load, áp dụng ngay cỡ chữ hiện tại
+    const preTags = document.querySelectorAll('#pdf-content pre');
+    preTags.forEach(pre => {
+        pre.style.setProperty('font-size', currentFontSize + 'rem', 'important');
+    });
+};
     </script>
 </body>
 </html>
