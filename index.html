@@ -149,23 +149,30 @@
         
         <aside class="w-full md:w-96 bg-white border-r overflow-y-auto p-4 space-y-6">
             <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
-                <h2 class="font-bold text-indigo-800 mb-4 text-sm uppercase tracking-tighter">📝 Thông tin hồ sơ</h2>
+                <h2 class="font-bold text-indigo-800 mb-4 text-sm uppercase tracking-tighter">📝 HỒ SƠ</h2>
                 <div class="space-y-3">
                     <input type="text" id="input_name" placeholder="HỌ TÊN/PD GIA CHỦ" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
                     <input type="text" id="input_huonglinh" placeholder="HƯƠNG LINH" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
                     <input type="text" id="input_address" placeholder="ĐỊA CHỈ" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
                 </div>
             </div>
+			<button onclick="clearAll()" class="w-full mb-4 py-2.5 bg-red-500 hover:bg-red-600 text-white text-xs font-bold rounded-xl transition-all active:scale-95 uppercase tracking-tighter shadow-md flex items-center justify-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+    </svg>
+    XOÁ LỰA CHỌN
+</button>
 
             <div>
-                <h2 class="font-bold text-gray-800 mb-3 border-b pb-2 text-sm uppercase">CHỌN NỘI DUNG</h2>
+                <h2 class="font-bold text-indigo-700 mb-3 border-b pb-2 text-sm uppercase">NGHI THỨC</h2>
                 <div id="main-checklist" class="space-y-1"></div>
             </div>
 
             <div>
-                <h2 class="font-bold text-indigo-700 mb-3 border-b pb-2 text-sm uppercase">DANH SÁCH BÀI KINH</h2>
+                <h2 class="font-bold text-indigo-700 mb-3 border-b pb-2 text-sm uppercase">KINH TỤNG</h2>
                 <div id="sutra-checklist" class="space-y-1"></div>
             </div>
+			
         </aside>
 
         <main class="flex-1 p-1 md:p-12 bg-gray-100 overflow-y-auto">
@@ -185,7 +192,11 @@
                 id: 1, 
                 title: "Trang bìa hồ sơ", 
                 type: 'main',
-                content: `<div style="text-align:center; padding: 100px 0;"><h1>HỒ SƠ CÁ NHÂN</h1><div style="margin-top:40px"><p>Gia chủ: {{hoten}}</p><p>Hương linh: {{huonglinh}}</p><p>Tại: {{diachi}}</p></div></div>` 
+                content: `<div style="text-align:center; padding: 100px 0;">
+				<h1>HỒ SƠ CÁ NHÂN</h1>
+				<div style="margin-top:40px">
+				<p>Gia chủ: {{hoten}}</p><p>Hương linh: {{huonglinh}}</p><p>Tại: {{diachi}}</p></div>
+				</div>` 
             },
             { 
                 id: 2, 
@@ -382,9 +393,9 @@ Vô ngã từ bi đến bao la.
             },
             { 
                 id: 3, 
-                title: "NGHI THỨC AN VỊ PHẬT", 
+                title: "NGHI THỨC AN VỊ PHẬT (quyển kinh tụng)", 
                 type: 'main',
-                content: `<div class="section-block"><h2>NGHI THỨC AN VỊ PHẬT</h2>
+                content: `<div class="section-block"><h2>NGHI THỨC AN VỊ PHẬT (quyển kinh tụng)</h2>
 <h3>VÀO NGHI LỄ AN VỊ</h3>
 <pre>(3 nén hương to đã thắp sẵn. Chủ lễ đứng ở giữa đối diện bàn thờ. Duy na và Duyệt chúng đứng ở hai bên gần với chuông mõ. Nếu có đông Tăng Ni thì sắp hai bên nhìn vào nhau. Gia chủ quỳ phía sau Chủ lễ. Nghi lễ bắt đầu bằng 3 tiếng chuông thong thả, lớn. Chủ lễ lễ Phật một lễ, nhận hương rồi nguyện hương).
 (Gia chủ kính lễ Tam Bảo tam bái - 3 lạy)</pre>
@@ -1113,11 +1124,36 @@ Chí tu học vững bền
 Xa bể khổ nguồn mê
 Chóng quay về bờ giác. O
 </pre>
-<h3>KỲ NGUYỆN</h3>
-<pre>Hôm nay gia đình Phật tử <i><b>{{hoten}}</b></i>, thỉnh cầu đại chúng Chùa ……… tác lễ Quy Y và cầu siêu cho thân nhân quá cố.
-Vì thế đại chúng Chùa ……… chúng con nhất tâm triệu thỉnh chư vị hương linh: <i><b>{{huonglinh}}</b></i> cùng tất cả chư vị hương linh trong cõi giới siêu hình được tự tại về đây quỳ trước Phật đài nghe Kinh và tác ý hướng theo lời tụng cầu của đại chúng, để từ nay một lòng Quy Y Phật, tinh tấn tu hành, được Chư Phật Bồ Tát phóng quang tiếp độ về nơi cõi Phật. O
-Nguyện trên Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hiền Thánh Tăng lai lâm chứng giám gia hộ chư vị hương linh được quy y Tam Bảo, khai mở từ bi, phát triển trí tuệ, tinh tấn tu hành, tội diệt phước sanh, thiện căn tăng trưởng, cùng Pháp Giới chúng sinh đồng thành Phật Đạo. O
-<b>Nam Mô Siêu Lạc Độ Bồ Tát Ma Ha Tát. (3 lần) O</b></pre>
+
+<h3>KỲ NGUYỆN 1</h3>
+<pre>(Bài kỳ nguyện này dành Quy Y cho hương linh)
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát.   O</b>
+Hôm nay gia đình Phật tử …… cần cầu đại chúng Chùa …… tác lễ Quy Y và cầu siêu cho thân nhân quá cố.   O
+Vì thế đại chúng Chùa …… chúng con nhất tâm triệu thỉnh các hương linh: …… Được tự tại về đây quỳ trước Phật đài nghe kinh và tác ý hướng theo lời tụng cầu của đại chúng, để từ nay Quy Y Phật, tinh tấn tu hành, được Chư Phật Bồ Tát phóng quang tiếp độ về nơi cõi Phật.   O
+Nguyện Chư Phật, Chư Bồ Tát, Chư Hiền Thánh Tăng chứng giám giúp các hương linh được quy y Tam Bảo, khai mở từ bi, phát triển trí tuệ, tinh tấn tu hành, tội diệt phước sinh, thiện căn tăng trưởng, cùng Pháp Giới chúng sinh đồng thành Phật Đạo. O   
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần) O</b>
+</pre>
+<h3>KỲ NGUYỆN 2</h3>
+<pre>(Bài kỳ nguyện này dành cầu siêu hằng đêm)
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát.   O</b>
+Hôm nay, ngày …… tháng …… năm …… Đệ tử chúng con thành tâm quỳ trước Phật đài tụng kinh cầu nguyện cho hương linh ……, pháp danh ……, từ trần ……, hưởng dương (dưới 60 tuổi), hưởng thọ (từ 60 tuổi).   O
+Ngưỡng mong mười phương Chư Phật, Chư vị Bồ Tát phóng quang tiếp dẫn hương linh, quy y Tam Bảo, xả bỏ duyên trần, lắng nghe kinh pháp, tin sâu nhân quả, phát tâm tu tập vô lượng pháp lành rồi nương nhờ Phật lực, sớm vãng sinh về cõi an lạc.
+Nguyện cầu tất cả chúng sinh, cùng tinh tấn tu hành đồng thành Phật đạo. O
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần) O</b>
+</pre>
+<h3>KỲ NGUYỆN 3</h3>
+<pre>(Bài kỳ nguyện này dành cầu siêu và cúng giỗ (giáp năm, tuần thứ…)
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát.   O</b>
+Hôm nay gia chủ (tên) …… hiếu nam (con trai), hiếu nữ (con gái), rễ, dâu, cháu ……, thỉnh mời đại chúng chùa ……(về tại gia đình) làm lễ cầu siêu và cúng giỗ (giáp năm, tuần thứ ……) cho hương linh cố phụ (cha) ……, cố thân mẫu (mẹ) ……, pháp danh ……, thỉnh mời hương linh tự tại  về đây (tại gia đình), xả bỏ duyên trần, quy y Tam Bảo, lắng nghe kinh pháp, tin sâu nhân quả, phát tâm tu tập vô lượng pháp lành rồi nương nhờ Phật lực, sớm vãng sinh về cõi  Phật, đời đời không còn thối chuyển với Chánh Pháp, 
+Nguyện cầu hương linh sớm siêu thoát về cảnh giới an lac, cùng Pháp Giới chúng sinh đồng thành Phật Đạo.   O            
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần)   O</b>
+</pre>
 <h3>DÂNG HƯƠNG</h3>
 <pre>Giới hương, định hương, dữ huệ hương
 Giải thoát, giải thoát tri kiến hương
@@ -1391,7 +1427,7 @@ Lại nguyện, gia đình Phật tử cùng toàn gia quyến thân tâm an l�
 <b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
 
 </pre>
-				div>` 
+				</div>` 
             },
 			{ 
                 id: 5, 
@@ -2018,6 +2054,7 @@ Ngưỡng nguyện Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hi�
 Nguyện cầu trên Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hiền Thánh Tăng thùy từ gia hộ cho chư vị hương linh xả bỏ ưu phiền, quy y Tam Bảo, tránh xa việc ác, làm những việc lành, huân tu đạo đức, sớm siêu thoát về cảnh giới an lạc. O
 <b>Nam Mô Siêu Lạc Độ Bồ Tát Ma Ha Tát. (3 lần) O</b>
 (Sau khi vào chánh điện lễ Phật, chú nguyện. Xong, ra bàn cúng đã sắp sẵn các thức ăn, bánh nước, muối, thắp hương, đứng chắp tay tụng)</pre>
+
 <h3>THỈNH HỘ PHÁP NHIẾP HOÁ CHƯ HƯƠNG LINH</h3>
 <pre><b>(nghi thức tụng tại Chùa)</b>
 <b>Kính lạy Mười Phương Phật</b>
@@ -2065,6 +2102,7 @@ Nhiếp hoá các hương linh
 Đến một ngày siêu thoát. O
 <b>Nam Mô Nhiếp Hoá Hương Linh Già Lam Thánh Chúng Bồ Tát.</b><b> </b><b>(10 lần) O</b>
 </pre>
+
 <h3>CÚNG THÍ THỰC</h3>
 <pre><b>Nam Mô Mười Phương Phật</b>
 <b>Nam Mô Mười Phương Pháp</b>
@@ -2245,6 +2283,47 @@ Gieo Chánh Pháp đến ngàn phương
 Đưa người mọi nẻo về nương Phật Đà. O
 <b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
 </pre>
+<h3>BÀI KHẤN CHO ÂM BINH</h3>
+<pre>Con kính lạy mười phương chư Phật
+Chư Thánh hiền Bồ Tát từ bi
+Chư Thiên Hộ Pháp thần uy
+Lai lâm gia hộ độ trì âm binh
+
+Xin dâng chút lòng thành phẩm vật
+Âm binh về thọ thực nghe kinh
+Nương nhờ thần lực uy linh
+Mười phương Tam Bảo chứng minh đàn tràng
+
+Đi theo Phật con đường tươi sáng
+Hãy tránh xa thầy bạn gian tà
+Từ lâu nuôi dưỡng tâm ma
+Để rồi sai khiến làm ra hại ngườí.
+
+Vì muôn kiếp nghìn đời chấp ngã
+Với đạo tà lỡ đã tin theo
+Chẳng màng Phật Pháp cao siêu 
+Về đây phá phách gây nhiều tội khiên
+
+Xin chư Phật Thánh hiền gia hộ 
+Cho âm binh tỉnh ngộ hồi tâm 
+Thoát ra tà kiến lỗi lầm
+Quy y theo Phật khởi tâm tu hành
+
+Xin gia hộ âm binh yêu mến
+Từ con người cho đến cỏ cây
+Hiểu rằng nhân quả trả vay
+Chở che tôn trọng không gây hại người
+
+Âm binh hãy nghe lời Phật dạy 
+Biết thương yêu dừng lại sai lầm 
+Không làm phiền loạn động tâm 
+Kết thêm thù oán gây mầm ghét ganh
+
+Xin tất cả tâm thành theo Phật
+Để tinh cầu đầy ắp tình thương 
+Xây nền đạo đức hiền lương 
+Hướng về giác ngộ phi thường bao la.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần)</b></pre>
 <h3>PHỤC NGUYỆN</h3>
 <pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
 <b>Nam Mô Đương Lai Hạ Sanh Di Lặc Tôn Phật</b>
@@ -2273,6 +2352,20 @@ Nguyện cầu giáo pháp Như Lai
 Hương linh tỉnh ngộ đêm dài vô minh
 Vun bồi phước đức tâm linh
 Con đường giải thoát quang vinh hướng về. O
+
+Hoặc
+* Ba cõi luân hồi thật thảm thương 
+Sinh sinh tử tử khổ vô lường 
+Sám hối tiền khiên tiêu tội chướng
+Quy y Tam Bảo thoát tam đồ
+Bể khổ mênh mông quay đầu thấy bến
+Một phút lỡ lầm ngàn thu ân hận.   O
+
+Hoặc
+* Gặp nhau rồi phải chia tay
+Âm dương hai ngả xưa nay ở đời
+Hướng về Phật Pháp tuyệt vời
+Tu thân hành thiện cho đời an vui.   O 
 
 Ngưỡng nguyện Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hiền Thánh Tăng thùy từ gia hộ, tiếp độ cho chư hương linh tại…………………., cùng tất cả chư hương linh trong cõi giới siêu hình luôn được yên ổn, ấm no, tinh tấn tu hành, thành tựu được lòng tôn kính Phật tuyệt đối, đời đời kiếp kiếp sinh ra được theo Phật tu hành, xin cho chư hương linh nương theo Phật lực trải được tâm yêu thương tất cả chúng sinh; xin cho chư hương linh tin sâu nhân quả mà cố gắng làm nhiều điều phúc lành, rồi nhờ Phật lực sớm được vãng sanh về cõi an lạc, đời đời không còn thối chuyển với Chánh Pháp, cùng pháp giới chúng sanh đồng trọn thành Phật Đạo. O
 <b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. O</b>
@@ -3483,63 +3576,2740 @@ Trong niềm vui đó tràn đầy thương yêu. O
             },
 			{ 
                 id: 11, 
-                title: "Bản cam kết gia đình", 
-                type: 'main',
-                content: `<div class="section-block">
-				
-				
-				<h2>BẢN CAM KẾT</h2><p>Gia đình {{hoten}} thành tâm cam kết...</p>
-				
-				
-				</div>` 
+                title: "NGHI THỨC CẦU AN", 
+                type: 'ritual_wrapper',
+                content_open: `<div class="section-block">
+				<h2>NGHI THỨC CẦU AN</h2>
+<h3>NGUYỆN HƯƠNG</h3>
+<pre>(Chủ lễ đốt 3 cây hương quỳ trước bàn Phật nguyện)
+Nguyện đem lòng thành kính
+Gửi theo đám mây hương
+Phảng phất khắp mười phương
+Cúng dường ngôi Tam Bảo  O
+Thề trọn đời giữ đạo
+Theo Phật Pháp làm lành
+Cùng pháp giới chúng sinh
+Cầu Phật từ gia hộ  O
+Tâm bồ đề kiên cố 
+Chí tu học vững bền
+Xa bể khổ nguồn mê
+Chóng quay về bờ giác. O
+(xá 3 xá rồi đọc bài <b>KỲ NG</b><b>UYỆN</b>)
+</pre>
+<h3>KỲ NGUYỆN</h3>
+<pre>Hôm nay ngày...tháng … năm... (Nhằm ngày…tháng...năm...)
+Tại …………………………Trước Phật đài trang nghiêm thanh tịnh, nén nhang trầm nghi ngút toả hương, đệ tử chúng con chí thành đảnh lễ Tam Bảo, trì tụng kinh Ngưỡng nguyện mười phương chư Phật, chư Đại Bồ Tát, chư hiền Thánh Tăng, lai lâm chứng giám, gia hộ cho Phật tử .... được tai qua nạn khỏi, bệnh tật tiêu trừ, thân tâm thường an lạc, bồ đề tâm kiên cố, tinh tấn tu hành.  O
+Phổ nguyện: gia đình hòa thuận, hạnh phúc an vui, sức khỏe dồi dào, gặp nhiều may mắn, thân quyến an lành, tăng trưởng thiện căn, vững đường giác ngộ, cùng pháp giới chúng sinh đồng trọn thành Phật Đạo. O
+</pre>
+<h3>DÂNG HƯƠNG	</h3>
+<pre>Giới hương, định hương, dữ huệ hương
+Giải thoát, giải thoát tri kiến hương
+Quang minh vân đài biến Pháp giới
+Cúng dường Thập Phương Vô Thượng Tôn.  O
+<b>Nam Mô Hương Cúng Dường Bồ Tát Ma Ha Tát (3 lần) O</b>
+</pre>
+<h3>TÁN THÁN PHẬT</h3>
+<pre><b>Đấng Pháp Vương Vô Thượng</b>
+<b>Ba cõi chẳng ai bằng</b>
+<b>Thầy dạy khắp trời người</b>
+<b>Cha lành chung bốn loại</b>
+<b>Nay con nguyện Quy Y</b>
+<b>Diệt trừ vô lượng tội</b>
+<b>Dâng lên lời tán thán</b>
+<b>Ức kiếp vẫn không cùng.  O</b>
+
+<b>Con thì vô nghĩa Phật vô biên</b>
+<b>Cảm ứng sâu xa rất diệu huyền</b>
+<b>Một chỗ dung thông vô lượng cõi</b>
+<b>Mười phương chư Phật hiện toàn thân</b>
+<b>Con như quỳ trước từng đức Phật</b>
+<b>Cúi đầu đảnh lễ đến vô biên.  O</b>
+</pre>
+<h3>LỄ PHẬT</h3>
+<pre><b>Chí tâm đảnh lễ:</b> Nam Mô Thích Ca Mâu Ni Phật và Mười Phương Phật. O (1 lạy) 
+<b>Chí tâm đảnh lễ</b>: Nam Mô những Kinh thiêng Thế Tôn dạy và Mười Phương Pháp. O (1 lạy)  
+<b>Chí tâm đảnh lễ:</b> Nam Mô Thánh Tăng theo Thế Tôn học và Mười Phương Tăng.  O (1 lạy)
+</pre>
+<h3>KHAI KINH</h3>
+<pre>Pháp vi diệu rất sâu vô lượng
+Trăm ngàn muôn kiếp khó tìm cầu
+Con nay nghe được xin trì tụng
+Nguyện hiểu Như Lai nghĩa nhiệm mầu.  O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+
+TỤNG MỘT TRONG CÁC BÀI KINH (BÁT CHÁNH ĐẠO, TỪ TÂM, LỜI KHẤN NGUYỆN,…) (cuốn kinh tụng hằng ngày)
+</pre>
+				</div>`,
+				content_close: `<div class="section-block">
+				<h3>PHỤC NGUYỆN 1</h3>
+<pre><b>Nam Mô Ta Bà Giáo Chủ Điều Ngự Bổn Sư Thích Ca Mâu Ni Phật.</b>
+<b>Nam Mô Long Hoa Giáo Chủ Đương Lai Hạ Sinh Di Lặc Tôn Phật.</b>
+<b>Nam Mô Đại Từ Đại Bi Quán Thế Âm Bồ Tát.</b>
+ 
+Chí thành lạy Phật mười Phương
+Từ bi tế độ cho muôn vạn loài
+Nhà nhà hạnh phúc bình an
+Tình thương nhân loại lan tràn khắp nơi
+Cùng nhau tinh tấn để rồi
+Duyên lành thêm kết, đời đời tiến tu
+Thoát ra sinh tử ngục tù
+Cùng nhau giải thoát, an vui Niết Bàn 
+
+Hôm nay đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng sám văn cầu an. Ngưỡng nguyện mười phương chư Phật, chư Đại Bồ Tát, chư hiền Thánh Tăng từ bi gia hộ cho Phật tử………. được gia đạo hưng long, vạn sự hanh thông, sở cầu tất chứng, tử tôn, hiếu thuận, phước lộc thành toàn, siêng làm công đức, tội diệt phước sinh, căn lành tăng trưởng, đạo tâm kiên cố, tinh tấn tu hành cùng pháp giới chúng sinh đều trọn thành Phật đạo.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.</b>
+</pre>
+<h3>PHỤC NGUYỆN 2</h3>
+<pre><b>Nam Mô Ta Bà Giáo Chủ Điều Ngự Bổn Sư Thích Ca Mâu Ni Phật.</b>
+<b>Nam Mô Long Hoa Giáo Chủ Đương Lai Hạ Sinh Di Lặc Tôn Phật.</b>
+<b>Nam Mô Đại Từ Đại Bi Quán Thế Âm Bồ Tát.</b>
+ 
+Trời giác ngộ muôn nơi sáng tỏ 
+Bánh xe pháp vận chuyển không dừng
+Hoa Ưu đàm nở khắp mười phương 
+Đuốc trí tuệ soi đường dẫn lối
+Ngàn thu vẻ vang tổ nghiệp
+Muôn thuở rạng rỡ tông phong.
+Tăng ni đạo lực thậm thâm
+Phật tử tín tâm kiên cố.
+Nguyện nhà nhà hạnh phúc an khang
+Cầu đất nước hòa bình hưng thịnh
+Năm châu an định, bốn biển thanh bình
+Tình với vô tình đồng thành Phật đạo.
+ 
+Hôm nay đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng sám văn cầu an. Ngưỡng nguyện mười phương chư Phật, chư Đại Bồ Tát, chư hiền Thánh Tăng từ bi gia hộ cho Phật tử……… được tật bệnh tiêu trừ, thân tâm thường lạc, gia đạo bình an, ý thành toại nguyện, Phật đạo viên thành, căn lành tăng trưởng, tinh tấn tu hành cùng pháp giới chúng sinh đều trọn thành Phật đạo.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.</b>
+</pre>
+<h3>PHỤC NGUYỆN 3</h3>
+<pre><b>Nam Mô Ta Bà Giáo Chủ Điều Ngự Bổn Sư Thích Ca Mâu Ni Phật.</b>
+<b>Nam Mô Long Hoa Giáo Chủ Đương Lai Hạ Sinh Di Lặc Tôn Phật.</b>
+<b>Nam Mô Đại Từ Đại Bi Quán Thế Âm Bồ Tát.</b>
+
+Chúng con nguyện đi theo bước Phật
+Gắng tu hành nẻo thật đường ngay
+Tĩnh tâm từng phút từng giây
+Dù bao gian khó không thay đổi lòng
+Lạy chư Phật Mười Phương tế độ
+Khiến cho con Liễu Ngộ Chân Như
+Dần vào Chánh Định vô dư
+Xóa tan Chấp Ngã, lòng Từ Bi khai
+Rồi sau đó muôn đời muôn kiếp
+Sẽ đem mưa Chánh Pháp tuôn rơi 
+Vào lòng nhân loại nơi nơi
+Để người vượt thoát luân hồi tử sinh
+Cúi đầu lạy Phật chứng minh
+Chúng con đem trọn lòng thành kính dâng.
+
+Hôm nay đệ tử chúng con thành tâm quỳ trước Phật đài trì tụng kinh … Ngưỡng nguyện mười phương chư Phật, chư Đại Bồ Tát, chư hiền Thánh Tăng từ bi gia hộ cho Phật tử……… được tật bệnh tiêu trừ, thân tâm thường lạc, gia đạo bình an, ý thành toại nguyện, căn lành tăng trưởng, tinh tấn tu hành cùng pháp giới chúng sinh đều trọn thành Phật đạo.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.</b>
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+
+
+</pre>
+				</div>`
             },
 			{ 
                 id: 12, 
-                title: "Bản cam kết gia đình", 
+                title: "NGHI THỨC AN VỊ PHẬT (PQ KHOA NGHI)", 
                 type: 'main',
                 content: `<div class="section-block">
-				
-				
-				<h2>BẢN CAM KẾT</h2><p>Gia đình {{hoten}} thành tâm cam kết...</p>
-				
-				
-				</div>` 
+<h2>NGHI THỨC AN VỊ PHẬT (PQ KHOA NGHI)</h2>
+<h3>THIẾT TRÍ BÀN THỜ PHẬT</h3>
+<pre>- Không nên thờ nhiều tượng rườm rà.
+- Tượng ảnh đặt lên cao sao cho hương cắm không thể che khuất.
+- Lọ hoa một bên và đĩa trái cây một bên, bát hương ở giữa.
+- Phòng thờ riêng biệt, không chung với phòng sinh hoạt khác. 
+- Đèn bố trí sao cho khi ta tắt hết tất cả thì chỉ còn một mình tượng Phật sáng lên.
+- Độ cao của tượng từ đầu người lớn trở lên. 
+- Trước bàn thờ là khoảng trống để càng nhiều người lễ bái càng tốt.
+- Khắp phòng trang trí thêm cái gì cho đẹp và trang nghiêm thì cũng tốt.
+- Nếu căn nhà ta không thích hợp cho việc thắp hương xông khói thì ta nên mua loại nước hoa có mùi thơm trang nghiêm trầm mặc. Ta sẽ đặt một chiếc đĩa có chế sẵn nước trong lên trên bát hương, rồi ta nhỏ vào đĩa đó vài giọt nước hoa (nhiều ít tùy theo khả năng tài chánh của ta). Mùi nước hoa sẽ từ từ tỏa lên để dâng cúng Phật.
+- Nếu có sắp chuông mõ thì có thể để hai bên ở vị trí thấp vừa tay cầm.
+</pre>
+<h3>NGUYỆN HƯƠNG</h3>
+<pre>(Chủ lễ đốt 3 cây hương quỳ trước bàn Phật nguyện)
+Nguyện đem lòng thành kính
+Gửi theo đám mây hương
+Phảng phất khắp mười phương
+Cúng dường ngôi Tam Bảo  O
+Thề trọn đời giữ đạo
+Theo Phật Pháp làm lành
+Cùng pháp giới chúng sinh
+Cầu Phật từ gia hộ  O
+Tâm bồ đề kiên cố 
+Chí tu học vững bền
+Xa bể khổ nguồn mê
+Chóng quay về bờ giác. O
+(xá 3 xá rồi đọc bài <b>KỲ NG</b><b>UYỆN</b>)
+</pre>
+<h3>KỲ NGUYỆN 1 (Bài này dành cho An Vị Phật tại nhà cư sĩ)</h3>
+<pre>Hôm nay, gia chủ tên, pháp danh…........ kiến tạo đạo tràng thờ phụng Tam Bảo, thỉnh đại chúng đồng hộ niệm. Cúi xin Mười Phương Chư Phật lai lâm chứng giám, gia hộ cho toàn gia quyến tiến phát đạo tâm, tác thành công đức, hộ trì Tam Bảo, gia đình an khang, tử tôn hiếu thịnh, phúc lộc thành toàn, tinh tấn tu hành, cùng Pháp Giới chúng sinh, đồng thành Phật đạo.  O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.</b>
+</pre>
+<h3>KỲ NGUYỆN 2 (Bài này dành cho An Vị Phật tại chùa)</h3>
+<pre>Hôm nay, ngày …… tháng …… năm …… (nhằm ngày mùng …… tháng …… năm ……). Đệ tử chúng con kiến tạo đạo tràng thờ phụng Tam Bảo, thỉnh đại chúng đồng hộ niệm. Cúi xin Mười Phương Chư Phật lai lâm chứng giám, gia hộ cho đệ tử chúng con tiến phát đạo tâm, tác thành công đức, hộ trì Tam Bảo.
+Trong tinh thần đạo Phật đồng hành với đất nước thân yêu, chúng con nguyện trọn lòng tôn kính Phật tuyệt đối, yêu thương muôn sinh, để ngôi chùa mãi là nơi che chở hồn dân tộc, là mảnh đất gieo trồng hoa trái đạo đức cho quê hương.
+Nguyện cầu hồng ân Tam Bảo sáng soi tấm lòng chúng con đồng quy hướng về ngôi Tam Bảo, chung tay xây dựng ngôi nhà Phật pháp, luôn cố gắng tạo phước thuận duyên lành cho muôn sinh, phát khởi và tăng trưởng đạo tâm.
+Cũng cầu nguyện cho toàn thể gia đình quý phật tử được tật bệnh tiêu trừ, tai qua nạn khỏi, thân tâm an lạc, bồ đề tâm kiên cố, gieo duyên lành từ đây và mãi mãi về sau với Chánh Pháp.
+Chúng con thành tâm cầu nguyện Mười Phương Tam Bảo, Long Thần Hộ Pháp, Chư vị Thổ Thần lai lâm chứng giám, từ bi gia hộ cho chúng con tinh tấn tu hành, cùng pháp giới chúng sinh đồng thành Phật đạo.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.</b>
+</pre>
+<h3>DÂNG HƯƠNG	</h3>
+<pre>Giới hương, định hương, dữ huệ hương
+Giải thoát, giải thoát tri kiến hương
+Quang minh vân đài biến Pháp giới
+Cúng dường Thập Phương Vô Thượng Tôn.  O
+<b>Nam Mô Hương Cúng Dường Bồ Tát Ma Ha Tát (3 lần) O</b>
+</pre>
+<h3>TÁN THÁN PHẬT</h3>
+<pre><b>Đấng Pháp Vương Vô Thượng</b>
+<b>Ba cõi chẳng ai bằng</b>
+<b>Thầy dạy khắp trời người</b>
+<b>Cha lành chung bốn loại</b>
+<b>Nay con nguyện Quy Y</b>
+<b>Diệt trừ vô lượng tội</b>
+<b>Dâng lên lời tán thán</b>
+<b>Ức kiếp vẫn không cùng.  O</b>
+
+<b>Con thì vô nghĩa Phật vô biên</b>
+<b>Cảm ứng sâu xa rất diệu huyền</b>
+<b>Một chỗ dung thông vô lượng cõi</b>
+<b>Mười phương chư Phật hiện toàn thân</b>
+<b>Con như quỳ trước từng đức Phật</b>
+<b>Cúi đầu đảnh lễ đến vô biên.  O</b>
+</pre>
+<h3>LỄ PHẬT</h3>
+<pre><b>Chí tâm đảnh lễ:</b> Nam Mô Thích Ca Mâu Ni Phật và Mười Phương Phật. O (1 lạy) 
+<b>Chí tâm đảnh lễ</b>: Nam Mô những Kinh thiêng Thế Tôn dạy và Mười Phương Pháp. O (1 lạy)  
+<b>Chí tâm đảnh lễ:</b> Nam Mô Thánh Tăng theo Thế Tôn học và Mười Phương Tăng.  O (1 lạy)
+</pre>
+<h3>KHAI KINH</h3>
+<pre>Pháp vi diệu rất sâu vô lượng
+Trăm ngàn muôn kiếp khó tìm cầu
+Con nay nghe được xin trì tụng
+Nguyện hiểu Như Lai nghĩa nhiệm mầu.  O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+</pre>
+<h3>KINH TỨ THÁNH ĐẾ</h3>
+<pre>Tôi đã nghe như vầy
+Sau khi thành Chánh Giác
+Thế Tôn về Lộc Uyển
+Độ nhóm Kiều Trần Như
+Năm người ngồi trang nghiêm 
+Nghe Thế tôn tuyên giảng
+Bài kinh Tứ Thánh Đế
+Chân lý của muôn đời   O
+
+Đức Phật dạy từng lời
+Thế gian là đau khổ
+Nguyên nhân do ích kỷ
+Từ sâu thẳm nội tâm.
+Phật xác quyết Niết Bàn
+Nơi bình an tuyệt đối
+Và con đường Bát Chánh
+Lối duy nhất mà thôi.   O
+
+Người chìm trong tối tăm
+Không thấy đời là khổ
+Ngỡ đắm say dục lạc
+Là vui sướng đủ rồi
+Đâu biết muốn được vui
+Phải trả nhiều giá đắt
+Đâu biết đời sớm tắt
+Theo quy luật vô thường   O
+
+Tâm đầy những lỗi lầm
+Quả báo còn chờ đợi
+Nẻo luân hồi vời vợi
+Chưa biết lúc dừng chân.
+Hỡi những bậc cao nhân
+Hãy quay đầu thức tỉnh
+Đi theo Bát Chánh Đạo
+Tìm giác ngộ siêu phàm.   O
+
+Đạo lý từ vườn Nai
+Vang lừng cả tam giới
+Trời người đều ca ngợi
+Đấng Từ Phụ phi thường.   O
+<b>Nam Mô Bổn sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+</pre>
+<h3>KINH BÁT CHÁNH ĐẠO</h3>
+<pre>Kính lạy đấng Chánh Giác
+Như vầy con đã nghe
+Tại Lộc Uyển rừng xanh
+Sau khi vừa chứng ngộ
+
+Thế Tôn đến tận chỗ
+Hóa độ rất tận tình
+Cho nhóm Kiều Trần Như
+Đều thành A la hán
+
+Sau khi khuyên năm vị
+Khéo giữ lý trung dung
+Phật dạy lẽ tột cùng
+Bài Kinh Tứ Diệu Đế
+
+Ai hiểu đời là Khổ
+Tức là đã hiểu rằng
+Có một cõi Niết Bàn
+Vượt ra ngoài sinh tử
+
+Ai hiểu đời là Khổ
+Tức là phải hiểu rằng
+Khổ phải có nguyên nhân
+Bởi Vô minh Ngã chấp
+
+Ai tin có Giải thoát
+Tức là phải tin rằng
+Phải có một con đường
+Đi về nơi cao thượng
+
+Kính lạy đấng Chánh Giác
+Muôn đời con tôn thờ
+Đường Bát Chánh bao la
+Dẫn về nơi Giác ngộ. O
+
+Thứ nhất là Chánh Kiến
+Là hiểu được đường đi
+Của Nhân quả chi li
+Từ đời này đời khác
+
+Nghiệp một lần gây tạo
+Thành quả báo về sau
+Chẳng biết lâu hay mau
+Nhưng không hề nhầm lẫn
+
+Rồi tột cùng giác ngộ
+Là Vô ngã hoàn toàn
+Thành tuyệt đối vị tha
+Từ bi và Trí tuệ
+
+Vô số điều đạo lý
+Khắp pháp giới bao la
+Càng lúc càng hiểu ra
+Theo tháng ngày tu tập. O
+
+Chánh Tư Duy kế tiếp
+Là xây dựng tâm hồn
+Thành đạo đức hiền lương
+Theo từng lần tác ý
+
+Khi khởi tâm bất thiện
+Là quyết chí diệt trừ
+Biết hối hận ăn năn
+Biết canh phòng lần khác
+
+Khi đối duyên tiếp cảnh
+Luôn tác ý thiện lành
+Tự nhắc chẳng có ta
+Để mà tham mà giận
+
+Thường tự răn tự nhắc
+Phải biết sống vị tha
+Luôn cung kính ái hòa
+Không khoe khoang kiêu mạn
+
+Thường khởi tâm tôn kính
+Mười Phương Phật Pháp Tăng
+Như ngưỡng vọng cao sơn
+Còn mình như bụi rác
+
+Thường khởi tâm ban rải
+Từ bi khắp nơi nơi
+Địa ngục hay cõi trời
+Cả cỏ cây vạn loại
+
+Tự nhắc mình tránh khỏi
+Những ô nhiễm thấp hèn
+Giữ giới hạnh sạch trong
+Theo gương bao bậc thánh
+
+Càng ngày càng tinh tế
+Kiểm soát tâm ý mình
+Phát hiện những niệm sai
+Nhỏ như là sợi tóc. O
+
+Thứ ba là Chánh Ngữ
+Là làm chủ từng lời
+Để rơi vào lòng người
+Toàn những điều cao đẹp
+
+Chẳng có gì tốn kém
+Chẳng vất vả công lao
+Nhưng tội phước rất nhiều
+Mỗi khi lên tiếng nói
+
+Đừng chê bai bừa bãi
+Kẻo xúc phạm bậc hiền
+Nhiều kiếp tổn phước duyên
+Có khi sinh cầm thú
+
+Cố gắng khen người tốt
+Khen cho người khác nghe
+Để mọi người phát tâm
+Rồi hướng theo điều thiện
+
+Luôn ngợi ca Phật Pháp
+Kiên nhẫn độ từng người
+Về với bóng từ bi
+Để rời xa đau khổ
+
+Hay nói về nhân quả
+Về nhiều kiếp luân hồi
+Cho người biết tin sâu
+Mà làm lành lánh dữ
+
+Không nói điều dơ bẩn
+Không nói điều khen mình
+Không nói điều đua tranh
+Không nói điều giả dối
+
+Vô số điều phải nói
+Tạo nên công đức lành
+Nên cẩn thận thông minh
+Khi cất lời mở miệng. O
+
+
+Thứ tư là Chánh Nghiệp
+Là vô số việc làm
+Rất cụ thể lợi tha
+Yêu thương và giúp đỡ
+
+Không làm điều ác độc
+Gây đau khổ chúng sinh
+Chỉ làm những việc lành
+Cho chúng sinh an lạc
+
+Có khi là lui lại
+Nhường người tốt tiến lên
+Có khi là bước lên
+Gánh lấy điều nặng nhọc
+
+Có khi là nghiêm khắc
+Ngăn kẻ xấu làm sai
+Có khi là ra tay
+Giúp những ai hành thiện
+
+Dù còn trong khốn khó
+Vẫn cố gắng không ngừng
+Làm từng chút việc lành
+Đắp xây nền công đức
+
+Rất siêng năng lễ Phật
+Sám hối nghiệp nghìn xưa
+Việc bất thiện ngăn chừa
+Điều thiện lành chất chứa
+
+Bồ tát thường gián tiếp
+Giúp mà không ai hay
+Nên phước giữ tròn đầy
+Để chia cho tất cả
+
+Biết bao nhiêu việc tốt
+Khắp ba cõi sáu đường
+Là Chánh nghiệp phi thường
+Thành vô biên phước báo. O
+
+
+Thứ năm là Chánh Mạng
+Là nghề nghiệp mưu sinh
+Nuôi sống bản thân mình
+Qua kiếp người tạm bợ
+
+Nhờ Phước từ Chánh Nghiệp
+Nên người được tự do
+Chọn nghề nghiệp sao cho
+Phước lành sinh thêm mãi
+
+Nghề tốt phải gồm đủ
+Hai yếu tố sau đây
+Là tạo phước từng ngày
+Có thời gian tu tập
+
+Riêng tỳ kheo tu sĩ
+Chỉ khất thực xin ăn
+Chớ suy tính kinh doanh
+Mà sai đường xuất thế
+
+Nhưng sa môn khất thực
+Không luồn cúi thấp hèn
+Mà đĩnh đạc uy nghi
+Bất cần và thanh thản
+
+Đem cuộc đời thanh tịnh
+Giáo hóa khắp chúng sinh
+Đổi lấy bát cơm lành
+Ung dung đường thiên lý. O
+
+Sáu là Chánh Tinh Tấn
+Thực hành cách nhiếp tâm
+Trong thiền định thậm thâm
+Vô vàn điều gian khó
+
+Lúc này tâm chưa nhiếp
+Vọng tưởng còn chập chùng
+Thân đau mỏi không ngưng
+Nhưng không hề thoái chí
+
+Có khi là thân quyến
+Gây trở ngại đủ điều
+Hoặc bệnh tật triền miên
+Nạn tai không lường hết
+
+Dù còn nhiều chướng ngại
+Nhưng hành giả vững lòng
+Như núi đá ung dung
+Giữa bão giông sấm sét
+
+Lòng dặn lòng đã quyết
+Dù trăm kiếp ngàn đời
+Tinh tấn mãi không thôi
+Đi về nơi Vô ngã
+
+Ngồi kiết già phu tọa
+An trú khắp toàn thân
+Cảm giác khắp toàn thân
+Thân nghiêm trang bất động
+
+Rồi nhẹ nhàng quán chiếu
+Thân tạm bợ vô thường
+Già bệnh chết thảm thương
+Theo bụi xương bay mất
+
+Biết thân này đang thở
+Thân này đang thở vào
+Thân này đang thở ra
+Rõ ràng từng chút một
+
+Mỗi phút giây cuộc sống
+Vẫn an trú toàn thân
+Vẫn nhớ thân vô thường
+Đêm ngày không gián đoạn. O
+
+
+Bảy là vào Chánh Niệm
+Tâm tỉnh giác rỗng rang
+Lòng thanh thoát nhẹ nhàng
+Nhưng vẫn còn niệm khởi
+
+Nhờ vào sức tỉnh giác
+Hành giả kiểm soát tâm
+Không mờ mịt mê lầm
+Chạy theo ngoài thanh sắc
+
+Hành giả biết tác ý
+Theo Vô ngã Từ bi
+Gắng trừ diệt sân si
+Tâm càng thêm đạo đức
+
+Dù bắt đầu an lạc
+Nhưng chỉ mới bắt đầu
+Chưa phải đã vào sâu
+Trong cõi thiền vi diệu
+
+Như đi trên băng mỏng
+Hay chông nhọn than hồng
+Xin cẩn thận vô cùng
+Lúc này đầy nguy hiểm
+
+Nếu sai lầm tác ý
+Với kiêu mạn ngấm ngầm
+Len lỏi trong nội tâm
+Ắt có ngày điên loạn
+
+Càng thêm tôn kính Phật
+Đến tuyệt đối vô biên
+Nguyện thân mạng cúng dường
+Lên Mười Phương Tam Bảo
+
+Hành giả còn vất vả
+Mấy mươi kiếp tái sinh
+Lên xuống giữa trời người
+Mới hết đường Chánh niệm
+
+Diệt trừ Năm Triền Cái
+Nóng giận và Tham lam
+Trạo cử với Hôn trầm
+Thứ năm là Nghi hối
+
+Vào thời kỳ mạt pháp
+Người tu đến chỗ này
+Nhầm tưởng đã đủ đầy
+An trú nơi thánh quả
+
+Có khi bị ảo giác
+Hiện đủ điều lạ kỳ
+Khiến kiêu mạn hoang mang
+Để rồi tan vỡ hết
+
+Có khi được thần trí
+Biết nhiều việc lạ thường
+Càng tưởng chứng cao siêu
+Rồi lạc vào ma đạo
+
+Vì vậy càng cố gắng
+Lễ Phật lòng khiêm cung
+Quán vô ngã hư không
+Để đi qua vực thẳm. O
+
+
+Thứ tám là Chánh Định
+Bậc thứ nhất Sơ Thiền
+Thân an lạc vô biên
+Dứt xong điều ái dục
+
+Nhưng vẫn còn tầm tứ
+Niệm vi tế sâu xa
+Về đạo lý bao la
+Nên cũng còn chướng ngại
+
+Nhị Thiền tâm sạch niệm
+Thân tỉnh giác tuôn trào
+Như mạch nước dâng cao
+Không bao giờ vơi cạn
+
+Tam Thiền trùm pháp giới
+Thân đồng cõi hư không
+Vật chất cũng là tâm
+Khắp đất trời an lạc
+
+Tứ Thiền là tuyệt đối
+Tâm tịch tịnh như như
+Cả vũ trụ thái hư
+Đã vào nơi bản thể
+
+Nếu tiếp theo quán chiếu
+Để chứng đạt Tam Minh
+Hành giả sẽ trở thành
+Thánh nhân A la hán
+
+Kính lạy Mười Phương Phật
+Đường Bát Chánh cao siêu
+Con chẳng thể hiểu nhiều
+Nhưng nguyện lòng tu tập
+
+Bao chúng sinh lạc lối
+Trong tà kiến si mê
+Chưa biết chỗ đi về
+Dòng luân hồi trôi mãi
+
+Cúi xin Mười Phương Phật
+Cho Bát Chánh đạo này
+Đến mọi chốn nghìn nơi
+Cho chúng sinh tỉnh ngộ
+
+Nguyện chúng con dũng cảm
+Đem Bát Chánh đạo này
+Nói với cả mọi người
+Như món quà cao quý. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O </b>
+</pre>
+<h3>THỈNH TAM BẢO</h3>
+<pre><b>1. Chúng hòa: Hương hoa thỉnh, hương hoa thỉnh</b>
+<b>Chủ lễ thỉnh: </b>Nam mô nhất tâm phụng thỉnh, thiên hoa đài thượng, bách bảo quang trung, tam thập nhị tướng chi năng nhơn, bát thập chưởng hảo chi đại giáo, quá hiện vị lai vô lượng Phật đà da. 
+<b>Duy nguyện:</b> thiên thùy bảo cái, địa dõng kim liên, quang giáng đạo tràng chứng minh công đức.
+<b>2. Chúng hòa: Hương hoa thỉnh, hương hoa thỉnh.</b>
+<b>Chủ lễ thỉnh:</b> Nam mô nhất tâm phụng thỉnh, tây thiên trúc quốc, bạch mã đà lai, tu đà la liễu nghĩa thượng thừa, thập nhị bộ chơn Kinh bí điển, quá hiện vị lai vô lượng đạt ma gia. 
+<b>Duy nguyện:</b> Tường quang vạn đạo, thoại khí thiên diệu, quang giáng đạo tràng chứng minh công đức.
+<b>3. Chúng hòa: Hương hoa thỉnh, hương hoa thỉnh.</b>
+<b>Chủ lễ thỉnh:</b> Nam mô nhất tâm phụng thỉnh, tam minh, bát giải ngũ quả, lục thông, phân thân ư thử độ tha phương, thuyết pháp ư nhơn gian thiên thượng quá hiện vị lai vô lượng tăng già da. 
+<b>Duy nguyện:</b> Trần gian nguyệt ấn, không cốc truyền thanh, quang giáng đạo tràng chứng minh công đức.
+<b>Nam Mô Đăng Bảo Tọa Bồ Tát (3 lần)</b>
+</pre>
+<h3>THỈNH PHẬT</h3>
+<pre>Chúng con quỳ trước Phật đài
+Tưởng như có Phật giữa thời hoàng kim 
+Phật ngồi không nói lặng im
+Mà như vang động ba nghìn thế gian
+Phật dung như ánh trăng ngàn
+Phật uy như ngọn cao sơn trầm hùng
+Phật từ như biển mênh mông
+Chúng con được tắm giữa lòng thương yêu
+Phật tuệ vời vợi cao siêu
+Soi đường con bước khỏi điều khổ đau.   O
+
+Hôm nay cảm ứng nhiệm mầu
+Phật về chứng giám lời cầu chúng con
+Từ nay con trẻ sắt son
+Một lòng thờ Phật chẳng còn lung lay
+Đi theo nẻo Chánh đường ngay
+Dốc lòng tu tập đêm ngày tinh chuyên
+Rồi đem Phật Pháp nhân duyên
+Sẻ chia mọi chốn, lan truyền mọi nơi.   O
+ 
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+</pre>
+<h3>CÚNG NGỌ</h3>
+<pre>Cúng dường Mười Phương Phật
+Cúng dường Mười Phương Pháp
+Cúng dường Mười Phương Tăng.   O
+
+Nguyện tất cả chúng sinh
+Được đầy đủ vật thực
+Phát khởi vô thượng tâm
+Xa lìa niệm bỏn xẻn   
+Từ bi rải khắp nơi.   O
+
+Nguyện tất cả chúng sinh
+Ba đường ác xa lìa
+Trọn đầy Giới Định Huệ
+Thanh tịnh cả Tam Thiên
+An lành khắp Pháp Giới.   O
+ 
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b><b>  </b><b>(3 lần) O</b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật</b><b>              </b><b>(3 lần) O</b>
+<b>Nam Mô Đại Trí Văn Thù Sư Lợi Bồ Tát </b><b>	(3 lần) O</b>
+<b>Nam Mô Đại Hạnh Phổ Hiền Bồ Tát </b><b>	(3 lần) O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát </b><b>	(3 lần) O</b>
+<b>Nam Mô Linh Sơn Hội Thượng Phật Bồ Tát</b><b>	(3 lần) O</b>
+</pre>
+<h3>LỜI KHẤN NGUYỆN</h3>
+<pre>Kính lạy Mười Phương Phật
+Kính lạy Mười Phương Pháp
+Kính lạy Mười Phương Tăng
+Xin chứng giám lòng con
+Với tất cả tâm thành
+Dâng lên lời khấn nguyện O
+
+Xin cho con mãi mãi
+Lòng tôn kính vô biên
+Hơn núi biển mông mênh
+Dâng lên Mười Phương Phật. O
+
+Xin cho con mãi mãi
+Lòng thương yêu không cùng
+Trải thế giới Tam Thiên
+Đến chúng sinh vô tận.
+Xin cho khắp muôn loài
+Sống yên lành bên nhau
+Không ganh ghét oán thù
+Không chiến tranh giết chóc.
+Xin cho kẻ bất thiện
+Biết tin có luân hồi
+Có nghiệp báo trả vay
+Để hồi đầu hướng thiện. O
+
+Xin kẻ mù được sáng
+Kẻ điếc lại được nghe
+Kẻ nghèo được ấm no
+Kẻ ốm đau bình phục.
+Xin cho loài cầm thú
+Thoát được nghiệp ngu si
+Tái sinh vào cõi người
+Biết tu theo Phật Pháp.
+Các vong linh vất vưởng
+Trong cõi giới u huyền
+Thoát nghiệp đói triền miên
+Quy y và siêu thoát. O
+
+Xin cho nơi địa ngục
+Chúng sinh đang đọa đày
+Khởi được tâm từ bi
+Để xa lìa cảnh khổ.
+Cúi xin Mười Phương Phật
+Chư Bồ Tát Thánh Hiền
+Đem Chánh Pháp thiêng liêng
+Sáng soi nghìn thế giới.
+Cho chúng con mãi mãi
+Dù sinh về nơi đâu
+Đều gặp pháp nhiệm mầu
+Để nương theo tu tập. O
+
+Cho con biết khiêm hạ
+Biết tôn trọng mọi người
+Tự thấy mình nhỏ thôi
+Việc tu còn kém cỏi.
+Cho tay con rộng mở
+Biết san sẻ cúng dường
+Biết giúp đỡ yêu thương
+Đến những người khốn khó.
+Xin cho con bình thản
+Trước nghịch cảnh cuộc đời
+Dù bị mắng bằng lời
+Hay bằng điều mưu hại. O
+
+Xin tâm con sung sướng
+Khi thấy người thành công
+Hoặc gây tạo phước lành
+Như chính con làm được.
+Cho con biết im lặng
+Không nói lỗi của người
+Chỉ lặng lẽ dùng lời
+Cầu cho người hết lỗi.
+Xin vòng dây tham ái
+Rời khỏi cuộc đời con
+Để cho trái tim con
+Biết yêu thương tất cả. O
+
+Cúi lạy Mười Phương Phật
+Đau khổ đã nhiều rồi
+Vô lượng kiếp luân hồi
+Đắng cay và mỏi mệt.
+Nay con dâng lời nguyện
+Giải thoát, quyết tìm về
+Giác ngộ, quyết lìa mê
+Độ sinh, đền ơn Phật.
+Xin cho con giữ vững
+Được chí nguyện tu hành
+Không một phút buông lơi
+Không một giờ xao lãng. O
+
+Xin vẹn toàn giới hạnh
+Với thiền định lắng sâu
+Với trí tuệ nhiệm mầu
+Xóa tan dần chấp ngã.
+Xin cho con tỉnh táo
+Không kiêu mạn tự hào
+Dù tu tiến đến đâu
+Vẫn tự tìm chỗ dở.
+Nguyện cho con đi mãi
+Không đứng lại giữa đường
+Đến tuyệt đối vô biên
+Tâm đồng tâm Chư Phật. O
+
+Rồi trong muôn vạn nẻo
+Của sinh tử luân hồi
+Con mãi mãi không thôi
+Độ sinh không dừng nghỉ.
+Cúi lạy Mười Phương Phật
+Xin chứng giám lòng con
+Lời khấn nguyện sắt son
+Dâng lên ngôi Tam Bảo. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+</pre>
+<h3>THÁNH TRÍ BÁT NHÃ</h3>
+<pre>Khi Bồ Tát Quán Tự Tại thành tựu được Chánh Định thẳm sâu, phát sinh trí tuệ Bát Nhã vi diệu, liền thấy thân tâm năm uẩn này trống rỗng, không quan trọng nữa, và ngay đó vượt qua tất cả đau khổ.
+Này Xá Lợi Phất, Bồ Tát thành tựu được Chánh Định vĩ đại an lành nên không còn chấp vào sắc thân, tự tại đối với sắc thân;
+không còn bị chi phối bởi cảm giác, tự tại đối với cảm giác; không còn vướng mắc nơi tâm tưởng, tự tại đối với tâm tưởng; không còn lệ thuộc vào tâm năng, tự tại đối với tâm năng; không còn bị giới hạn bởi cái biết, tự tại đối với cái biết.
+Này Xá Lợi Phất, với sự tự tại an lành như thế, Bồ Tát đi vào sinh tử mang hạnh nguyện hóa độ chúng sinh. Khi ở trong sinh tử, Bồ Tát không bị dính mắc bởi bất cứ điều gì, không cần bất cứ điều gì, không xao động theo bất cứ sự biến dịch nào của cuộc đời. Bồ Tát đến với chúng sinh bằng tâm từ bi vô hạn, không phân biệt kẻ sang người hèn, kẻ dở người hay, thậm chí thương yêu cả kẻ xấu ác để tìm cách hóa độ. Bồ Tát sẽ phải chấp nhận mọi điều tôn vinh hay nhục mạ, vinh quang hay cay đắng một cách bình thản. Dũng lực của Bồ Tát là vô biên vô hạn.
+Bồ Tát sẽ tùy theo tâm tình, sở thích, ngôn ngữ của chúng sinh mà tìm cách hóa độ chứ không chấp cứng vào văn tự Kinh điển vì cả cuộc sống của Bồ Tát là một bài Kinh thiêng liêng bất tận; những việc làm của Bồ Tát là tấm gương sáng ngời, ngay cả một cái nhìn hay sự im lặng của Bồ Tát cũng như sấm sét có thể làm thay đổi tâm hồn người đối diện.
+Tâm của Bồ Tát chính là vô lượng đạo lý; lời nói của Bồ Tát chính là vô lượng Kinh điển, nghe không giống như ngôn ngữ cổ thư nhưng không hề sai khác với ý Phật.
+Bồ Tát thực hành Bát Nhã như thế nên thành tựu vô lượngcông đức. Những công đức này  khiến cho Bồ Tát trở nên một vị Thánh đầy uy lực, không một chướng ngại nào, khổ nạn nào có thể xâm phạm được nữa. Bồ Tát đạt được sự bình an vô hạn cả nội tâm và ngoại cảnh.
+Chư Phật từ xưa đến nay hay sau này đều thực hành Bát Nhã như thế, thành tựu Chánh Định như thế, có được tự tại như thế, giáo hóa chúng sinh như thế để đắc thành Vô Thượng Chánh Đẳng Chánh Giác.
+Thần lực phi thường của Phật và Đại Bồ Tát có thể cứu giúp chúng sinh qua khỏi khổ nạn cấp thời để chúng sinh có cơ hội tu tập và gây tạo phước lành đền bù ác nghiệp quá khứ.
+Phải biết Bát Nhã là bờ bến hiền lành an ổn, là thuyền to lớn giữa biển sóng lao xao, là ánh sáng soi rọi giữa đêm đen mờ mịt, là sự cao thượng vượt hơn mọi điều cao thượng trên đời.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b></pre>
+<h3>PHÁT NGUYỆN (dành cho Lễ An Vị Phật tại nhà cư sĩ)</h3>
+<pre>(Gia đình quỳ trước bàn Phật, đọc từng câu theo lời Chủ lễ)
+<b>Chúng con phát nguyện: </b>
+Mỗi ngày lễ Phật ít nhất 10 lạy
+Tọa thiền ít nhất 30 phút. 
+Xin Phật chứng minh gia hộ cho chúng con. (1 lạy) O
+<b>Chúng con phát nguyện: </b>
+Giữ gìn gia đình hòa thuận êm ấm 
+Hiếu nghĩa vẹn toàn, một lòng theo Phật. 
+Xin Phật chứng minh gia hộ cho chúng con. (1 lạy) O
+<b>Chúng con phát nguyện: </b>
+Tử tế với láng giềng và giúp cho láng giềng, 
+Cùng tin hiểu Phật Pháp cao siêu. 
+Xin Phật chứng minh gia hộ cho chúng con. (1 lạy) O
+</pre>
+<h3>PHỤC NGUYỆN</h3>
+<pre><b>Nam Mô Bổn sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật</b><b>	  </b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát. O</b>
+Hôm nay đệ tử chúng con thành tâm làm lễ an vị Tôn Tượng Phật ……… tại gia đình Phật tử …………
+
+Thiền môn nghiêm tịnh đại chúng an hòa
+Mưa nắng thuận hòa, nhà nhà no ấm
+Đèn thiền thắp sáng tỏa rạng tông môn
+Phật Pháp hưng long núi sông bền vững
+Trên hòa dưới thuận, trăm họ quy y,
+Một dạ khắc ghi, tin sâu nhân quả.
+Nhớ đến vô thường, tìm về Vô Ngã,
+Nguyện mãi tinh chuyên, siêng tu đạo đức.
+Chung lòng gắng sức, bồi đắp phước điền
+Sám hối thường xuyên, trọn lòng hồi hướng.
+Người còn khỏe mạnh, kẻ thác siêu sinh,
+Bỏ ác làm lành, nghe kinh sửa lỗi.
+Lòng không thay đổi, chí nguyện tu hành
+Đồng thoát vô minh, đồng thành Phật đạo.
+ 
+
+ 
+Nguyện cầu Chư Phật, Chư Bồ Tát lai lâm chứng giám gia hộ Phật Pháp truyền bá khắp nơi, nhân loại quy y tu học, thế giới hòa bình hết cảnh chiến tranh, mưa nắng thuận hòa, chúng sinh an lạc.  O
+Cùng gia hộ gia đình Phật tử…………tội diệt phước sinh, căn lành tăng trưởng, siêng làm công đức, gia đình hạnh phúc, tinh tấn tu hành, cùng Pháp Giới chúng sinh đồng trọn thành Phật đạo. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.   O</b>
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+</pre>
+				</div>`
+				 
             },
 			{ 
                 id: 13, 
-                title: "Bản cam kết gia đình", 
+                title: "NGHI THỨC THỈNH LINH NHẬP TỰ", 
                 type: 'main',
                 content: `<div class="section-block">
+	<h2>NGHI THỨC THỈNH LINH NHẬP  TỰ</h2>
+<pre>(Vào chánh điện làm lễ cầu siêu cho các hương linh xin nhập, rồi ra làm lễ nhập linh trong nhà linh, xong ra bên ngoài cúng thí thực. Sắp xếp các thức ăn, bánh, nước, muối, thắp hương)</pre>
+<h3>PHẦN HÀNH LỄ</h3>
+<pre>- Đánh 3 hồi khánh
+<b>1. Chủ lễ xướng:</b>  Gia chủ (gia quyến) Tựu vị:  
+ Hồ quỳ chấp chưởng (Đến quỳ trước bàn thờ)
+ Gia chủ lễ hương linh tứ bái (4 lạy)
+<b>2. Phần hương:</b> Đốt hương đưa cho gia quyến mỗi người 1 nén. 
+- Chủ lễ 3 cây nhang
+
+<b>3. Nguyện hương</b>
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật </b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật </b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát.   O</b>
+Nén hương thơm ngát cúng Như Lai
+Đệ tử thành tâm trước lễ đài
+Nguyện trên Từ phụ thùy minh chứng
+Phóng quang cảm ứng hiện thân ngay.
+ 
+Hôm nay là ngày …… tháng …… năm …… tại (nhà linh chùa…), gia chủ …… thiết lễ trai diên, hương hoa trà quả, chi nghi phẩm vật, thành tâm phụng cúng cho các hương linh trước đây, và ký gửi hương linh tại chùa PQ ……… Thỉnh mời các hương linh: (theo danh sách đọc tên ra) …… về đây nhập tự, an trú chốn già lam, tin sâu Tam Bảo, lắng nghe kinh pháp, thọ thực và tu hành.   O 
+Kính thưa chư vị Hộ pháp.
+Thưa tất cả các hương linh đã an trú tại chùa …… trước đây, xin hoan hỷ cho hương linh: (vừa đọc tên) ……được an trú tại nhà linh này, để cùng nhau tu tập, tạo nhiều công đức lành, sớm được vãng sinh về cõi tịnh. Cầu nguyện tất cả hương linh sớm được siêu thoát.   O
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần) O</b>
+<b>Nam Mô Chứng Minh Sư Bồ Tát (3 lần) O</b>
+
+4. Thượng hương: (thu hương lại cắm hương vào bát nhang rồi chủ lễ xướng:  gia chủ (gia quyến) lễ hương linh nhị bái - Bình thân giai quỳ)
+<b>TÁN DƯƠNG CHI</b>
+Dương chi tịnh thủy 
+Biến sái tam thiên
+Tánh không bát đức lợi nhân thiên
+Pháp giới quảng tăng diên
+Diệt tội tiêu khiên 
+Hòa diệm hóa hồng liên.   O
+ 
+<b>Nam Mô Thanh Lương Địa Bồ Tát (3 lần)  </b>
+<b>Chủ lễ xướng: </b>
+<b>Nay lấy chơn ngôn mà triệu thỉnh (nhỏ), phụng thỉnh (ông, bà, cha, mẹ)</b>
+Hương linh chẳng rõ để biết nghe
+Nhờ sức Tam Bảo đã hộ trì
+Ngày này, giờ này xin dự hội
+Tấc lòng thành thật ba cõi cảm thông,  
+<b>Một nén hương xông nhất tâm phụng thỉnh (lớn), nhất tâm triệu thỉnh (nhỏ).   </b>
+<b>Chủ lễ thỉnh:</b>
+Nam Mô Ta Bà Giáo Chủ Bổn Sư Thích Ca Mâu Ni Phật, thủ trì liên hoa phóng hào quang, nguyện thừa hào quang nhi tiếp dẫn, tiếp triệu các hương linh: (vừa đọc tên) văn kinh sơ thỉnh nguyện đáo nhà linh Chùa………..., an tọa nghe kinh thính pháp, tiềm linh pháp vị.   O
+<b>Đồng dẫn:</b> Hương vân thỉnh, hương đăng phụng thỉnh (lớn), triệu thỉnh (nhỏ).   O
+<b>Chủ lễ xướng: </b>
+Nam Mô Đại Bi Quán Thế Âm Bồ Tát tại Phổ Đà Sơn, thủ trì dương liễu phóng hào quang, nguyện thừa hào quang nhi tiếp dẫn, tiếp triệu phục vì các Chư hương linh:(vừa đọc tên) ......, văn kim tái thỉnh, nguyện đáo nhà linh, thính diệu pháp âm, thọ cam lồ vị.   O
+<b>Đồng dẫn:</b> Hương hoa thỉnh, hương đăng triệu thỉnh.   O
+<b>Chủ lễ xướng: </b>
+Nam Mô Đại nguyện Địa Tạng Vương Bồ Tát tại Thiết Vi Sơn, thủ trì tích trượng phóng hào quang, nguyện thừa hào quang nhi, chấn khai địa ngục chi môn, tiếp dẫn, tiếp độ cho các Chư hương linh vừa đọc tên . . ., văn kinh tam thỉnh, lai đáo nhà linh thính pháp nghe kinh, tiêu diêu tự tại.   O
+<b>Đồng dẫn:</b> Hương hoa thỉnh, hương đăng triệu thỉnh.   O
+<b>Đồng tụng:</b>
+Hôm nay phụng thỉnh hương linh về
+Thọ nhận cúng dường kinh kệ nghe
+Thấu rõ kinh kệ mong giải thoát
+Oai lực Tam Bảo đã chứng tri.   O
+<b>Nam Mô Chứng Minh Sư Bồ Tát Ma Ha Tát (3 lần) </b>
+Chuyên thân phụng thỉnh (triệu thỉnh)
+Cung vọng lai lâm
+Hiếu quyến thành tâm
+Cẩn đương bái thỉnh.   O
+<b>Hương linh nghe phụng thỉnh. Hương linh nghe triệu thỉnh (nhỏ)</b>
+<b>ĐỒNG HÒA: Hương vân thỉnh, hương vân phụng thỉnh.   </b>
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát</b>
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần)   O</b>
+<b>Chủ lễ xướng: </b>
+ 
+Hào quang chiếu rọi nơi tăm tối
+Phật đã phân thân xuống đạo tràng
+Nguyện độ hương linh về cõi tịnh
+Xa rời biển khổ chốn trần ai.
+Trăm năm còn có gì đâu
+Sang giàu rồi cũng con tàu biệt ly
+Hướng về giáo pháp Từ bi
+Con đường giải thoát bước đi đến cùng.   O
+
+<b>(Nếu cúng cho cha mẹ đọc thêm phần này)</b>
+Nước biển mênh mông không đong đầy tình mẹ
+Mây trời lồng lộng không phủ kín công cha
+Một lòng thờ kính thiết tha
+Nguyện cầu thân phụ ông bà siêu thăng.   O
+<b>Chủ lễ xướng: Hương vân thỉnh, hương vân phụng thỉnh, xin nguyện đến cho.   O</b>
+Chơn linh thường tỏ
+Giác tánh chẳng mê
+Hướng tâm trở về
+Quy Y siêu thoát.   O
+Thành kính một lòng hương linh chứng giám
+<b>Nam Mô Chứng Minh Sư Bồ Tát Ma Ha Tát (3 lần)</b>
+<b>Chủ lễ xướng:</b>
+<b>*** Dâng Trà 1 (Hiến trà, trà châm sơ tuần) *** </b>
+<b>Gia chủ (gia quyến) lễ hương linh nhị bái (2 lạy) O</b>
+<b>Chủ lễ xướng:</b> (Tấn Phạn, Khải Phạn, Hiến Phạn)
+(Nếu cúng tại gia thì cho bưng chén cơm, gắp thức ăn vào)
+Đây bát cơm đầy nặng ước mong
+Mẹ (Cha) ơi! Đây ngọc với đây lòng
+Đây tình còn đọng trong thương nhớ
+Ơn nghĩa sinh thành trả chưa xong
+Hôm nay dâng cúng cơm này
+Sắc hương mỹ vị biến đầy hư không
+Thành tâm tha thiết ngưỡng mong
+Hương linh nạp thọ tấc lòng nhớ thương.  O
+
+<b>(Hoặc chọn bài này)</b>
+ 
+Một mảnh hương linh xa chơi dị lộ
+Năm canh trường mộng chạnh nỗi thâm tình
+Đò âm dương qua lại tuy thường
+Xong cái cảnh biệt ly khó lấp
+Chữ ân nghĩa nặng nề là thế
+Xui nên câu báo đáp hằng ghi
+Gắp đồ ăn, cơm xới dâng lên
+Để thầm tỏ nỗi niềm nhớ thương
+Hương linh thọ hưởng, chứng chiếu lòng thành.  O
+<b>Gia chủ kiền thành cúc cung tấn phạn …</b>
+<b>Sau đó mời gia đình tụng kinh.</b>
+
+<b>BÀI CÚNG CƠM CHO HƯƠNG LINH </b>
+Đây vật thực thơm ngon tinh khiết
+Của gia đình dâng cúng hương linh
+Biết bao ơn nghĩa ân tình
+Tĩnh tâm thọ lãnh hương linh an lành
+Thọ thực xong tâm thành nghe pháp
+Hiểu thế gian vui ít khổ nhiều
+Kiếp người như nắng buổi chiều
+Như sương buổi sớm lắm điều đổi thay
+Đời đau khổ bởi đầy mê muội
+Ích kỷ sâu lầm lỗi càng tăng
+Kiêu căng làm bậy, sống càn
+Chẳng so tội phước, chẳng màng nghiệp duyên
+Đời hạnh phúc khi lòng rộng mở
+Trọn vòng tay giúp đỡ thương nhau
+Từ tâm đức hạnh nhiệm mầu
+Ác duyên chấm dứt về mau cõi lành
+Hương linh phát tâm thành theo Phật
+Đấng đại hùng, đại lực, đại bi
+Tin sâu giáo lý diệu kỳ
+Cứu người biển khổ thoát ly ách nàn
+Thọ thực xong an lành mãn nguyện
+Cùng pháp mầu huyền nhiệm cao sâu
+Hương linh hết khổ, hết sầu
+Hết tâm phiền muộn vui câu an nhàn.   O	
+ 
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật </b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật </b>
+<b>Nam Mô Đại Bi Quán thế Âm Bồ Tát</b>
+<b>Nam Mô Đại Thế Chí Bồ Tát</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát.  O</b>
+
+<b>Chủ lễ xướng:</b>
+<b>*** Dâng trà 2 (Hiến trà - trà châm nhị tuần)</b>
+Gia chủ (gia quyến) lễ hương linh nhị bái (2 lạy) O</pre>
+<h3>SÁM HƯƠNG LINH</h3>
+<pre>Cúi đầu đảnh lễ Như Lai
+Cha lành của khắp vạn loài chúng sinh
+Cùng Chư Bồ Tát quang minh
+Tâm từ soi sáng hữu tình trầm luân
+Chúng con cùng các quyến thân
+Người còn kẻ mất người gần kẻ xa. O
+
+Từ nay quy mạng Phật Đà
+Học theo Chánh Pháp cùng là Thánh Tăng
+Hiểu rằng cuộc sống thế nhân
+Vây quanh sóng khổ, bủa giăng gió sầu
+Dù rằng nghèo khổ sang giàu
+Kẻ nào khỏi khóc, người nào khỏi than
+Khi thì hợp, khi thì tan
+Lúc say quyền quý, lúc chan tủi sầu. O
+
+Những cơn bệnh hoạn đớn đau
+Những lần tử biệt biết bao nỗi buồn
+Lệ nhiều hơn nước mưa tuôn
+Máu nhiều hơn nước trên nguồn đổ xuôi
+Người đời gắng gượng tìm vui
+Trò chơi hư ảo chôn vùi tâm linh
+Nào là rượu, nào là tình
+Xong rồi nhìn lại thấy mình tội thêm
+Nỗi lo của kẻ đi đêm
+Biết mình nặng nghiệp chưa tìm lối ra. O
+
+Nay con sám hối Phật Đà
+Ăn năn lỗi trước, ngăn chừa lỗi sau
+Hiểu rằng nguyên cớ khổ đau
+Đều do ích kỷ gốc sâu tạo thành
+Tham lam dẫn đến tranh giành
+Hận thù dẫn đến nhục hình lẫn nhau
+Kiêu căng tự đại tự cao
+Hơn thua đố kỵ người nào giỏi hơn
+Chìm trong bóng tối chập chờn
+Si mê chấp ngã nặng hơn núi cồn
+Lang thang ngàn kiếp trầm luân
+Khổ đau chất lại vạn lần biển khơi. O
+
+Nay con quỳ dưới Phật đài
+Nguyện theo giáo pháp Như Lai nhiệm mầu
+Niết Bàn, lòng nguyện tin sâu
+Là nơi chấm dứt khổ đau luân hồi
+Vượt ngoài ba cõi ngàn đời
+Từ Bi trí giác rạng ngời vô biên
+Hiểu rằng Nhân Quả nghiệp duyên
+Công bằng chi phối mọi miền thế gian
+Người sung sướng, kẻ lầm than
+Đều do nghiệp trước cưu mang đến giờ
+Nên không yên lặng đợi chờ
+Mà lo gắng sức giúp cho mọi người. O
+
+Người vui là chính con vui
+Người buồn con cũng ngậm ngùi sẻ chia
+Hiểu rằng một sớm mai kia
+Xác thân tạm bợ trở về hư vô
+Nên không khờ dại tôn thờ
+Cái mà bệnh chết sẽ chờ lấy đi
+Nay còn sức khỏe xuân thì
+Khéo siêng làm phước dành khi trở về
+Hiểu rằng ngàn kiếp si mê
+Tham lam ích kỷ nặng nề âm u. O
+
+Nay theo Phật đấng đại từ
+Trái tim xin mở rộng như biển ngàn
+Thương yêu khắp cả thế gian
+Dù là kẻ oán người thân cũng đồng
+Nơi cõi sống, chốn tử vong
+Rừng cây chim thú, biển sông cá kình
+Nguyện lòng thương khắp chúng sinh
+Như thương quyến thuộc thâm tình đã lâu
+Từ nay mãi đến ngàn sau
+Sống vì tất cả, chẳng cầu riêng tư
+Hiểu rằng tam giới ngục tù
+Thân là cát bụi, tâm là bóng mây
+Từ lâu như kẻ ngủ say
+Si mê chấp ngã chưa ngày thoát ra. O
+
+Cúi đầu đảnh lễ Phật Đà
+Bậc thánh Vô Ngã vượt xa thế trần
+Vì không còn chấp ngã nhân
+Người thành vũ trụ, Người thành trăng sao
+Tâm Vô Ngã là đỉnh cao
+Con xin phát nguyện ngày nào chứng nên
+Chí tu học quyết vững bền
+Độ sinh vì Phật báo đền ơn sâu
+Hôm nay tha thiết nguyện cầu
+Xin đem công đức từ lâu đã làm
+Hướng về thế giới cõi âm
+Dành cho thân quyến còn cầm tại đây. O
+
+Mong sao cho những vị này
+Nương nhờ Phật lực về ngay cõi lành
+Thân an lạc, trí hiển minh
+Được Chư Bồ Tát chung quanh dắt dìu
+Tu theo Phật Pháp cao siêu
+Dần dần thành tựu những điều lớn lao
+Tâm siêu thoát khỏi trần lao
+Bước vào Phật địa, dự vào Thánh lưu
+Rồi dùng hạnh nguyện đại từ
+Hóa thân ba cõi vân du sáu đường
+Gieo Chánh Pháp đến ngàn phương
+Đưa người mọi nẻo về nương Phật Đà. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+
+<b>Dâng trà 3: (Chung hiến trà châm) ***</b>
+Gia chủ (gia quyến) lễ hương linh nhị bái (2 lạy) O</pre>
+<h3>THÁNH TRÍ BÁT NHÃ</h3>
+<pre>Khi Bồ Tát Quán Tự Tại thành tựu được Chánh Định thẳm sâu, phát sinh trí tuệ Bát Nhã vi diệu, liền thấy thân tâm năm uẩn này trống rỗng, không quan trọng nữa, và ngay đó vượt qua tất cả đau khổ.
+Này Xá Lợi Phất, Bồ Tát thành tựu được Chánh Định vĩ đại an lành nên không còn chấp vào sắc thân, tự tại đối với sắc thân;
+không còn bị chi phối bởi cảm giác, tự tại đối với cảm giác; không còn vướng mắc nơi tâm tưởng, tự tại đối với tâm tưởng; không còn lệ thuộc vào tâm năng, tự tại đối với tâm năng; không còn bị giới hạn bởi cái biết, tự tại đối với cái biết.
+Này Xá Lợi Phất, với sự tự tại an lành như thế, Bồ Tát đi vào sinh tử mang hạnh nguyện hóa độ chúng sinh. Khi ở trong sinh tử, Bồ Tát không bị dính mắc bởi bất cứ điều gì, không cần bất cứ điều gì, không xao động theo bất cứ sự biến dịch nào của cuộc đời. Bồ Tát đến với chúng sinh bằng tâm từ bi vô hạn, không phân biệt kẻ sang người hèn, kẻ dở người hay, thậm chí thương yêu cả kẻ xấu ác để tìm cách hóa độ. Bồ Tát sẽ phải chấp nhận mọi điều tôn vinh hay nhục mạ, vinh quang hay cay đắng một cách bình thản. Dũng lực của Bồ Tát là vô biên vô hạn.
+Bồ Tát sẽ tùy theo tâm tình, sở thích, ngôn ngữ của chúng sinh mà tìm cách hóa độ chứ không chấp cứng vào văn tự Kinh điển vì cả cuộc sống của Bồ Tát là một bài Kinh thiêng liêng bất tận; những việc làm của Bồ Tát là tấm gương sáng ngời, ngay cả một cái nhìn hay sự im lặng của Bồ Tát cũng như sấm sét có thể làm thay đổi tâm hồn người đối diện.
+Tâm của Bồ Tát chính là vô lượng đạo lý; lời nói của Bồ Tát chính là vô lượng Kinh điển, nghe không giống như ngôn ngữ cổ thư nhưng không hề sai khác với ý Phật.
+Bồ Tát thực hành Bát Nhã như thế nên thành tựu vô lượngcông đức. Những công đức này  khiến cho Bồ Tát trở nên một vị Thánh đầy uy lực, không một chướng ngại nào, khổ nạn nào có thể xâm phạm được nữa. Bồ Tát đạt được sự bình an vô hạn cả nội tâm và ngoại cảnh.
+Chư Phật từ xưa đến nay hay sau này đều thực hành Bát Nhã như thế, thành tựu Chánh Định như thế, có được tự tại như thế, giáo hóa chúng sinh như thế để đắc thành Vô Thượng Chánh Đẳng Chánh Giác.
+Thần lực phi thường của Phật và Đại Bồ Tát có thể cứu giúp chúng sinh qua khỏi khổ nạn cấp thời để chúng sinh có cơ hội tu tập và gây tạo phước lành đền bù ác nghiệp quá khứ.
+Phải biết Bát Nhã là bờ bến hiền lành an ổn, là thuyền to lớn giữa biển sóng lao xao, là ánh sáng soi rọi giữa đêm đen mờ mịt, là sự cao thượng vượt hơn mọi điều cao thượng trên đời.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+</pre>
+<h3>PHỤC NGUYỆN</h3>
+<pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật   </b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật   </b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát</b>
+
+Hương linh về cội bồ đề
+Việc đời bỏ bớt hướng về đường tu
+Tham sân si mạn bây chừ
+Nguyện lòng dứt bỏ tâm từ khắp nơi.
+Phật đà giáo pháp rạng ngời
+Tu thân hành thiện đời đời an vui.
+Hoặc
+ 
+Sáng trăng sáng cả vườn đào
+Mượn đèn trí tuệ nêu cao cuộc đời
+Cùng nhau khuyên bảo mấy lời
+Gắng công hành thiện cho đời vinh quang, 
+Vui gì thế sự đa đoan
+Sinh già bệnh chết ngổn ngang não phiền
+Sống say, chết ngủ triền miên
+Luân hồi bể khổ đảo điên phập phồng
+Thân như điện chớp nắng hồng
+Vinh hoa phú quý có không mấy hồi
+Mau mau tỉnh giấc mộng đời
+Quay về bến giác lần hồi mà ra.
+Hoặc
+Hương linh vừa thọ thực đầy đủ và an lành
+Vừa nghe lời pháp nhủ, mau phát khởi tâm thành
+Nguyện tin sâu Tam Bảo, thề dứt ác làm lành
+Nguyện phát khởi thiện tâm, được rộng sâu trí tuệ
+Nguyện tu hành tinh tấn, dù gian khó không sờn
+Nguyện khắp cả tam thiên, đồng trọn thành Chánh Giác.   O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật  (3 lần)   O</b>
+ 
+Hôm nay ngày .........tại nhà linh .... có các gia chủ ...... thiết lễ trai diên thành tâm phụng cúng hương linh: ........ và ký gửi hương linh tại chùa ..............thỉnh mời các hương linh về đây nhập tự, an trú chốn già lam, lắng nghe kinh pháp, thọ thực và tu hành.
+Nguyện cầu Mười Phương Chư Phật phóng quang tiếp độ hương linh ...... đang ở tại nhà linh chùa ...... cùng tất cả hương linh quanh đây được quy y Tam Bảo, xả bỏ ưu phiền, lắng nghe kinh pháp, tin sâu nhân quả, khai mở từ tâm, phát tâm tu tập vô lượng pháp lành rồi nhờ Phật lực sinh về cõi Phật, đời đời không còn thối chuyển với chánh pháp. 
+Phổ nguyện gia môn hưng thịnh, quyến thuộc bình an, cửu huyền thất tổ, nội ngoại tiên linh, tốc xả mê đồ, vãng sinh lạc quốc. Nguyện cho tất cả chúng sinh đều trọn thành Phật đạo.   O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.   O</b>
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+</pre>
+				</div>`
 				
-				
-				<h2>BẢN CAM KẾT</h2><p>Gia đình {{hoten}} thành tâm cam kết...</p>
-				
-				
-				</div>` 
             },
 			{ 
                 id: 14, 
-                title: "Bản cam kết gia đình", 
+                title: "NGHI THỨC CON CÚNG CƠM CHO CHA MẸ - CÚNG THẤT/ CÚNG GIỖ/ CÚNG 49 NGÀY", 
                 type: 'main',
                 content: `<div class="section-block">
+<h2>NGHI THỨC CON CÚNG CƠM CHO CHA MẸ - CÚNG THẤT/ CÚNG GIỖ/ CÚNG 49 NGÀY</h2>
+<pre>
+<b>Chủ lễ xướng: tang chủ tựu vị, hồ quỳ niệm hương.</b>
+<b>Chủ lễ thán:</b> Thắp nén hương thơm, tâm thành bái thỉnh. Cung di Thánh giáo ngưỡng vọng đức Địa Tạng Từ Tôn tiếp độ hương linh ……….… được về đây thính pháp nghe kinh cùng thọ vật thực, và được nương nhờ thần lực Tam Bảo hộ trì tiếp độ mà phát tâm Bồ đề, sớm tỉnh giác sớm siêu sinh thoát khỏi vòng trầm luân mê muội, thác sinh về nơi cõi an vui, gặp chánh pháp tu hành chóng giác ngộ giải thoát. Thành tâm triệu thỉnh, triệu thỉnh hương linh nương từ lực Tam Bảo buông xả thân ngũ uẩn, phản quan hồi qui giác tánh thanh tịnh, rõ nẻo luân hồi, không lầm nhân quả được giác ngộ biết vô sinh.
+Sống vốn khôn ngoan chết phải linh.
+Âm dương hai ngả tự phân minh.   
+Gia đình tha thiết dâng trai lễ.
+Hương linh …………. mau về nghe kệ kinh.
+Hoặc:
+Thắp nén hương  nặng nhớ mong
+Cha (mẹ) ơi! Đây ngọc với đây lòng
+Đây tình còn đọng trong tha thiết
+Ơn nghĩa sinh thành con chưa trả xong.
+
+Hôm nay là ngày __ tháng __ năm__ là ngày tưởng niệm ân đức của cha (mẹ). Xin cha (mẹ) hiển linh về đây chứng chiếu tấm lòng hiếu thảo con cháu.
+Dâng lên hương hoa, đăng, trà, quả, phẩm vật. Chúng con xin hiến cúng, xin cha (mẹ) thọ tài hưởng thực, thính pháp văn kinh tốc xã ta bà siêu sinh lạc quốc.
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần)</b>
+
+<b>Tả chức: thượng hương, gia quyến lễ hương linh nhị bái. </b>
+<b>Chủ lễ thán: hương hoa thỉnh, hương hoa đăng phụng thỉnh.</b>
+Nam mô Nhất tâm phụng thỉnh:
+Đạo sư ba cõi, Đại hiếu Thích Ca
+Bao đời phụng dưỡng mẹ cha,
+Nhiều kiếp tu nhân thành Phật. 
+Bổn sư Thích Ca Mâu Ni Phật,
+Nhủ lòng thương xót tiếp độ hương linh _____ pháp danh__ sinh năm___ hưởng thọ (dương) trần thế__ tuổi, từ trần ngày__tháng__năm__.
+
+<b>Hương linh ơi!</b>
+Thân tứ đại  là nhân duyên giả hợp
+Còn Luật vô thường thì công lệ xưa nay
+Hương linh nương huyễn thân sống tạm cõi trần
+Nhân duyên mãn hương linh trở về quê cũ.
+
+<b>Chủ lễ: hương hoa thỉnh, hương hoa đăng phụng thỉnh</b>
+Nam mô nhất tâm phụng thỉnh: 
+Đức Quán Âm tu hành nhiều kiếp
+Với lời nguyện tha thiết độ sinh
+Khắp muôn nơi cầu nguyện chí thành
+Ngài ứng hiện muôn nghìn tế độ. 
+Nam mô đại từ đại bi tầm thanh cứu khổ cứu nạn Quán Thế Âm Bồ Tát tay cầm nhành liễu, phóng hào quang tiếp dẫn hương linh __pháp danh__sinh năm___hưởng thọ (dương) trần thế__ tuổi, từ trần ngày__tháng__năm__. 
+
+<b>Hương linh ơi!</b>
+Trần thế chỉ là chỗ tạm nương
+Cũng như quán trọ ở ven đường
+Chư hương linh là khách dừng chân tạm
+Rồi đến khi nhân duyên mãn
+Chư hương linh trở về quê cũ.
+
+<b>Chủ lễ: hương hoa thỉnh, hương hoa đăng phụng thỉnh.</b>
+Nam mô nhất tâm phụng thỉnh:
+U minh dứt hết ngục hình
+Dương gian độ thoát chúng sinh không còn
+Bồ đề nguyện lớn vuông tròn,
+Chứng nên phật quả không còn chúng sinh.
+Nam mô u minh giáo chủ bổn tôn Địa Tạng Vương Bồ Tát, tay cầm tích trượng, mình mặc áo châu, phóng hào quang tiếp độ hương linh __ pháp danh __ sinh năm ___ hưởng thọ (trên 60 tuổi) / hưởng dương (dưới 60 tuổi) trần thế__ tuổi, từ trần ngày__tháng__năm__.
+
+<b>Duy nguyện:</b>
+Tam thỉnh hương linh giáng lai lâm,
+Thọ thử hương hoa phổ cúng dường,
+Y nhiên thỉnh tọa thính kinh văn,
+Diễn kinh văn Bồ tát Ma ha tát. 
+
+ 
+<b>Chủ lễ: (tang chủ kiềng thành trà châm sơ tuần,) </b>
+<b>Tả chức: khởi thân lễ nhị bái, bình thân giai quỳ. </b>
+Than ôi! Phụ đạo sơn nham đức
+Quảng càng khôn tình lãng lãng
+Mẫu ân đông hải công hoằng sơn thủy nghĩa mang mang
+Nghĩa là mẹ sinh ta còn cha thì nuôi ta cực khổ
+Nghĩ thương cha mẹ xót xa tấm lòng
+Nuôi con tay ẳm tay bồng
+Trời cao dòng dõi khó mong đáp đền.
+
+<b>Nếu cúng cho mẹ thì thêm bài: </b>
+Mấy mươi năm đời chúng con có mẹ
+Bỗng một ngày mẹ lặng lẽ bay xa
+Dẫu dặn lòng đời mộng ảo thoáng qua
+Nhưng ai biết nỗi đau là khôn tả…
+
+Nhìn di ảnh sau khói trầm quyện tỏa
+Mẹ về đâu giữa nghìn đóa mây trôi
+Nước mắt trào đành câm nín lại thôi
+Lòng thương mẹ gửi cho đời muôn lối…
+
+<b>Chủ lễ: tang chủ kiềng thành trà châm nhị tuần</b>
+<b>Tả chức: Khởi thân lễ nhị bái, bình thân giai quỳ.</b>
+
+<b>Chủ lễ thán: </b>
+Than ôi! Ơn cha (mẹ) 
+cao thâm tợ đất trời
+Nuôi con lao khổ chẳng hề vơi
+Mở vòng tay lớn vì con trẻ
+Hướng dẫn con đi suốt cuộc đời
+Những tưởng trăm năm đà tuổi thọ
+Nào ngờ dâu bể biến tang thương
+Ôi trăng hôm qua mới sáng 
+nay đã lu mờ
+Mẹ (cha) hiền mới thấy đó 
+nay bỗng đã mất,
+Ôi! Chúng con liên tưởng đến 
+một ngày xa xưa đó
+Khi chúng con vừa mở mắt chào đời
+Cha mẹ là người ban cho chúng con
+từng nụ cười tiếng khóc
+Chăm sóc dắt dìu theo, 
+mỗi bước con đi, lòng ước mong sao
+Con sớm đạt được, công thành danh toại
+Dầu cha mẹ phải chịu muôn ngàn gian khổ.
+Bầu trời trong mắt con ngày một xanh thêm, 
+Thì hỡi ơi! 
+Mái tóc mẹ cha lại ngày thêm sợi bạc
+Dầu mang thân lưu lạc xứ lạ quê người
+Lòng vẫn lo lắng cho các con 
+trong từng miếng ăn giấc ngủ
+Sợ con vào đời thua thiệt với người ta
+Cho con ăn học để mở mang trí tuệ
+Dựng vợ gả chồng có thế mà làm ăn
+Ước mong con được nên thân
+Dầu cho cha mẹ cơ bần nào quản chi
+Con đau ốm tức thì lo chạy
+Dầu tổn hao cách mấy cũng đành
+Khi con căn bệnh đặng lành
+Thì cha mẹ mới an thần mà định tâm.
+Ôi! chín tháng cưu mang ba năm bồng ẳm
+Ơn nghĩa sinh thành cao tựa thái sơn
+Ơn nghĩa kia con chưa đền đáp được
+Thì giờ mẹ (cha) đã vĩnh viễn ra đi
+Khi xưa còn nhỏ biết chi
+Đến nay biết được, thi hài còn đâu
+Từ đây hết đợi hết trông
+Mẹ (cha) đâu còn sống 
+mà chờ trông các con về
+Hỡi ơi! 
+Một mảnh hương linh xa nơi chi lộ
+Năm canh trường chạnh nỗi thâm tình
+Đò âm dương qua lại tuy thường
+Song cái cảnh biệt ly khó lấp
+Chữ ân nghĩa nặng nề là thế
+Xuôi nên câu báo đáp hằng ghi
+Gắp đồ ăn cơm xới dâng lên
+Để tỏ lòng thương tưởng
+Hương linh ơi thọ hưởng 
+chứng chiếu lòng thành
+
+<b>(Tang chủ gắp thức ăn, bưng chén cơm đặt ngang trán)</b>
+Mẹ (cha) ơi đây bát cơm nặng ước mong
+Mẹ (cha) ơi đây ngọc với đây lòng
+Đây tình còn đọng trong con trẻ
+Ơn nghĩa sinh thành 
+Chúng con chưa trả xong 
+<b>Nam Mô Mỹ Hương Trai Bồ Tát (3 lần)</b>
+<b>Gia chủ kiền thành cúc cung tấn phạn …</b>
+<b>Sau đó mời gia đình tụng kinh.</b>
+</pre>
+<h3>CÚNG CƠM CHO HƯƠNG LINH</h3>
+<pre>
+Đây vật thực thơm ngon tinh khiết
+Của gia đình dâng cúng hương linh
+Biết bao ơn nghĩa ân tình
+Tĩnh tâm thọ lãnh, hương linh an lành.
+Thọ thực xong tâm thành nghe Pháp
+Hiểu thế gian vui ít khổ nhiều
+Kiếp người như nắng buổi chiều
+Như sương buổi sớm lắm điều đổi thay. O
+
+Đời đau khổ bởi đầy mê muội
+Ích kỷ sâu, lầm lỗi càng tăng.
+Kiêu căng, làm bậy sống càn
+Chẳng so tội phước, chẳng màng nghiệp duyên
+Đời hạnh phúc khi lòng rộng mở
+Trọn vòng tay giúp đỡ thương nhau
+Từ tâm đức hạnh nhiệm mầu
+Ác duyên chấm dứt về mau cõi lành. O
+
+Hương linh phát tâm thành theo Phật
+Đấng đại hùng, đại lực, đại bi.
+Tin sâu giáo lý diệu kỳ
+Cứu người biển khổ thoát ly ách nàn
+Thọ thực xong an lành mãn nguyện
+Cùng Pháp mầu huyền nhiệm cao sâu
+Hương linh hết khổ hết sầu
+Hết tâm phiền muộn vui câu an nhàn. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (10 lần) O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Thế Chí Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát. (3 lần) O</b>
+
+<b>Chủ lễ xướng:</b> tang chủ kiền thành cúc cung tấn phạn.
+<b>Tả chức:</b> đảnh lễ hương linh nhị bái, bình thân giai quỳ.
+ 
+<b>Than ôi!</b>
+Hương linh ơi!
+Biển khổ mênh mông sóng ngập trời
+Khách trần chèo chống giữa mù khơi
+Thuyền ai ngược gió ai xuôi gió
+Quanh quẩn cùng trong bể khổ thôi.
+Hương linh ơi! 
+Nếu hồn muốn đặng siêu thăng
+Thì hồn phải sám hối ăn năn 
+Tội lỗi mình đã gây đã tạo
+Quy y Phật bất đọa địa ngục
+Quy y Pháp bất đọa ngạ quỷ
+Quy y Tăng bất đọa bàng sinh
+Hương linh ơi! 
+Một kiếp không tu muôn kiếp khổ
+Một đời ngộ đạo vạn đời vui.
+Vong mau sáng suốt chơn tâm nghe kinh kệ. 
+</pre>
+<h3>SÁM HƯƠNG LINH</h3>
+<pre>Cúi đầu đảnh lễ Như Lai
+Cha lành của khắp vạn loài chúng sinh
+Cùng Chư Bồ Tát quang minh
+Tâm từ soi sáng hữu tình trầm luân
+Chúng con cùng các quyến thân
+Người còn kẻ mất người gần kẻ xa. O
+
+Từ nay quy mạng Phật Đà
+Học theo Chánh Pháp cùng là Thánh Tăng
+Hiểu rằng cuộc sống thế nhân
+Vây quanh sóng khổ, bủa giăng gió sầu
+Dù rằng nghèo khổ sang giàu
+Kẻ nào khỏi khóc, người nào khỏi than
+Khi thì hợp, khi thì tan
+Lúc say quyền quý, lúc chan tủi sầu. O
+
+Những cơn bệnh hoạn đớn đau
+Những lần tử biệt biết bao nỗi buồn
+Lệ nhiều hơn nước mưa tuôn
+Máu nhiều hơn nước trên nguồn đổ xuôi
+Người đời gắng gượng tìm vui
+Trò chơi hư ảo chôn vùi tâm linh
+Nào là rượu, nào là tình
+Xong rồi nhìn lại thấy mình tội thêm
+Nỗi lo của kẻ đi đêm
+Biết mình nặng nghiệp chưa tìm lối ra. O
+
+Nay con sám hối Phật Đà
+Ăn năn lỗi trước, ngăn chừa lỗi sau
+Hiểu rằng nguyên cớ khổ đau
+Đều do ích kỷ gốc sâu tạo thành
+Tham lam dẫn đến tranh giành
+Hận thù dẫn đến nhục hình lẫn nhau
+Kiêu căng tự đại tự cao
+Hơn thua đố kỵ người nào giỏi hơn
+Chìm trong bóng tối chập chờn
+Si mê chấp ngã nặng hơn núi cồn
+Lang thang ngàn kiếp trầm luân
+Khổ đau chất lại vạn lần biển khơi. O
+
+Nay con quỳ dưới Phật đài
+Nguyện theo giáo pháp Như Lai nhiệm mầu
+Niết Bàn, lòng nguyện tin sâu
+Là nơi chấm dứt khổ đau luân hồi
+Vượt ngoài ba cõi ngàn đời
+Từ Bi trí giác rạng ngời vô biên
+Hiểu rằng Nhân Quả nghiệp duyên
+Công bằng chi phối mọi miền thế gian
+Người sung sướng, kẻ lầm than
+Đều do nghiệp trước cưu mang đến giờ
+Nên không yên lặng đợi chờ
+Mà lo gắng sức giúp cho mọi người. O
+
+Người vui là chính con vui
+Người buồn con cũng ngậm ngùi sẻ chia
+Hiểu rằng một sớm mai kia
+Xác thân tạm bợ trở về hư vô
+Nên không khờ dại tôn thờ
+Cái mà bệnh chết sẽ chờ lấy đi
+Nay còn sức khỏe xuân thì
+Khéo siêng làm phước dành khi trở về
+Hiểu rằng ngàn kiếp si mê
+Tham lam ích kỷ nặng nề âm u. O
+
+Nay theo Phật đấng đại từ
+Trái tim xin mở rộng như biển ngàn
+Thương yêu khắp cả thế gian
+Dù là kẻ oán người thân cũng đồng
+Nơi cõi sống, chốn tử vong
+Rừng cây chim thú, biển sông cá kình
+Nguyện lòng thương khắp chúng sinh
+Như thương quyến thuộc thâm tình đã lâu
+Từ nay mãi đến ngàn sau
+Sống vì tất cả, chẳng cầu riêng tư
+Hiểu rằng tam giới ngục tù
+Thân là cát bụi, tâm là bóng mây
+Từ lâu như kẻ ngủ say
+Si mê chấp ngã chưa ngày thoát ra. O
+
+Cúi đầu đảnh lễ Phật Đà
+Bậc thánh Vô Ngã vượt xa thế trần
+Vì không còn chấp ngã nhân
+Người thành vũ trụ, Người thành trăng sao
+Tâm Vô Ngã là đỉnh cao
+Con xin phát nguyện ngày nào chứng nên
+Chí tu học quyết vững bền
+Độ sinh vì Phật báo đền ơn sâu
+Hôm nay tha thiết nguyện cầu
+Xin đem công đức từ lâu đã làm
+Hướng về thế giới cõi âm
+Dành cho thân quyến còn cầm tại đây. O
+
+Mong sao cho những vị này
+Nương nhờ Phật lực về ngay cõi lành
+Thân an lạc, trí hiển minh
+Được Chư Bồ Tát chung quanh dắt dìu
+Tu theo Phật Pháp cao siêu
+Dần dần thành tựu những điều lớn lao
+Tâm siêu thoát khỏi trần lao
+Bước vào Phật địa, dự vào Thánh lưu
+Rồi dùng hạnh nguyện đại từ
+Hóa thân ba cõi vân du sáu đường
+Gieo Chánh Pháp đến ngàn phương
+Đưa người mọi nẻo về nương Phật Đà. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+
+
+<b>Chủ lễ xướng: tang chủ kiền thành trà châm tam tuần</b>
+<b>Khởi thân đảnh lễ nhị bái, bình thân giai quỳ</b></pre>
+<h3></h3>
+<h3>PHỤC NGUYỆN</h3>
+<pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật   </b>
+<b>Nam Mô Đương Lai Hạ Sanh Di Lặc Tôn Phật   </b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát</b>
+ 
+Hương linh về cội bồ đề
+Việc đời bỏ bớt hướng về đường tu
+Tham sân si mạn bây chừ
+Nguyện lòng dứt bỏ tâm từ khắp nơi.
+Phật đà giáo pháp rạng ngời
+Tu thân hành thiện đời đời an vui.
+Hoặc
+Hương linh vừa thọ thực đầy đủ và an lành
+Vừa nghe lời pháp nhủ, mau phát khởi tâm thành
+Nguyện tin sâu Tam Bảo, thề dứt ác làm lành
+Nguyện phát khởi thiện tâm, được rộng sâu trí tuệ
+Nguyện tu hành tinh tấn, dù gian khó không sờn
+Nguyện khắp cả tam thiên, đồng trọn thành Chánh Giác.   
+
+Hôm nay ngày .........tại gia đình tín chủ...... địa chỉ...thiết lễ trai diên thành tâm phụng cúng hương linh: ...
+Nguyện cầu Mười Phương Chư Phật phóng quang tiếp độ hương linh ...... cùng tất cả hương linh quanh đây được quy y Tam Bảo, xả bỏ ưu phiền, lắng nghe kinh pháp, tin sâu nhân quả, khai mở từ tâm, phát tâm tu tập vô lượng pháp lành rồi nhờ Phật lực sinh về cõi Phật, đời đời không còn thối chuyển với chánh pháp. 
+<b>Phổ nguyện</b> gia môn hưng thịnh, quyến thuộc bình an, cửu huyền thất tổ, nội ngoại tiên linh, tốc xả mê đồ, vãng sanh lạc quốc. Nguyện cho tất cả chúng sanh đều trọn thành Phật đạo.   O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật  (3 lần)   O</b>
+
+<b>Chủ lễ: lễ hiến sự hoàn mãn, tang chủ kiềng thành trà châm hậu tuần</b>
+<b>Khởi thân lễ tạ hương linh tứ bái.</b>
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+</pre>
+				</div>`
 				
-				
-				<h2>BẢN CAM KẾT</h2><p>Gia đình {{hoten}} thành tâm cam kết...</p>
-				
-				
-				</div>` 
             },
 			{ 
                 id: 15, 
+                title: "NGHI THỨC CHA MẸ CÚNG CƠM CHO CON - CÚNG THẤT/ CÚNG GIỖ/ CÚNG 49 NGÀY", 
+                type: 'main',
+                content: `<div class="section-block">
+<h2>NGHI THỨC CHA MẸ CÚNG CƠM CHO CON - CÚNG THẤT/ CÚNG GIỖ/ CÚNG 49 NGÀY</h2>
+<h3>PHẦN HÀNH LỄ</h3>
+<pre>Đánh 3 hồi khánh</pre>
+<h3>1. Gia chủ (gia quyến) Tựu vị:  </h3>
+<pre>Đến trước bàn thờ (cha mẹ, anh chị người lớn ngồi, còn những người nhỏ hơn hương linh thì quỳ)</pre>
+<h3>2. Nguyện hương: (chủ lễ cầm 3 cây nhang và niệm)</h3>
+<pre> 
+Lá vàng còn ở trên cây
+Lá xanh rụng xuống từ đây xa rồi
+Dưới khe dòng nước cuốn trôi
+Đẩy đưa phận mỏng luân hồi nơi nao
+Thân già quạnh quẽ mòn hao
+Bóng hình con trẻ thuở nào còn đây
+Trông ra ngọn cỏ lá cây
+Thấy hiu hiu gió thì hay con mình
+Nương theo tiếng kệ câu kinh
+Con ơi! gắng nhớ thân mình khói mây
+Mẹ cha dương thế còn đây 
+Cầu mong con trẻ sớm ngày siêu thăng. 
+ 
+Hôm nay, ngày … tháng … năm … gia đình chúng con thiết lễ cúng cơm … ngưỡng mong Mười Phương Chư Phật từ bi gia hộ phóng quang tiếp độ hương linh … Pháp danh … Sinh ngày … tháng … năm … hưởng dương … tuổi, tạ thế ngày … tháng … năm … Nguyện thỉnh hương linh về linh đài để nghe kinh kệ và thọ thực và tu hành.   O
+	Ngưỡng mong Mười Phương Chư Phật, Chư vị Bồ Tát, Thiện Thần Hộ Pháp gia hộ cho hương linh:....cùng tất cả hương linh quanh đây luôn được ấm no đầy đủ, quy y Tam Bảo, tránh xa điều ác, làm các việc lành, tin sâu nhân quả, phát tâm tu tập vô lượng pháp lành rồi nhờ Phật lực sớm sanh về cõi an lạc, đời đời không còn thối chuyển với chánh pháp, cùng pháp giới chúng sanh đồng thành Phật đạo.   
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần)   O</b></pre>
+<h3>3. Thượng hương: (chủ lễ cắm hương lên bàn thờ)</h3>
+<pre>
+<b>TÁN DƯƠNG CHI</b>
+ Dương chi tịnh thủy 
+Biến sái tam thiên
+Tánh không bát đức lợi nhân thiên
+Pháp giới quảng tăng diên
+Diệt tội tiêu khiên
+Hỏa diệm hóa hồng liên.   O
+<b>Nam Mô Thanh Lương Địa Bồ Tát (3 lần) O</b>
+
+<b>Chủ lễ xướng: </b>
+Nay lấy chơn ngôn mà triệu thỉnh
+Hương linh chẳng rõ để biết nghe
+Nhờ sức Tam Bảo đã hộ trì
+Ngày này, giờ này xin dự hội
+Tấc lòng thành thật ba cõi cảm thông. 
+Một nén hương xông nhất tâm triệu thỉnh.
+
+<b>Chủ lễ thỉnh:</b>
+Nam Mô Ta Bà Giáo Chủ Bổn Sư Thích Ca Mâu Ni Phật, thủ trì liên hoa phóng hào quang, nguyện thừa hào quang nhi tiếp dẫn, tiếp triệu phục vì hương linh:......văn kinh sơ thỉnh nguyện đáo gia đường, nghe kinh thính pháp, tiềm linh pháp vị.   O
+
+<b>Đồng dẫn: </b>Hương vân thỉnh, hương phụng thỉnh.   O
+
+<b>Chủ lễ xướng: </b>
+Nam Mô Đại Bi Quan Thế Âm Bồ Tát tại Phổ Đà Sơn, thủ trì dương liễu phóng hào quang, nguyện thừa hào quang nhi tiếp dẫn, tiếp triệu phục vì hương linh:....., văn kim tái thỉnh, nguyện đáo gia đường, thính diệu pháp âm, thọ cam lồ vị.   O
+
+<b>Đồng dẫn:</b> Hương hoa thỉnh, hương đăng phụng thỉnh.   O
+
+<b>Chủ lễ xướng: </b>
+Nam Mô Đại nguyện Địa Tạng Vương Bồ Tát tại Thiết Vi Sơn, thủ trì tích trượng phóng hào quang, nguyện thừa hào quang nhi, chấn khai địa ngục chi môn, tiếp dẫn, tiếp độ cho hương linh:......., văn kinh tam thỉnh, lai đáo gia đường thính pháp nghe kinh, tiêu diêu tự tại.   O
+
+<b>Đồng dẫn:</b> Hương hoa thỉnh, hương đăng phụng thỉnh.   O
+
+<b>Đồng tụng: </b> 
+Hôm nay phụng thỉnh hương linh về
+Thọ nhận cúng dường kinh kệ nghe
+Thấu rõ kinh kệ mong giải thoát
+Oai lực Tam Bảo đã chứng tri.   O
+<b>Nam Mô Chứng Minh Sư Bồ Tát Ma Ha Tát (3 lần) </b>
+Chuyên thân phụng thỉnh
+Cung vọng lai lâm
+Hiếu quyến thành tâm
+Cẩn đương bái thỉnh.    
+
+<b>Hương linh nghe triệu thỉnh, xin nguyện đến cho.</b>
+<b>Hương vân thỉnh, hương vân triệu thỉnh.   </b>
+ 
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát</b>
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần) O</b>
+ 
+<b>Chủ lễ xướng: </b>
+Hào quang chiếu rọi nơi tăm tối
+Phật đã phân thân xuống đạo tràng
+Nguyện độ hương linh về cõi tịnh
+Xa rời biển khổ chốn trần ai.
+Trăm năm còn có gì đâu
+Sang giàu rồi cũng con tàu biệt ly
+Hướng về giáo pháp Từ bi
+Con đường giải thoát bước đi đến cùng.   O 
+
+<b>Chủ lễ xướng: Hương vân thỉnh, hương vân triệu thỉnh, xin nguyện đến cho.  </b>
+Chơn linh thường tỏ
+Giác tánh chẳng mê
+Hướng tâm trở về
+Quy Y siêu thoát.   O
+Thành kính một lòng hương linh chứng giám
+<b>Nam Mô Chứng Minh Sư Bồ Tát Ma Ha Tát (3 lần)</b>
+
+<b>Chủ lễ xướng: *** trà châm sơ tuần *** - lạy nhị bái (2 lạy)</b>
+
+<b>Chủ lễ xướng: </b>
+Ân thâm nghĩa trọng con nở dứt bỏ cho đành
+Gan héo ruột sầu, cha (mẹ) muốn quên đi chẳng được.
+Hẳn duyên nghiệp không từ kiếp trước.
+Nên giờ đây con cướp công lao
+Để cha mẹ sống cảnh quạnh hiu
+Nhìn ngó lại con đã theo tuyền lộ
+Nghe triệu thỉnh hồn nhờ Phật độ
+Về đây cùng hưởng chút dư âm
+Thôi không duyên, không nợ, cũng tình thâm
+Con phù hộ cho gia đình an lạc. 
+
+<b>Chủ lễ xướng: (Tấn Phạn, Khải Phạn, Hiến Phạn)</b>
+ 
+Một mảnh hương linh xa chơi dị lộ
+Năm canh trường mộng chạnh nỗi thâm tình
+Đò âm dương qua lại tuy thường
+Xong cái cảnh biệt ly khó lấp
+Chữ ân nghĩa nặng nề là thế
+Xui nên câu thương nhớ hằng ghi
+Gắp đồ ăn, cơm xới dâng lên
+Để thầm tỏ nỗi niềm nhớ thương
+Hương linh thọ hưởng, chứng chiếu lòng thành.
+<b>Cha mẹ gắp đồ ăn để vào chén cơm.</b>
+<b>Sau đó mời gia đình tụng kinh.</b>
+</pre>
+<h3>CÚNG CƠM CHO HƯƠNG LINH</h3>
+<pre>
+Đây vật thực thơm ngon tinh khiết
+Của gia đình dâng cúng hương linh
+Biết bao ơn nghĩa ân tình
+Tĩnh tâm thọ lãnh, hương linh an lành.
+Thọ thực xong tâm thành nghe Pháp
+Hiểu thế gian vui ít khổ nhiều
+Kiếp người như nắng buổi chiều
+Như sương buổi sớm lắm điều đổi thay. O
+
+Đời đau khổ bởi đầy mê muội
+Ích kỷ sâu, lầm lỗi càng tăng.
+Kiêu căng, làm bậy sống càn
+Chẳng so tội phước, chẳng màng nghiệp duyên
+Đời hạnh phúc khi lòng rộng mở
+Trọn vòng tay giúp đỡ thương nhau
+Từ tâm đức hạnh nhiệm mầu
+Ác duyên chấm dứt về mau cõi lành. O
+
+Hương linh phát tâm thành theo Phật
+Đấng đại hùng, đại lực, đại bi.
+Tin sâu giáo lý diệu kỳ
+Cứu người biển khổ thoát ly ách nàn
+Thọ thực xong an lành mãn nguyện
+Cùng Pháp mầu huyền nhiệm cao sâu
+Hương linh hết khổ hết sầu
+Hết tâm phiền muộn vui câu an nhàn. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (10 lần) O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Thế Chí Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát. (3 lần) O</b>
+</pre>
+<h3>---</h3>
+<pre><b>Chủ lễ xướng:</b>
+<b>*** Dâng trà 2 (Hiến trà - trà châm nhị tuần)</b>
+Hương linh ơi!
+Biển khổ mênh mông sóng ngập trời
+Khách trần chèo chống giữa mù khơi
+Thuyền ai ngược gió ai xuôi gió
+Quanh quẩn cùng trong bể khổ thôi.
+Hương linh ơi! 
+Nếu hồn muốn đặng siêu thăng
+Thì hồn phải sám hối ăn năn 
+Tội lỗi mình đã gây đã tạo
+Quy y Phật bất đọa địa ngục
+Quy y Pháp bất đọa ngạ quỷ
+Quy y Tăng bất đọa bàng sinh
+Hương linh ơi! 
+Một kiếp không tu muôn kiếp khổ
+Một đời ngộ đạo vạn đời vui.
+Vong mau sáng suốt chơn tâm nghe kinh kệ.
+</pre>
+<h3> SÁM HƯƠNG LINH</h3>
+<pre>Cúi đầu đảnh lễ Như Lai
+Cha lành của khắp vạn loài chúng sinh
+Cùng Chư Bồ Tát quang minh
+Tâm từ soi sáng hữu tình trầm luân
+Chúng con cùng các quyến thân
+Người còn kẻ mất người gần kẻ xa. O
+
+Từ nay quy mạng Phật Đà
+Học theo Chánh Pháp cùng là Thánh Tăng
+Hiểu rằng cuộc sống thế nhân
+Vây quanh sóng khổ, bủa giăng gió sầu
+Dù rằng nghèo khổ sang giàu
+Kẻ nào khỏi khóc, người nào khỏi than
+Khi thì hợp, khi thì tan
+Lúc say quyền quý, lúc chan tủi sầu. O
+
+Những cơn bệnh hoạn đớn đau
+Những lần tử biệt biết bao nỗi buồn
+Lệ nhiều hơn nước mưa tuôn
+Máu nhiều hơn nước trên nguồn đổ xuôi
+Người đời gắng gượng tìm vui
+Trò chơi hư ảo chôn vùi tâm linh
+Nào là rượu, nào là tình
+Xong rồi nhìn lại thấy mình tội thêm
+Nỗi lo của kẻ đi đêm
+Biết mình nặng nghiệp chưa tìm lối ra. O
+
+Nay con sám hối Phật Đà
+Ăn năn lỗi trước, ngăn chừa lỗi sau
+Hiểu rằng nguyên cớ khổ đau
+Đều do ích kỷ gốc sâu tạo thành
+Tham lam dẫn đến tranh giành
+Hận thù dẫn đến nhục hình lẫn nhau
+Kiêu căng tự đại tự cao
+Hơn thua đố kỵ người nào giỏi hơn
+Chìm trong bóng tối chập chờn
+Si mê chấp ngã nặng hơn núi cồn
+Lang thang ngàn kiếp trầm luân
+Khổ đau chất lại vạn lần biển khơi. O
+
+Nay con quỳ dưới Phật đài
+Nguyện theo giáo pháp Như Lai nhiệm mầu
+Niết Bàn, lòng nguyện tin sâu
+Là nơi chấm dứt khổ đau luân hồi
+Vượt ngoài ba cõi ngàn đời
+Từ Bi trí giác rạng ngời vô biên
+Hiểu rằng Nhân Quả nghiệp duyên
+Công bằng chi phối mọi miền thế gian
+Người sung sướng, kẻ lầm than
+Đều do nghiệp trước cưu mang đến giờ
+Nên không yên lặng đợi chờ
+Mà lo gắng sức giúp cho mọi người. O
+
+Người vui là chính con vui
+Người buồn con cũng ngậm ngùi sẻ chia
+Hiểu rằng một sớm mai kia
+Xác thân tạm bợ trở về hư vô
+Nên không khờ dại tôn thờ
+Cái mà bệnh chết sẽ chờ lấy đi
+Nay còn sức khỏe xuân thì
+Khéo siêng làm phước dành khi trở về
+Hiểu rằng ngàn kiếp si mê
+Tham lam ích kỷ nặng nề âm u. O
+
+Nay theo Phật đấng đại từ
+Trái tim xin mở rộng như biển ngàn
+Thương yêu khắp cả thế gian
+Dù là kẻ oán người thân cũng đồng
+Nơi cõi sống, chốn tử vong
+Rừng cây chim thú, biển sông cá kình
+Nguyện lòng thương khắp chúng sinh
+Như thương quyến thuộc thâm tình đã lâu
+Từ nay mãi đến ngàn sau
+Sống vì tất cả, chẳng cầu riêng tư
+Hiểu rằng tam giới ngục tù
+Thân là cát bụi, tâm là bóng mây
+Từ lâu như kẻ ngủ say
+Si mê chấp ngã chưa ngày thoát ra. O
+
+Cúi đầu đảnh lễ Phật Đà
+Bậc thánh Vô Ngã vượt xa thế trần
+Vì không còn chấp ngã nhân
+Người thành vũ trụ, Người thành trăng sao
+Tâm Vô Ngã là đỉnh cao
+Con xin phát nguyện ngày nào chứng nên
+Chí tu học quyết vững bền
+Độ sinh vì Phật báo đền ơn sâu
+Hôm nay tha thiết nguyện cầu
+Xin đem công đức từ lâu đã làm
+Hướng về thế giới cõi âm
+Dành cho thân quyến còn cầm tại đây. O
+
+Mong sao cho những vị này
+Nương nhờ Phật lực về ngay cõi lành
+Thân an lạc, trí hiển minh
+Được Chư Bồ Tát chung quanh dắt dìu
+Tu theo Phật Pháp cao siêu
+Dần dần thành tựu những điều lớn lao
+Tâm siêu thoát khỏi trần lao
+Bước vào Phật địa, dự vào Thánh lưu
+Rồi dùng hạnh nguyện đại từ
+Hóa thân ba cõi vân du sáu đường
+Gieo Chánh Pháp đến ngàn phương
+Đưa người mọi nẻo về nương Phật Đà. O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+</pre>
+<h3>---</h3>
+<pre><b>Chủ lễ xướng:</b>
+<b>*** (Chung hiến trà châm) - nhị bái ( 2 lạy)</b>
+</pre>
+<h3>THÁNH TRÍ BÁT NHÃ</h3>
+<pre>Khi Bồ Tát Quán Tự Tại thành tựu được Chánh Định thẳm sâu, phát sinh trí tuệ Bát Nhã vi diệu, liền thấy thân tâm năm uẩn này trống rỗng, không quan trọng nữa, và ngay đó vượt qua tất cả đau khổ.
+Này Xá Lợi Phất, Bồ Tát thành tựu được Chánh Định vĩ đại an lành nên không còn chấp vào sắc thân, tự tại đối với sắc thân;
+không còn bị chi phối bởi cảm giác, tự tại đối với cảm giác; không còn vướng mắc nơi tâm tưởng, tự tại đối với tâm tưởng; không còn lệ thuộc vào tâm năng, tự tại đối với tâm năng; không còn bị giới hạn bởi cái biết, tự tại đối với cái biết.
+Này Xá Lợi Phất, với sự tự tại an lành như thế, Bồ Tát đi vào sinh tử mang hạnh nguyện hóa độ chúng sinh. Khi ở trong sinh tử, Bồ Tát không bị dính mắc bởi bất cứ điều gì, không cần bất cứ điều gì, không xao động theo bất cứ sự biến dịch nào của cuộc đời. Bồ Tát đến với chúng sinh bằng tâm từ bi vô hạn, không phân biệt kẻ sang người hèn, kẻ dở người hay, thậm chí thương yêu cả kẻ xấu ác để tìm cách hóa độ. Bồ Tát sẽ phải chấp nhận mọi điều tôn vinh hay nhục mạ, vinh quang hay cay đắng một cách bình thản. Dũng lực của Bồ Tát là vô biên vô hạn.
+Bồ Tát sẽ tùy theo tâm tình, sở thích, ngôn ngữ của chúng sinh mà tìm cách hóa độ chứ không chấp cứng vào văn tự Kinh điển vì cả cuộc sống của Bồ Tát là một bài Kinh thiêng liêng bất tận; những việc làm của Bồ Tát là tấm gương sáng ngời, ngay cả một cái nhìn hay sự im lặng của Bồ Tát cũng như sấm sét có thể làm thay đổi tâm hồn người đối diện.
+Tâm của Bồ Tát chính là vô lượng đạo lý; lời nói của Bồ Tát chính là vô lượng Kinh điển, nghe không giống như ngôn ngữ cổ thư nhưng không hề sai khác với ý Phật.
+Bồ Tát thực hành Bát Nhã như thế nên thành tựu vô lượngcông đức. Những công đức này  khiến cho Bồ Tát trở nên một vị Thánh đầy uy lực, không một chướng ngại nào, khổ nạn nào có thể xâm phạm được nữa. Bồ Tát đạt được sự bình an vô hạn cả nội tâm và ngoại cảnh.
+Chư Phật từ xưa đến nay hay sau này đều thực hành Bát Nhã như thế, thành tựu Chánh Định như thế, có được tự tại như thế, giáo hóa chúng sinh như thế để đắc thành Vô Thượng Chánh Đẳng Chánh Giác.
+Thần lực phi thường của Phật và Đại Bồ Tát có thể cứu giúp chúng sinh qua khỏi khổ nạn cấp thời để chúng sinh có cơ hội tu tập và gây tạo phước lành đền bù ác nghiệp quá khứ.
+Phải biết Bát Nhã là bờ bến hiền lành an ổn, là thuyền to lớn giữa biển sóng lao xao, là ánh sáng soi rọi giữa đêm đen mờ mịt, là sự cao thượng vượt hơn mọi điều cao thượng trên đời.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+</pre>
+<h3>PHỤC NGUYỆN </h3>
+<pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật   </b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật   </b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát   </b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát   </b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát O</b>
+Trăm năm còn có gì đâu
+Sang giàu rồi cũng con tàu biệt ly
+Hướng về giáo pháp từ bi
+Con đường giải thoát bước đi đến cùng.   
+<b>Hoặc</b>
+Dù lúc trước đã làm nên tội
+Nhưng về sau quyết đổi cuộc đời
+Luật Nhân Quả đã tin rồi
+Từng giờ, từng phút vun bồi thiện căn
+Chút điều tội cũng ngăn cũng giữ
+Chút điều lành cũng thử cũng làm
+Diệt trừ sân hận tham lam
+Huân tu khiêm hạ từ tâm vững bền
+Đường thiện nghiệp đi lên từng bước
+Nghiệp ác xưa từ khước quay lưng 
+Tội xưa xin chuộc dần dần
+Bằng vô số việc thiện dâng cho đời. 
+ 
+<b>Hoặc </b>
+ 
+Sáng trăng sáng cả vườn đào
+Mượn đèn trí tuệ nêu cao cuộc đời
+Cùng nhau khuyên bảo mấy lời
+Gắng công hành thiện cho đời vinh quang
+Vui gì thế sự đa đoan
+Sinh già bệnh chết ngổn ngang não phiền
+Sống say, chết ngủ triền miên
+Luân hồi bể khổ đảo điên phập phồng
+Thân như điện chớp nắng hồng
+Vinh hoa phú quý có không mấy hồi
+Mau mau tỉnh giấc mộng đời
+Quay về bến giác lần hồi mà ra. 
+
+Hôm nay ngày ...... gia chủ ...... thiết lễ trai diên cúng hương linh ...... Nguyện cầu Mười Phương Chư Phật phóng quang tiếp độ hương linh ...... được quy y Tam Bảo, phát tâm tu tập vô lượng pháp lành rồi nhờ Phật lực sinh về cõi Phật, đời đời không còn thối chuyển với chánh pháp. Cầu nguyện cho hương linh sớm được siêu thoát.
+Phổ nguyện gia môn hưng thịnh, quyến thuộc bình an, cửu huyền thất tổ, nội ngoại tiên linh, tốc xả mê đồ, vãng sinh lạc quốc. Nguyện cho tất cả chúng sinh đều trọn thành Phật đạo.   
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.   O</b>
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+
+</pre>
+				</div>`
+            },
+			{ 
+                id: 16, 
+                title: "NGHI THỨC RƯỚC VONG VỀ CHÙA", 
+                type: 'main',
+                content: `<div class="section-block">
+<h2>NGHI THỨC RƯỚC VONG VỀ CHÙA</h2>
+<pre>(Đứng nơi cần rước vong, vài người cầm nhang, hoa, quả. Thầy chủ lễ đứng giữa, Tăng Ni đứng hai bên phía sau, Phật tử đứng kế theo đó)
+<b>CHỦ LỄ KHẤN</b>
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+Hôm nay ngày …… tháng …… năm ……, nhằm ngày …… tháng …… năm …... Đệ tử chúng con vân tập về đây thành tâm trì tụng “Sám Văn” nguyện Mười Phương Chư Phật, Chư Bồ Tát, Chư Hộ Pháp, phóng quang tiếp dẫn cho các hương linh vất va vất vưởng quanh đây được về chùa ……, thọ thực no đủ, nghe thấu lời kinh, phát khởi tâm thành quy y Tam Bảo, tinh tấn tu hành cùng tất cả chúng sinh đều trọn thành Phật đạo.   
+</pre>
+<h3>DÂNG HƯƠNG	</h3>
+<pre>Giới hương, định hương, dữ huệ hương
+Giải thoát, giải thoát tri kiến hương
+Quang minh vân đài biến Pháp giới
+Cúng dường Thập Phương Vô Thượng Tôn.  O
+<b>Nam Mô Hương Cúng Dường Bồ Tát Ma Ha Tát (3 lần) O</b>
+</pre>
+<h3>---</h3>
+<pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật (3 lần) O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát (3 lần) O</b>
+<b>Nam Mô Quán Âm Hóa Thân Tiêu Diện Hộ Pháp Bồ Tát (3 lần) O</b>
+Kính lạy Mười Phương Phật 
+Chư Bồ Tát Thánh Hiền.   O
+Xin gia hộ chúng con 
+Được nương thần lực Phật
+Để đưa các vong linh 
+Vất vưởng tại chốn 
+Về an trú Già Lam
+Tu hành chờ siêu thoát   O
+Nguyện trên Chư Hộ Pháp
+Dẫn dắt và chở che 
+Khiến cho các hương linh
+Được thấm nhuần pháp Phật
+Nguyện Phật lực vô biên
+Với Từ Bi vô tận 
+Khiến tâm các hương linh
+Được hiền lành mát mẻ
+Xin Mười Phương Chư Phật.   O
+Giúp cho các hương linh
+Từ bỏ sự buồn phiền
+Tham lam hay thù hận
+Xin cho các hương linh
+Biết thương yêu mọi loài
+Biết sám hối tội khiên 
+Để thiện căn tăng trưởng.   O
+<b>Nam Mô Quán Âm Hóa Thân Tiêu Diện Hộ Pháp Bồ Tát (10 lần) O</b></pre>
+<h3>THỈNH VONG</h3>
+<pre>Hỡi chư vị hương linh
+Đang quanh quẩn nơi 
+Xin hãy lắng lòng nghe
+Lời gọi mời thân ái.   O
+Kể từ khi bỏ xác
+Chư vị rất não phiền
+Nghiệp lạnh đói triền miên
+Hồn lang thang vất vưởng
+Không ai người thân thích
+Đủ công đức trợ duyên
+Nên từ bấy lâu nay
+Tâm hoang mang bất định.   O
+Nay nhân duyên đã đủ
+Chùa bày tỏ tâm thành
+Thỉnh chư vị hương linh
+Về ở chùa tu tập.   O
+Hãy kính tin Chư Phật
+Lòng từ ái vô biên
+Cha lành của chúng sinh
+Thầy hiền khắp ba cõi. 
+Hãy lắng nghe kinh kệ
+Lời giáo huấn nhiệm mầu
+Có năng lực sâu xa
+Giải trừ đi đau khổ.
+Hãy lìa xa buồn giận 
+Bỏ tâm ác hại người
+Trừ ích kỷ tham lam 
+Quên kiêu căng tật đố.   O
+Hãy khởi tâm từ ái
+Thương tất cả chúng sinh
+Kính tất cả Thánh Hiền
+Khiêm cung như cây cỏ
+Chùa là dòng suối mát
+Tắt ngọn lửa khổ đau
+Tăng là bóng cây cao
+Chở che đời cô độc
+Thế gian nhiều tội lỗi
+Có gì đáng vấn vương
+Bụi trần lắm đau thương
+Có gì nên quyến luyến.   O
+Từ đây về với Phật
+Tâm tỉnh hối tu hành
+Vun bồi lại thiện căn
+Đắp xây nền công đức
+Từ đây về công quả
+Lo gìn giữ chùa chiền
+Ủng hộ chốn già lam
+Giúp người yên tu tập.   O
+Như vậy là thoát khổ
+Hết lạnh đói từng ngày
+Cơm áo được đủ đầy
+Lòng an nhiên thư thái
+Khi công viên quả mãn
+Sẽ sinh về một nơi
+Sang quý giữa trời người
+Hộ trì cho Chánh Pháp.   O
+<b>Nam Mô Tiếp Dẫn Hương Linh Quy Hướng Già Lam Quán Âm Bồ Tát.</b>
+(Niệm mãi cho đến khi về đến chùa, vào nhà thờ linh)
+</pre>
+<h3>THỈNH HỘ PHÁP NHIẾP HOÁ CHƯ HƯƠNG LINH</h3>
+<pre><b>(nghi thức tụng tại Chùa)</b>
+<b>Kính lạy Mười Phương Phật</b>
+<b>Kính lạy Mười Phương Pháp</b>
+<b>Kính lạy Mười Phương Tăng. O</b>
+
+Cúi xin Chư Hộ Pháp
+Cùng Chư vị Thiện Thần
+Thường thủ hộ già lam
+Hãy thương tưởng chúng sinh
+Mà thọ trì nhiếp hoá
+Nay chúng con triệu thỉnh
+Hương linh ở các nơi
+Về tu tập tại Chùa
+Được nghe kinh thọ thực
+Xin Chư vị Hộ Pháp
+Dạy dỗ các hương linh
+Tuân thủ các giới điều
+Sống trong vòng khuôn phép. O
+
+Dạy hương linh điều thiện
+Tin Nhân Quả - Nghiệp Duyên
+Rõ báo ứng công bình
+Nên không làm điều ác
+Dạy hương linh ích kỷ
+Là gốc của khổ sầu
+Chỉ nên sống vị tha
+Để vượt ra đau khổ
+Dạy hương linh kín đáo
+Không bộc lộ hình hài
+Làm người khác động tâm
+Kẻo bị nhiều khổ báo
+Hương linh không xâm nhập
+Vào thân của mọi người
+Làm rối loạn cuộc đời
+Kiếp sau thành điên loạn. O
+
+Dạy hương linh công quả
+Bằng cách giữ cho chùa
+Không ác tặc nhiễu xâm
+Được bình an tu tập
+Cúi xin Chư Hộ Pháp
+Nhiếp hoá các hương linh
+Để họ được tiến tu
+Đến một ngày siêu thoát. O
+<b>Nam Mô Nhiếp Hoá Hương Linh Già Lam Thánh Chúng Bồ Tát. (10 lần) O</b>
+</pre>
+<h3>PHỤC NGUYỆN</h3>
+<pre>Hôm nay ngày … tháng … năm …, nhằm ngày … tháng … năm …... Đệ tử chúng con vân tập về đây thành tâm trì tụng kinh “Sám Văn” nguyện Mười Phương Chư Phật, Chư Bồ Tát, Chư Hộ Pháp, phóng quang tiếp dẫn cho các hương linh ở tại chùa … và cùng tất cả hương linh quanh đây thọ thực no đủ, nghe thấu lời kinh, phát khởi tâm thành, quy y Tam Bảo, tinh tấn tu hành, tránh xa điều ác, làm các việc lành, rồi nhờ Phật lực sinh về cõi Phật, đời đời không còn thối chuyển với chánh pháp, cùng pháp giới chúng sinh đều trọn thành Phật đạo.   O</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+
+</pre>
+				</div>`
+            },
+			{ 
+                id: 17, 
+                title: "LỄ TRỊ QUAN VÀ NHẬP LIỆM – LÀM LỄ TRƯỚC QUAN TÀI", 
+                type: 'main',
+                content: `<div class="section-block">
+	<h2>LỄ TRỊ QUAN VÀ NHẬP LIỆM – LÀM LỄ TRƯỚC QUAN TÀI</h2>
+<pre>Sau khi chọn ngày giờ tẩm liệm, vong gia tắm rửa xong, thay đồ mới.
+Lá phái thì hóa đi vì có hình Phật. Trang trí quan tài tùy vào phong tục của địa phương. Tốt nhất thì chỉ cần trải lớp trà, khăn nệm và trải 1 lớp cánh hoa cúc lên trên là được. 
+Chư Tăng trang nghiêm đứng phía trên đầu quan tài, xông một lò trầm để vào quan tài, bắt đầu lễ trị quan. (Ít nhất từ lúc tắt thở cho đến giờ nhập liệm, phải cách 4 tiếng đồng hồ mới đụng vào thi thể.)
+<b>TRỊ QUAN: Chủ lễ tán hay pháp ngữ bài:</b>
+<b>TÁN DƯƠNG CHI</b>
+Dương chi tịnh thủy
+Biến sái tam thiên
+Tánh không bát đức lợi nhân thiên
+Pháp giới quảng tăng diên
+Diệt tội tiêu khiên
+Hỏa diệm hỏa hồng liên.   O
+<b>Nam Mô Thanh Lương Địa Bồ Tát (3 lần)   O</b>
+
+<b>Chủ sám sái tịnh:</b>
+ (Bây giờ chủ lễ nhất tâm tay trái bưng chén nước cam lồ có cành hoa để sẵn trên chén, tay phải dùng ngón vô danh nhúng vào chén nước quyết ấn cam lồ hai chữ Án Lam vào chén nước và búng 3 cái, sau đó lấy hoa nhúng rải vào quan tài đi 3 vòng xung quanh quan tài.) (Hoặc miệng đọc bài pháp ngữ)
+ 
+Phù thử thủy giả,
+Bát công đức thủy tự thiên chơn, 
+Tiên tẩy chúng sinh nghiệp cấu trần, 
+Biến nhập tỳ lô hoa tạng giới, 
+Cá trung vô xứ bất siêu luân. 
+Thủy bất tẩy thủy, diệu cực pháp thân, 
+Trần bất nhiễm trần, phản tác tự kỷ, 
+Quyên trừ nội ngoại, 
+Đản địch đàn tràng, 
+Sái khô mộc nhi tác dương xuân, 
+Khiết uế ban nhi thành tịnh độ.
+Sở vị đạo, nội ngoại 
+Trung gian vô trược uế, 
+Thánh phàm u hiển tổng thanh lương. 
+
+<b>Chủ lễ thán thỉnh hoặc xướng</b>
+Bồ Tát liễu đầu cam lồ thủy,
+Năng linh nhất đích biến thập phương,
+Tinh chuyên cấu uế tận quyên trừ,
+Phổ sái pháp thân thường thanh tịnh
+</pre>
+<h3>NHẤT DẠ HIỀN GIẢ</h3>
+<pre>Không truy tìm quá khứ
+Không ước vọng tương lai
+Quá khứ đã qua rồi
+Tương lai lại chưa đến
+Chỉ có pháp hiện tại
+Tuệ quán chính là đây
+Bất động chẳng lung lay
+Hãy thực hành như thế O
+
+Không một ai biết trước
+Cái chết đến lúc nào
+Tử thần có đợi đâu
+Làm sao điều đình được
+Vì thế nên nỗ lực
+Tinh tấn suốt đêm ngày
+Tỉnh giác từng phút giây
+An trú bằng Chánh Niệm O
+
+Như vậy mới xứng đáng
+Người biết sống một mình
+Kẻ ấy đã tôn vinh
+Đạo nhiệm mầu vô thượng. O
+</pre>
+<h3>CHÁNH NIỆM TRONG ĐỜI SỐNG</h3>
+<pre>Tam Bảo gia hộ cho con
+Lúc thức cũng như lúc ngủ
+Ban ngày cũng như ban đêm
+Luôn nhớ thân này vô thường.
+Khi đi hoặc là khi đứng
+Khi ngồi hoặc là khi nằm
+Lúc làm việc hay nghỉ ngơi
+Luôn nhớ thân này vô thường.
+Khi nghe cũng như khi nói
+Đông người hay ở một mình
+Xem phim hay là đọc sách
+Luôn nhớ thân này vô thường.
+Lúc ăn cơm hay uống nước
+Khi tắm rửa hay vệ sinh
+Đắp y hay mang giày dép
+Luôn nhớ thân này vô thường.
+Những khi tâm con tỉnh giác
+Càng nhớ thân này vô thường
+Nguyện cho chúng sinh khắp chốn
+Luôn biết thân này vô thường.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+
+<b>Sau khi sái tịnh xong mời những người trong ban tẩm liệm vào vị trí để tiến hành nhập quan Trong lúc nhập quan, Chư Tăng và Phật tử hộ niệm tụng sám văn.</b>
+<b>Chủ lễ thán:</b>
+Có sinh có tử có luân hồi 
+Không sinh không tử không tới lui
+Sinh tử tới lui là mộng huyễn 
+Mau xa trần thế đến sen đài
+Ngưỡng bạch Phật Từ Tôn tiếp độ hương hồn   
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.   O</b>
+
+<b>Sau khi nhập quan xong thì mời gia đình quỳ trước linh sàng để tụng kinh</b>
+</pre>
+<h3>TỤNG SÁM VĂN</h3>
+<pre>Kính lạy mười phương Phật.
+Kính lạy mười phương Pháp.
+Kính lạy muời phương Tăng.   O
+Xin từ bi tiếp dẫn 
+Cho hương linh nơi đây
+Thân nằm nhẹ hồn bay
+Duyên trần thôi đã hết
+Cho hương linh nương tựa
+Về an trú già lam
+Được thấu rõ đạo mầu
+Quy y và siêu thoát.   O
+Cúi xin chư Hộ Pháp
+Dạy dỗ cho hương linh
+Biết tôn kính Phật Đà
+Chư Bồ Tát từ bi
+Chư Thánh Tăng giác ngộ.   O
+Cúi xin chư Hộ Pháp 
+Dạy dỗ cho hương linh
+Dâng trọn cả lòng mình 
+Kính tin Ba Ngôi Báu.   O
+Cho hương linh ý thức 
+Tuân thủ các giới điều
+Không phóng dật tự kiêu
+Sống trong vòng khuôn phép
+Dạy hương linh hiểu biết 
+Cuộc sống ở thế trần
+Danh lợi tựa phù vân
+Hèn sang như giấc mộng.   O
+Dạy hương linh hiểu thấu
+Từ chấp ngã ban đầu
+Lòng ích kỷ ăn sâu
+Thành tham lam ác độc
+Hương linh hiểu kiêu mạn
+Làm ô nhiễm thân tâm 
+Làm phát khởi lòng sân
+Khiến tan dần công đức.   O
+Dạy hương linh cẩn thận
+Chớ chia rẽ con người
+Chớ chỉ trích chê cười
+Để cho người nhục nhã
+Dạy hương linh thấu rõ
+Ngũ uẩn vốn hợp duyên
+Sinh diệt mãi triền miên
+Có gì đâu quyến luyến.   O
+Dạy hương linh Nhân Quả
+Báo ứng rất công bình
+Thiện ác rõ phân minh 
+Bởi nhân nào quả nấy.   O
+Cúi xin mười phương Phật
+Gia hộ cho hương linh
+Được sáng suốt an lành 
+Hướng về nơi cao thượng.   O
+Hương linh giờ hiểu rõ
+Cùng tĩnh niệm chắp tay
+Trọn kiếp chẳng đổi thay
+Nguyện tin sâu Tam Bảo.   O	
+Hương linh sống hòa hợp
+Tâm nhu nhuyến hiền hòa
+Đầy nhân ái vị tha 
+Đầy yêu thương hỷ xả.   O
+Nguyện làm lành không mỏi 
+Ác đạo quyết xa rời
+Tinh tấn chẳng buông lơi 
+Không biếng lười giãi đãi.   O
+Nguyện thấy mình hạt cát
+Giữa sa mạc mênh mông 
+Là giọt nước thanh trong 
+Giữa đại dương bát ngát.   O
+Nguyện xóa dần chấp ngã
+Đã trói buộc bao đời
+Tình thương trải muôn nơi
+Bằng trái tim rộng mở
+Đạo đức thơm lan tỏa
+Mọi ngõ ngách cuộc đời.   O
+Nguyện chân lý tuyệt vời 
+Chiếu soi trong hoàn vũ 
+Nguyện đời đời theo Phật.   O
+Muôn kiếp vẫn không cùng
+Lòng quyết giữ thủy chung
+Dù chông gai nguy khó
+Kính lạy Mười Phương Phật.   O
+Chư Bồ Tát Thánh Hiền
+Trong pháp giới vô biên
+Phóng từ quang tiếp dẫn
+Cho hương linh tĩnh lặng
+Dứt bỏ hết duyên trần 
+Ba nghiệp hết tham sân
+Ra khỏi vòng tăm tối.   O
+Cho hương linh thấy lỗi
+Hết ích kỷ, mạn, nghi
+Phát khởi tâm từ bi
+Yêu thương và độ lượng
+Cho hương linh hướng thượng
+Quyết dõng mãnh tu trì
+Thoát ái dục mê si
+Tiến tu sâu thiền định.   O
+Cho hương linh trí tuệ 
+Không lui bước giữa đường 
+Tâm nhẫn nhục kiên cường
+Đến tận cùng tuyệt đối.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật</b><b> </b><b>(3 lần)</b><b> </b><b>O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát</b><b> </b><b>(3 lần) O </b>
+<b>Nam Mô Đại Thế Chí Bồ Tát</b><b> </b><b>(3 lần) O </b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát</b><b> </b><b>(3 lần) O            </b>
+<b>Nam Mô Thanh Tịnh Đại Hải Chúng Bồ Tát</b><b> </b><b>(3 lần) O</b>
+</pre>
+<h3>PHỤC NGUYỆN</h3>
+<pre>Có sinh có tử có luân hồi
+Không sinh không tử không tới lui
+Sinh tử tới lui là mộng huyễn
+Mau xa trần thế đến đài sen
+Ngưỡng bạch Phật từ tôn tiếp độ hương linh: … PD:…sinh năm…mất hồi…ngày…HD/HT…
+
+<b>Chủ lễ: Lễ nhập quan hoàn mãn, toàn thể tang quyến lễ hương linh tứ bái (4 lạy).</b>
+
+</pre>
+				</div>`
+            },
+			{ 
+                id: 18, 
+                title: "NGHI THÀNH PHỤC (PHÁT TANG)", 
+                type: 'main',
+                content: `<div class="section-block">
+<h2>NGHI THÀNH PHỤC (PHÁT TANG)</h2>
+<h3>Làm lễ trước linh sàng</h3>
+<pre>Tang quyến chuẩn bị sẵn đồ tang đầy đủ đặt trước linh sàng. Tất cả tang quyến tề tựu trước linh sàng để làm lễ phát tang.
+<b>Chủ sám xướng:</b> Gia quyến tựu vị (tang chủ cầm hương ngang trán)
+Trăm năm còn có gì đâu
+Sang giàu rồi cũng con tàu biệt ly
+Hướng về giáo pháp từ bi
+Con đường giải thoát bước đi đến cùng
+Hôm nay ngày …… tháng …… năm …… chúng con cùng với tang quyến đốt nét tâm hương quỳ trước linh đài tụng kinh, làm lễ thành phục.   O
+Chúng con cùng với tang quyến, nương vào sức mạnh tâm linh của Chư Tăng mười phương, ngưỡng lạy Tam Bảo, cầu xin chứng giám. Xin cứu độ cho (cha, mẹ, v.v..) chúng con tên là …… pháp danh …… nguyên mạng sinh ngày …… tháng …… năm ……, qua đời lúc …… giờ, ngày …… tháng …… năm …….., hưởng dương (hưởng thọ) …… tuổi Chúng con đem lòng thành kính và tâm hiếu thảo làm lễ thành phục, tuyên cáo trước linh sàng, xin hương linh có mặt chú tâm nghe Kinh, hành Pháp. Cầu đạo lực của Phật và các vị Bồ Tát thánh tăng giáo hóa và tiếp dẫn hương linh về cõi Tịnh.   O
+<b>Nam Mô Siêu Lạc Độ Bồ Tát (3 lần). O</b>
+
+<b>Chủ lễ xướng:</b> Thượng hương (bảo tang chủ cắm hương lên lư)
+- Gia quyến lạy hương linh nhị bái, bình thân quỳ (2 lạy).   O
+
+<b>Chủ sám: </b>
+<b>Vẽ chữ Án Lam vào ly nước thì đọc</b>
+Bồ Tát liễu đầu cam lồ thủy,
+Năng linh nhất trích biến thập phương, 
+Tinh chuyên cấu uế tận quyên trừ, 
+Phổ sái pháp dien thường thanh tịnh.   O
+ 
+<b>Vẽ chữ Án Lam vào khăn thì đọc</b>
+ 
+Nhất tẩy trần ai trừ cấu uế, 
+Nhị tẩy trược tâm thọ kỳ tang, 
+Tam tẩy u minh thành lục trí, 
+Vong hồn thoát hóa tốc vãng Tây phương.
+Vạn vật sinh thành, thọ kỳ tang phục
+
+<b>Chủ lễ xướng:</b> lấy khăn tang phát cho tang chủ.
+
+<b>Thọ nhận tang phục</b>
+(Bài  là để tang cho ông bà cha mẹ)
+Công đức khó báo đáp
+Ân nghĩa làm sao đền 
+Trước linh nhận tang phục
+Hiếu hạnh nguyện không quên
+Ngũ phục chi nhơn các các kỳ phục.   O
+ 
+(Bài là để tang cho vợ chồng hay con cháu)
+Phụ mẫu tình thâm chung hữu biệt
+Phu thê nghĩa trọng dạ phân ly
+Càn khôn số tận tình nan tận
+Giang hán lưu càn lụy bất càn
+Cù lao đức trọng, cúc dục thâm ân
+Thập nguyệt hoài thai, tam niên nhũ bộ  
+ 
+Thứ ân thử đức, phẩn cốt nan thù 
+Liên đới bạch dĩ biểu châu ly
+Linh tiền thủ phủ, ô hô ai tai !
+Ngũ Phục Chi Nhơn Các Các Kỳ Phục.   O
+ 
+(Bây giờ tang gia mặc tang phục thọ lễ trước linh sàng)
+<b>Phục tang xong chủ lễ xướng:</b> gia quyến lễ hương linh nhị bái.
+<b>Chủ lễ</b><b>:</b>
+Cẩn y tam thừa giáo
+Xưng tụng thất Như Lai
+Hương linh thừa Phật lực
+Thác hóa bảo liên đài.</pre>
+<h3>---</h3>
+<pre><b>Chủ lễ mời gia quyến tụng sám </b>
+Đây vành khăn trắng ngang đầu
+Tâm trung chữ hiếu niệm đầu chữ nhân
+Lòng thành tưởng nhớ người thân
+Anh em cha mẹ ân nhân họ hàng
+Công cha nặng cao bằng non thái
+Nghĩa mẹ sâu Đông Hải trùng dương
+Phu thê… duyên nợ đoạn trường 
+Cả đời nương tựa đôi đường cách xa.   
+Tình huynh đệ ruột rà ràng buộc 
+Nghĩa họ hàng quyến thuộc tình thân
+Vô thường già trẻ chẳng phân
+Âm dương cách biệt sơ thân hai đường
+Nay tử biệt sinh ly cách trở 
+Mà thế trần duyên nợ đa mang.   O
+Hương linh tỉnh ngộ hồi tâm
+Nương theo Chánh Pháp ngập tràn tình thương
+Cúi lạy Phật mười phương gia hộ
+Rải lòng từ tiếp độ hương linh
+Chánh tà phải biết phân minh 
+Nương nhờ Phật lực tâm linh sáng dần.   
+Hương linh nguyện chân thành học Phật
+Hiểu thế gian muôn vật đổi dời
+Thoát vòng sinh tử luân hồi 
+Nhất tâm tĩnh niệm thảnh thơi an nhàn. 
+Hương linh nguyện siêng làm việc thiện 
+Dứt tham sân, đoạn tận gian tà
+Mở lòng từ ái vị tha
+Độ người, giúp vật thoát ra thế trần
+Dâng trọn vẹn lòng thành tưởng niệm
+Chấp tay sen khấn nguyện mười phương
+Nguyện trên chư Phật tỏ tường
+Cho hương linh được về nương cõi lành.   
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+<b>Nam Mô Đại Từ Di Lặc Tôn Phật (3 lần) O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát (3 lần) O</b>
+<b>Nam Mô Đại Thế Chí Bồ Tát </b><b>	 (3 lần) O</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát (3 lần) O</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát (3 lần) O</b></pre>
+<h3>---</h3>
+<pre><b>Cúng cơm cho hương linh : </b>
+<b>(Tang quyến chuẩn bị 1 mâm cơm chay, 1 bát cơm trắng, 1 ấm trà, 3 ly trà, để trước linh sàng)</b>
+<b>Chủ sám: tấn phạn, khải phạn, hiến phạn.</b>
+<b>(Mời tang chủ gắp thức ăn vào bát, dâng bát cơm lên ngang trán) </b>
+Chủ sám:
+Mẹ (cha) ơi đây bát cơm nặng ước mong
+Mẹ (cha) ơi đây ngọc với đây lòng
+Đây tình còn đọng trong con trẻ
+Ơn nghĩa sinh thành 
+thì chúng con chưa trả xong 
+<b>Nam Mô Mỹ Hương Trai Bồ Tát (3 lần)</b>
+<b>Hoặc</b>
+Hương linh ơi đây bát cơm nặng ước mong
+Hương linh ơi đây ngọc với đây lòng
+Đây tình còn đọng trong thương nhớ
+Ơn nghĩa tình thâm chưa trả xong
+ 
+Nam Mô Mỹ Hương Trai Bồ Tát (3 lần)
+Gia chủ kiền thành cúc cung tấn phạn …
+Sau đó mời gia đình tụng kinh. 
+</pre>
+<h3>CÚNG CƠM CHO HƯƠNG LINH</h3>
+<pre>(Gia quyến cùng quỳ trước hương linh, lễ hương linh 2 lễ)
+
+Đây vật thực thơm ngon tinh khiết
+Của gia đình dâng cúng hương linh
+Biết bao ơn nghĩa ân tình
+Tĩnh tâm thọ lãnh, hương linh an lành.
+Thọ thực xong tâm thành nghe Pháp
+Hiểu thế gian vui ít khổ nhiều
+Kiếp người như nắng buổi chiều
+Như sương buổi sớm lắm điều đổi thay. O
+
+Đời đau khổ bởi đầy mê muội
+Ích kỷ sâu, lầm lỗi càng tăng.
+Kiêu căng, làm bậy sống càn
+Chẳng so tội phước, chẳng màng nghiệp duyên
+Đời hạnh phúc khi lòng rộng mở
+Trọn vòng tay giúp đỡ thương nhau
+Từ tâm đức hạnh nhiệm mầu
+Ác duyên chấm dứt về mau cõi lành. O
+
+Hương linh phát tâm thành theo Phật
+Đấng đại hùng, đại lực, đại bi.
+Tin sâu giáo lý diệu kỳ
+Cứu người biển khổ thoát ly ách nàn
+Thọ thực xong an lành mãn nguyện
+Cùng Pháp mầu huyền nhiệm cao sâu
+Hương linh hết khổ hết sầu
+Hết tâm phiền muộn vui câu an nhàn. O
+
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (10 lần) O</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Thế Chí Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát. (3 lần) O</b>
+<b>Nam Mô Đại Hiếu Mục Kiền Liên Bồ Tát. (3 lần) O</b>
+</pre>
+<h3>---</h3>
+<pre><b>Chủ lễ xướng:</b> tang chủ kiền thành cúc cung tấn phạn.
+<b>Tả chức:</b> tang quyến lễ hương linh nhị bái, bình thân giai quỳ.
+<b>Chủ lễ xướng:</b> Điểm trà (châm trà)
+<b>Nam Mô Gia Trì Lực Bồ Tát Ma Ha Tát (3 lần) O</b>
+</pre>
+<h3>THÁNH TRÍ BÁT NHÃ</h3>
+<pre>Khi Bồ Tát Quán Tự Tại thành tựu được Chánh Định thẳm sâu, phát sinh trí tuệ Bát Nhã vi diệu, liền thấy thân tâm năm uẩn này trống rỗng, không quan trọng nữa, và ngay đó vượt qua tất cả đau khổ.
+Này Xá Lợi Phất, Bồ Tát thành tựu được Chánh Định vĩ đại an lành nên không còn chấp vào sắc thân, tự tại đối với sắc thân;
+không còn bị chi phối bởi cảm giác, tự tại đối với cảm giác; không còn vướng mắc nơi tâm tưởng, tự tại đối với tâm tưởng; không còn lệ thuộc vào tâm năng, tự tại đối với tâm năng; không còn bị giới hạn bởi cái biết, tự tại đối với cái biết.
+Này Xá Lợi Phất, với sự tự tại an lành như thế, Bồ Tát đi vào sinh tử mang hạnh nguyện hóa độ chúng sinh. Khi ở trong sinh tử, Bồ Tát không bị dính mắc bởi bất cứ điều gì, không cần bất cứ điều gì, không xao động theo bất cứ sự biến dịch nào của cuộc đời. Bồ Tát đến với chúng sinh bằng tâm từ bi vô hạn, không phân biệt kẻ sang người hèn, kẻ dở người hay, thậm chí thương yêu cả kẻ xấu ác để tìm cách hóa độ. Bồ Tát sẽ phải chấp nhận mọi điều tôn vinh hay nhục mạ, vinh quang hay cay đắng một cách bình thản. Dũng lực của Bồ Tát là vô biên vô hạn.
+Bồ Tát sẽ tùy theo tâm tình, sở thích, ngôn ngữ của chúng sinh mà tìm cách hóa độ chứ không chấp cứng vào văn tự Kinh điển vì cả cuộc sống của Bồ Tát là một bài Kinh thiêng liêng bất tận; những việc làm của Bồ Tát là tấm gương sáng ngời, ngay cả một cái nhìn hay sự im lặng của Bồ Tát cũng như sấm sét có thể làm thay đổi tâm hồn người đối diện.
+Tâm của Bồ Tát chính là vô lượng đạo lý; lời nói của Bồ Tát chính là vô lượng Kinh điển, nghe không giống như ngôn ngữ cổ thư nhưng không hề sai khác với ý Phật.
+Bồ Tát thực hành Bát Nhã như thế nên thành tựu vô lượngcông đức. Những công đức này  khiến cho Bồ Tát trở nên một vị Thánh đầy uy lực, không một chướng ngại nào, khổ nạn nào có thể xâm phạm được nữa. Bồ Tát đạt được sự bình an vô hạn cả nội tâm và ngoại cảnh.
+Chư Phật từ xưa đến nay hay sau này đều thực hành Bát Nhã như thế, thành tựu Chánh Định như thế, có được tự tại như thế, giáo hóa chúng sinh như thế để đắc thành Vô Thượng Chánh Đẳng Chánh Giác.
+Thần lực phi thường của Phật và Đại Bồ Tát có thể cứu giúp chúng sinh qua khỏi khổ nạn cấp thời để chúng sinh có cơ hội tu tập và gây tạo phước lành đền bù ác nghiệp quá khứ.
+Phải biết Bát Nhã là bờ bến hiền lành an ổn, là thuyền to lớn giữa biển sóng lao xao, là ánh sáng soi rọi giữa đêm đen mờ mịt, là sự cao thượng vượt hơn mọi điều cao thượng trên đời.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+
+<b>---</b>
+<b>Chủ lễ xướng:</b> Chung hiến trà châm,
+Tang quyến lễ hương linh  nhị bái.
+Sinh sinh tử tử luân hồi
+Vô minh tham ái dẫn lôi sáu đường
+Biết bao ân oán đoạn trường
+Bờ mê nẻo dữ cứ nương theo hoài
+Nguyện cầu giáo pháp Như Lai
+Hương linh tỉnh ngộ đêm dài vô minh
+Vun bồi phước đức tâm linh
+Con đường giải thoát quang minh hướng về 
+<b>Chủ lễ xướng:</b> Lễ vừa hoàn mãn, toàn gia quyến lạy hương linh tứ bái 
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+</pre>
+<h3>---</h3>
+<pre><b>1. Trảm thôi:</b> (vải thô nhất) để 3 năm (con trai và đích tôn thừa trọng)
+<b>2. Cơ niên:</b> để một năm (cháu nội, con gái có chồng, anh em ruột, chú bác.v.v…)
+<b>3. Đại công:</b> để 9 tháng
+<b>4. Tiểu công:</b> để 5 tháng
+<b>5. Tỳ ma: </b>để 3 tháng
+<b>Sau khi phát tang, tiến hành nghi thức TIẾN LINH (Tức là NGHI THỨC CÚNG CƠM CHO HƯƠNG LINH – CON CÚNG CHA MẸ, HOẶC CHA MẸ CÚNG CON) XEM MỤC LỤC.</b>
+</pre>
+				</div>`
+            },
+			{ 
+                id: 19, 
+                title: "LỄ CÚNG NGỌ", 
+                type: 'main',
+                content: `<div class="section-block">
+<h2>LỄ CÚNG NGỌ</h2>
+<h3>NGUYỆN HƯƠNG</h3>
+<pre>Nguyện đem lòng thành kính
+Gửi theo đám mây hương
+Phảng phất khắp mười phương
+Cúng dường ngôi Tam Bảo  O
+Thề trọn đời giữ đạo
+Theo Phật Pháp làm lành
+Cùng pháp giới chúng sinh
+Cầu Phật từ gia hộ  O
+Tâm bồ đề kiên cố 
+Chí tu học vững bền
+Xa bể khổ nguồn mê
+Chóng quay về bờ giác. O
+</pre>
+<h3>KỲ NGUYỆN</h3>
+<pre>Hôm nay là ngày ........, gia chủ ... thiết lễ cúng ngọ.
+Ngưỡng nguyện Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hiền Thánh Tăng lai lâm chứng giám, phóng quang tiếp độ cho hương linh ...  được tự tại về đây lắng nghe Kinh Pháp, thọ thực và tu hành. O
+Nguyện cầu trên Mười Phương Chư Phật, Chư Đại Bồ Tát, Chư Hiền Thánh Tăng thùy từ gia hộ cho hương linh ... xả bỏ ưu phiền, quy y Tam Bảo, tránh xa việc ác, làm những việc lành, huân tu đạo đức, sớm siêu thoát về cảnh giới an lạc. O
+<b>Nam Mô Siêu Lạc Độ Bồ Tát Ma Ha Tát. (3 lần) O</b>
+</pre>
+<h3>TÁN THÁN PHẬT (chuông khánh)</h3>
+<pre>Đấng Pháp vương vô thượng
+Ba cõi chẳng ai bằng
+Thầy dạy khắp trời người
+Cha lành chung bốn loại. O
+
+Nay con nguyện quy y
+Diệt trừ vô lượng tội
+Dâng lên lời tán thán
+Ức kiếp vẫn không cùng. O
+
+Con thì vô nghĩa Phật vô biên
+Cảm ứng sâu xa rất diệu huyền
+Một chỗ dung thông vô lượng cõi
+Mười Phương Chư Phật hiện toàn thân
+Con như quỳ trước từng Đức Phật
+Cúi đầu đảnh lễ đến vô biên. O
+</pre>
+<h3>LỄ PHẬT</h3>
+<pre><b>Chí tâm đảnh lễ:</b> Nam Mô Thích Ca Mâu Ni Phật và Mười Phương Phật. O (1 lạy) 
+<b>Chí tâm đảnh lễ</b>: Nam Mô những Kinh thiêng Thế Tôn dạy và Mười Phương Pháp. O (1 lạy)  
+<b>Chí tâm đảnh lễ:</b> Nam Mô Thánh Tăng theo Thế Tôn học và Mười Phương Tăng.  O (1 lạy)
+</pre>
+<h3>TÁN CÀNH DƯƠNG</h3>
+<pre><b> </b>
+<b>Cam lồ nước mát</b>
+<b>Rải khắp tam thiên</b>
+<b>Cành dương huyền nhiệm</b>
+<b>Muôn loài tựa nương</b>
+<b>Lòng từ rộng mở</b>
+<b>Công đức khôn lường</b>
+<b>Sen hồng hóa hiện</b>
+<b>Tiêu hết oan khiên.  O</b>
+<b>Nam Mô Thanh Lương Địa Bồ Tát (3 lần)   O</b>
+</pre>
+<h3>CÚNG NGỌ</h3>
+<pre>Cúng dường mười phương Phật.
+Cúng dường mười phương Pháp.
+Cúng dường mười phương Tăng.
+Nguyện tất cả chúng sinh
+Được đầy đủ vật thực
+Phát khởi vô thượng tâm
+Xa lìa niệm bỏn xẻn
+Từ bi rải khắp nơi.   O
+Nguyện tất cả chúng sinh
+Ba đường ác xa lìa
+Trọn đầy giới định huệ
+Thanh tịnh cả tam thiên
+An lành khắp pháp giới.   O
+ 
+Nam Mô Quá Khứ Bảy Đời Chư Phật (1 lạy) O
+Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (1 lạy) O
+Nam Mô Đại Từ Di Lặc Tôn Phật (1 lạy) O
+Nam Mô Đại Trí Văn Thù Sư Lợi Bồ Tát (1 lạy) O
+Nam Mô Đại Hạnh Phổ Hiền Bồ Tát 	 (1 lạy) O
+Nam Mô Đại Bi Quán Thế Âm Bồ Tát (1 lạy) O
+Nam Mô Chư Hiền Thánh Tăng, Chư Hộ Pháp, Chư Vị Tổ Sư (1 lạy) O 
+ 
+Nam Mô Thường Trú Thập Phương Phật.   
+Nam Mô Thường Trú Thập Phương Pháp.
+Nam Mô Thường Trú Thập Phương Tăng.
+Nam Mô Bổn Sư Thích Ca Mâu Ni Phật.
+Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật.
+Nam Mô Thập Phương Tam Thế Nhất thiết Chư Phật.
+Nam Mô Đại Trí Văn Thù Sư Lợi Bồ Tát.
+Nam Mô Đại Hạnh Phổ Hiền Bồ Tát.
+Nam Mô Đại Bi Quán Thế Âm Bồ Tát
+Nam Mô Đại Thế Chí Bồ Tát.
+Nam Mô Đại Nguyện Địa Tạng Vương Bồ Tát.
+Nam Mô Hộ Pháp Chư Tôn Bồ Tát.
+Nam Mô Lịch Đại Tổ Sư Bồ Tát.
+Nam Mô Già Lam Thánh Chúng Bồ Tát.
+Nam Mô Giám Trai Sứ Giả Bồ Tát.
+Nam Mô Thập Điện Minh Vương Bồ Tát.
+Nam Mô Đạo Tràng Hội Thường Phật Bồ Tát O
+</pre>
+<h3>BÀI TÁN PHỔ CÚNG DƯỜNG</h3>
+<pre>Thức ăn tươi tốt 
+Trên, cúng dường chư Phật
+Cùng các Hiền Thánh Tăng
+Dưới, tất cả chúng sinh
+Trong sáu nẻo, ba đường
+Với tâm thành hiến dâng
+Cầu mong được bảo mãn.   O
+ 
+Con nay dâng cúng Cam Lồ
+Sắc hương mỹ vị biến đầy hư không
+Thành tâm tha thiết ngưỡng mong
+Đức Từ nạp thọ tấc lòng kính dâng.   
+Nam Mô Phổ cúng dường Bồ Tát.   O
+Cúng Phật đã xong
+Nguyện khắp chúng sinh
+Thành tựu Phật thân
+Chứng Vô tướng pháp.   O
+</pre>
+<h3>THÁNH TRÍ BÁT NHÃ</h3>
+<pre>Khi Bồ Tát Quán Tự Tại thành tựu được Chánh Định thẳm sâu, phát sinh trí tuệ Bát Nhã vi diệu, liền thấy thân tâm năm uẩn này trống rỗng, không quan trọng nữa, và ngay đó vượt qua tất cả đau khổ.
+Này Xá Lợi Phất, Bồ Tát thành tựu được Chánh Định vĩ đại an lành nên không còn chấp vào sắc thân, tự tại đối với sắc thân;
+không còn bị chi phối bởi cảm giác, tự tại đối với cảm giác; không còn vướng mắc nơi tâm tưởng, tự tại đối với tâm tưởng; không còn lệ thuộc vào tâm năng, tự tại đối với tâm năng; không còn bị giới hạn bởi cái biết, tự tại đối với cái biết.
+Này Xá Lợi Phất, với sự tự tại an lành như thế, Bồ Tát đi vào sinh tử mang hạnh nguyện hóa độ chúng sinh. Khi ở trong sinh tử, Bồ Tát không bị dính mắc bởi bất cứ điều gì, không cần bất cứ điều gì, không xao động theo bất cứ sự biến dịch nào của cuộc đời. Bồ Tát đến với chúng sinh bằng tâm từ bi vô hạn, không phân biệt kẻ sang người hèn, kẻ dở người hay, thậm chí thương yêu cả kẻ xấu ác để tìm cách hóa độ. Bồ Tát sẽ phải chấp nhận mọi điều tôn vinh hay nhục mạ, vinh quang hay cay đắng một cách bình thản. Dũng lực của Bồ Tát là vô biên vô hạn.
+Bồ Tát sẽ tùy theo tâm tình, sở thích, ngôn ngữ của chúng sinh mà tìm cách hóa độ chứ không chấp cứng vào văn tự Kinh điển vì cả cuộc sống của Bồ Tát là một bài Kinh thiêng liêng bất tận; những việc làm của Bồ Tát là tấm gương sáng ngời, ngay cả một cái nhìn hay sự im lặng của Bồ Tát cũng như sấm sét có thể làm thay đổi tâm hồn người đối diện.
+Tâm của Bồ Tát chính là vô lượng đạo lý; lời nói của Bồ Tát chính là vô lượng Kinh điển, nghe không giống như ngôn ngữ cổ thư nhưng không hề sai khác với ý Phật.
+Bồ Tát thực hành Bát Nhã như thế nên thành tựu vô lượngcông đức. Những công đức này  khiến cho Bồ Tát trở nên một vị Thánh đầy uy lực, không một chướng ngại nào, khổ nạn nào có thể xâm phạm được nữa. Bồ Tát đạt được sự bình an vô hạn cả nội tâm và ngoại cảnh.
+Chư Phật từ xưa đến nay hay sau này đều thực hành Bát Nhã như thế, thành tựu Chánh Định như thế, có được tự tại như thế, giáo hóa chúng sinh như thế để đắc thành Vô Thượng Chánh Đẳng Chánh Giác.
+Thần lực phi thường của Phật và Đại Bồ Tát có thể cứu giúp chúng sinh qua khỏi khổ nạn cấp thời để chúng sinh có cơ hội tu tập và gây tạo phước lành đền bù ác nghiệp quá khứ.
+Phải biết Bát Nhã là bờ bến hiền lành an ổn, là thuyền to lớn giữa biển sóng lao xao, là ánh sáng soi rọi giữa đêm đen mờ mịt, là sự cao thượng vượt hơn mọi điều cao thượng trên đời.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật. (3 lần) O</b>
+</pre>
+<h3>PHỤC NGUYỆN</h3>
+<pre><b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật</b>
+<b>Nam Mô Đương Lai Hạ Sinh Di Lặc Tôn Phật</b>
+<b>Nam Mô Đại Bi Quán Thế Âm Bồ Tát.   O</b>
+Tác đại chứng minh: 
+Đệ tử chúng con thành tâm cúng ngọ, niệm hồng danh Phật kỳ siêu cho hương linh …… pháp danh …… Từ trần ngày …… Ngưỡng mong mười phương chư Phật, chư Bồ tát, tiếp dẫn hương linh nhất tâm tịnh niệm, xả bỏ duyên trần, ra khỏi đường mê sinh về cõi tịnh.   O
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần) O</b>
+</pre>
+<h3>TAM TỰ QUY Y (chuông mõ)</h3>
+<pre><b>Tự quy y Phật,</b> xin nguyện chúng sinh, hiểu sâu đạo cả, phát tâm vô thượng. (1 lạy) O
+<b>Tự quy y Pháp,</b> xin nguyện chúng sinh, thấu rõ kinh tạng, trí tuệ như biển. (1 lạy) O
+<b>Tự quy y Tăng,</b> xin nguyện chúng sinh, nề nếp kỷ cương, yêu thương hòa hợp. (1 lạy) O
+</pre>
+				</div>`
+            },
+			{ 
+                id: 20, 
                 title: "Bản cam kết gia đình", 
                 type: 'main',
                 content: `<div class="section-block">
-				
-				
-				<h2>BẢN CAM KẾT</h2><p>Gia đình {{hoten}} thành tâm cam kết...</p>
-				
-				
-				</div>` 
+	
+				</div>`
+            },
+			{ 
+                id: 21, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 22, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 23, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 24, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 25, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 26, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 27, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
+            },
+			{ 
+                id: 28, 
+                title: "Bản cam kết gia đình", 
+                type: 'main',
+                content: `<div class="section-block">
+	
+				</div>`
             },
 			
             // Các bài kinh nằm ở đây
@@ -6474,9 +9244,51 @@ Và sẽ cùng chứng đạt VÔ NGÃ này.
             },
 			{ 
                 id: 111, 
-                title: "KINH TỪ TÂM", 
+                title: "BÀI KHẤN CHO ÂM BINH", 
                 type: 'sub',
-                content: `<div class="section-block"><h3>KINH TỪ TÂM</h3><pre>Con từng nghe kể như vầy</pre></div>` 
+                content: `<div class="section-block">
+				<h3>BÀI KHẤN CHO ÂM BINH</h3>
+<pre>Con kính lạy mười phương chư Phật
+Chư Thánh hiền Bồ Tát từ bi
+Chư Thiên Hộ Pháp thần uy
+Lai lâm gia hộ độ trì âm binh
+
+Xin dâng chút lòng thành phẩm vật
+Âm binh về thọ thực nghe kinh
+Nương nhờ thần lực uy linh
+Mười phương Tam Bảo chứng minh đàn tràng
+
+Đi theo Phật con đường tươi sáng
+Hãy tránh xa thầy bạn gian tà
+Từ lâu nuôi dưỡng tâm ma
+Để rồi sai khiến làm ra hại ngườí.
+
+Vì muôn kiếp nghìn đời chấp ngã
+Với đạo tà lỡ đã tin theo
+Chẳng màng Phật Pháp cao siêu 
+Về đây phá phách gây nhiều tội khiên
+
+Xin chư Phật Thánh hiền gia hộ 
+Cho âm binh tỉnh ngộ hồi tâm 
+Thoát ra tà kiến lỗi lầm
+Quy y theo Phật khởi tâm tu hành
+
+Xin gia hộ âm binh yêu mến
+Từ con người cho đến cỏ cây
+Hiểu rằng nhân quả trả vay
+Chở che tôn trọng không gây hại người
+
+Âm binh hãy nghe lời Phật dạy 
+Biết thương yêu dừng lại sai lầm 
+Không làm phiền loạn động tâm 
+Kết thêm thù oán gây mầm ghét ganh
+
+Xin tất cả tâm thành theo Phật
+Để tinh cầu đầy ắp tình thương 
+Xây nền đạo đức hiền lương 
+Hướng về giác ngộ phi thường bao la.
+<b>Nam Mô Bổn Sư Thích Ca Mâu Ni Phật (3 lần)</b></pre>
+				</div>` 
             },
 			{ 
                 id: 112, 
@@ -6528,6 +9340,24 @@ Và sẽ cùng chứng đạt VÔ NGÃ này.
             renderChecklists();
             updateUI();
         }
+		function clearAll() {
+    // 1. Xóa mảng lưu trữ thứ tự chọn
+    selectedOrder = [];
+    
+    // 2. (Tùy chọn) Nếu bạn muốn xóa cả thông tin tên/địa chỉ thì bỏ comment 3 dòng dưới:
+    // document.getElementById('input_name').value = "";
+    // document.getElementById('input_huonglinh').value = "";
+    // document.getElementById('input_address').value = "";
+
+    // 3. Vẽ lại danh sách (để bỏ dấu tích)
+    renderChecklists();
+    
+    // 4. Cập nhật lại vùng xem trước (sẽ hiện lại placeholder)
+    updateUI();
+    
+    // 5. Cuộn trang lên đầu
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
         function updateUI() {
             const previewArea = document.getElementById('pdf-content');
@@ -6580,29 +9410,16 @@ Và sẽ cùng chứng đạt VÔ NGÃ này.
         }
 
         function exportToPDF() {
-    const element = document.getElementById('pdf-content');
-    if (selectedOrder.length === 0) return alert("Vui lòng chọn nội dung!");
-
-    // 1. Tạm thời mở rộng tất cả để in
-    const collapsedHeaders = element.querySelectorAll('.is-collapsed');
-    const hiddenSections = element.querySelectorAll('.section-hidden');
-    
-    collapsedHeaders.forEach(h => h.classList.remove('is-collapsed'));
-    hiddenSections.forEach(s => s.classList.remove('section-hidden'));
-
-    const opt = {
-        margin: 0.5,
-        filename: 'Tai-Lieu-Tung-Kinh.pdf',
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-
-    // 2. Tiến hành xuất PDF
-    html2pdf().set(opt).from(element).save().then(() => {
-        // 3. (Tùy chọn) Sau khi lưu xong, nếu muốn khôi phục trạng thái thu gọn thì gọi lại updateUI()
-        // updateUI(); 
-    });
-}
+            const element = document.getElementById('pdf-content');
+            if (selectedOrder.length === 0) return alert("Vui lòng chọn nội dung!");
+            const opt = {
+                margin: 0.5,
+                filename: 'Tai-Lieu-Tung-Kinh.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
 
         renderChecklists();
 		let currentFontSize = 1.15; // Cỡ chữ mặc định ban đầu (rem)
