@@ -133,7 +133,24 @@
 		#sutra-checklist label:hover {
 			color: #4f46e5; /* Đổi sang màu Indigo khi rà chuột qua */
 		}
-			
+		
+
+
+			/* Tùy chỉnh thanh cuộn cho phần Info */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c7d2fe; /* Màu indigo nhạt */
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #818cf8;
+}
 		
     </style>
 </head>
@@ -184,10 +201,11 @@
             <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
                 <h2 class="font-bold text-indigo-800 mb-4 text-sm uppercase tracking-tighter" id="profile-section">📝 HỒ SƠ</h2>
                 <div class="space-y-3">
-                    <input type="text" id="input_name" placeholder="HỌ TÊN/PD GIA CHỦ" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
-                    <input type="text" id="input_huonglinh" placeholder="HƯƠNG LINH" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
-                    <input type="text" id="input_address" placeholder="ĐỊA CHỈ" oninput="updateUI()" class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
-                </div>
+					<textarea id="input_profile" placeholder="NHẬP THÔNG TIN HỒ SƠ (Họ tên, Hương linh, Địa chỉ...)" 
+						oninput="updateUI()" 
+						class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500 min-h-[120px] resize-none"
+					></textarea>
+				</div>
             </div>
 			<button onclick="clearAll()" class="w-full mb-4 py-2.5 bg-red-500 hover:bg-red-600 text-white text-xs font-bold rounded-xl transition-all active:scale-95 uppercase tracking-tighter shadow-md flex items-center justify-center gap-2">
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15958,54 +15976,38 @@ Thoát ra khỏi những khổ dau
 }
 
         function updateUI() {
-            const previewArea = document.getElementById('pdf-content');
-            const placeholder = document.getElementById('preview-placeholder');
-            const userData = {
-                hoten: document.getElementById('input_name').value || "................",
-                huonglinh: document.getElementById('input_huonglinh').value || "................",
-                diachi: document.getElementById('input_address').value || "................"
-            };
+			const previewArea = document.getElementById('pdf-content');
+			const placeholder = document.getElementById('preview-placeholder');
+			
+			// Lấy nội dung từ ô textarea mới
+			const profileContent = document.getElementById('input_profile').value || "................";
 
-            if (selectedOrder.length === 0) {
-                previewArea.classList.add('hidden');
-                placeholder.classList.remove('hidden');
-                return;
-            }
+			if (selectedOrder.length === 0) {
+				previewArea.classList.add('hidden');
+				placeholder.classList.remove('hidden');
+				return;
+			}
 
-            placeholder.classList.add('hidden');
-            previewArea.classList.remove('hidden');
+			placeholder.classList.add('hidden');
+			previewArea.classList.remove('hidden');
 
-            // 1. Lấy tất cả nội dung bài kinh được chọn
-            const selectedSubs = fullData.filter(d => d.type === 'sub' && selectedOrder.includes(d.id));
-            const subContent = selectedSubs.map(s => s.content).join('');
+			const selectedSubs = fullData.filter(d => d.type === 'sub' && selectedOrder.includes(d.id));
+			const subContent = selectedSubs.map(s => s.content).join('');
+			let finalHtml = "";
 
-            let finalHtml = "";
-            
-            // 2. Duyệt theo thứ tự user đã chọn
-            selectedOrder.forEach(id => {
-                const item = fullData.find(d => d.id === id);
-                
-                if (item.type === 'ritual_wrapper') {
-                    // Nếu chọn Nghi thức: Mở + Kinh đã chọn + Kết
-                    finalHtml += item.content_open + subContent + item.content_close;
-                } else if (item.type === 'main') {
-                    // Các mục chính khác như Bìa, Cam kết
-                    finalHtml += item.content;
-                } else if (item.type === 'sub') {
-                    // Chỉ hiển thị bài kinh lẻ nếu NGƯỜI DÙNG KHÔNG CHỌN Nghi thức
-                    const isRitualSelected = selectedOrder.includes(7);
-                    if (!isRitualSelected) {
-                        finalHtml += item.content;
-                    }
-                }
-                
-                finalHtml += '<div style="page-break-after: always; margin: 10px 0;"></div>';
-            });
+			selectedOrder.forEach(id => {
+				const item = fullData.find(d => d.id === id);
+				if (item.type === 'ritual_wrapper') {
+					finalHtml += item.content_open + subContent + item.content_close;
+				} else if (item.type === 'main') {
+					finalHtml += item.content;
+				}
+				finalHtml += '<div style="page-break-after: always; margin: 10px 0;"></div>';
+			});
 
-            previewArea.innerHTML = finalHtml.replace(/{{hoten}}/g, userData.hoten)
-                                             .replace(/{{huonglinh}}/g, userData.huonglinh)
-                                             .replace(/{{diachi}}/g, userData.diachi);
-        }
+			// Thay thế các biến cũ bằng nội dung mới (Để nội dung hiển thị hết, ta dùng thẻ <span> hoặc giữ nguyên)
+			previewArea.innerHTML = finalHtml.replace(/{{hoten}}|{{huonglinh}}|{{diachi}}/g, profileContent);
+		}
 
         function exportToPDF() {
             const element = document.getElementById('pdf-content');
@@ -16079,24 +16081,18 @@ function toggleModal(id) {
 }
 
 // Cập nhật nội dung cho Modal Info dựa trên Input người dùng
-function updateInfoModal() {
+	function updateInfoModal() {
     const container = document.getElementById('info-display-content');
-    const name = document.getElementById('input_name').value || "Chưa nhập";
-    const huonglinh = document.getElementById('input_huonglinh').value || "Chưa nhập";
-    const address = document.getElementById('input_address').value || "Chưa nhập";
+    // Lấy dữ liệu từ ô hồ sơ duy nhất
+    const profile = document.getElementById('input_profile').value || "Chưa có dữ liệu";
     
     container.innerHTML = `
-        <div class="bg-indigo-50 p-4 rounded-2xl border-l-4 border-indigo-500">
-            <p class="text-[10px] text-indigo-400 font-bold uppercase mb-1">Họ tên / PD Gia chủ</p>
-            <p class="text-sm font-bold text-indigo-900">${name}</p>
-        </div>
-        <div class="bg-emerald-50 p-4 rounded-2xl border-l-4 border-emerald-500">
-            <p class="text-[10px] text-emerald-400 font-bold uppercase mb-1">Hương linh</p>
-            <p class="text-sm font-bold text-indigo-900">${huonglinh}</p>
-        </div>
-        <div class="bg-amber-50 p-4 rounded-2xl border-l-4 border-amber-500">
-            <p class="text-[10px] text-amber-500 font-bold uppercase mb-1">Địa chỉ</p>
-            <p class="text-sm font-bold text-indigo-900">${address}</p>
+        <div class="bg-indigo-50 p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm">
+            <p class="text-[10px] text-indigo-400 font-bold uppercase mb-2 tracking-widest">THÔNG TIN HỒ SƠ</p>
+            
+            <div class="max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
+                <p class="text-sm font-semibold text-indigo-900 whitespace-pre-wrap break-words leading-relaxed">${profile}</p>
+            </div>
         </div>
     `;
 }
@@ -16132,7 +16128,15 @@ window.onclick = function(event) {
     }
 }
 
-
+// Thông báo khi tải lại trang
+window.addEventListener('beforeunload', function (e) {
+    const profileValue = document.getElementById('input_profile').value;
+    // Chỉ hiện thông báo nếu người dùng đã nhập dữ liệu
+    if (profileValue.trim() !== "" || selectedOrder.length > 0) {
+        e.preventDefault();
+        e.returnValue = 'NẾU BẠN TẢI LẠI TRANG, THÔNG TIN TRONG PHẦN HỒ SƠ SẼ BỊ MẤT. BẠN CÓ CHẮC CHẮN KHÔNG?';
+    }
+});
 
     </script>
 	<div class="mobile-only-btn fixed bottom-6 left-6 z-[100]">
