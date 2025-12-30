@@ -137,20 +137,33 @@
 
 
 			/* Tùy chỉnh thanh cuộn cho phần Info */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #c7d2fe; /* Màu indigo nhạt */
-    border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #818cf8;
-}
+		.custom-scrollbar::-webkit-scrollbar {
+			width: 4px;
+		}
+		.custom-scrollbar::-webkit-scrollbar-track {
+			background: #f1f1f1;
+			border-radius: 10px;
+		}
+		.custom-scrollbar::-webkit-scrollbar-thumb {
+			background: #c7d2fe; /* Màu indigo nhạt */
+			border-radius: 10px;
+		}
+		.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+			background: #818cf8;
+		}
+		
+		
+		@keyframes highlight-blink {
+			0% { background-color: transparent; }
+			50% { background-color: #4f46e5; transform: scale(1.02); } /* Màu tím và phóng to nhẹ */
+			100% { background-color: transparent; }
+		}
+		.blink-target {
+			animation: highlight-blink 0.8s ease-in-out 3; /* Nhấp nháy 3 lần */
+			border: 2px solid #16a34a !important;
+			border-radius: 8px;
+			z-index: 10;
+		}
 		
     </style>
 </head>
@@ -171,17 +184,14 @@
 </div>
 
     <header class="bg-indigo-900 text-white p-1.5 sticky top-0 z-50 flex justify-between items-center shadow-lg">
-    <div onclick="window.scrollTo(0,0)" class="cursor-pointer hover:bg-indigo-800 p-1.5 rounded-lg transition-all flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h4m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-        <span class="text-[10px] font-bold uppercase tracking-tighter">HOME</span>
-    </div>
-    
-    <button onclick="exportToPDF()" class="bg-emerald-500 hover:bg-emerald-600 px-3 py-1.5 rounded-full font-bold shadow-md transition-all active:scale-95 text-[11px] uppercase tracking-tight">
-        XUẤT PDF
-    </button>
-</header>
+		<div onclick="window.scrollTo(0,0)" class="cursor-pointer hover:bg-indigo-800 p-1.5 rounded-lg transition-all flex items-center gap-1.5">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h4m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+			</svg>
+			<span class="text-[10px] font-bold uppercase tracking-tighter">HOME</span>
+		</div>
+		<div class="text-[10px] font-bold uppercase opacity-50 pr-2">...</div>
+	</header>
 
     <div class="flex flex-col md:flex-row-reverse flex-1 overflow-hidden">
 	
@@ -201,7 +211,7 @@
             <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
                 <h2 class="font-bold text-indigo-800 mb-4 text-sm uppercase tracking-tighter" id="profile-section">📝 HỒ SƠ</h2>
                 <div class="space-y-3">
-					<textarea id="input_profile" placeholder="NHẬP THÔNG TIN HỒ SƠ (Họ tên, Hương linh, Địa chỉ...)" 
+					<textarea id="input_profile" placeholder="Nhập thông tin như Họ tên Gia chủ, Hương linh, Địa chỉ, ..." 
 						oninput="updateUI()" 
 						class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-indigo-500 min-h-[120px] resize-none"
 					></textarea>
@@ -16970,35 +16980,121 @@ Be fully enlightened in real tranquil bliss.
 				</div>` 
             },
         ];
+		
+		
 
+		
+		
+		
+		
         let selectedOrder = [];
+		
+		
+		let searchTerm = "";
 
-        function renderChecklists() {
-            const mainContainer = document.getElementById('main-checklist');
-            const sutraContainer = document.getElementById('sutra-checklist');
-            
-            let mainHtml = "";
-            let sutraHtml = "";
+			// Hàm ẩn hiện khung tìm kiếm
+			// Hàm ẩn/hiện tìm kiếm
+			function toggleSearch() {
+				const wrapper = document.getElementById('searchWrapper');
+				const btn = document.getElementById('searchBtn');
+				const results = document.getElementById('searchResults');
+				
+				if (wrapper.classList.contains('hidden')) {
+					wrapper.classList.remove('hidden');
+					document.getElementById('searchInput').focus();
+					btn.classList.replace('bg-indigo-600', 'bg-red-500');
+				} else {
+					wrapper.classList.add('hidden');
+					document.getElementById('searchInput').value = "";
+					results.innerHTML = "";
+					results.classList.add('hidden');
+					btn.classList.replace('bg-red-500', 'bg-indigo-600');
+				}
+			}
 
-            fullData.forEach(item => {
-                const orderIndex = selectedOrder.indexOf(item.id);
-                const isChecked = orderIndex !== -1;
-                const rowHtml = `
-                    <label class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-all border-b border-gray-50">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" ${isChecked ? 'checked' : ''} class="w-4 h-4 rounded text-indigo-600" onchange="toggleSection(${item.id})">
-                            <span class="text-sm ${isChecked ? 'text-indigo-800 font-bold' : 'text-gray-600'}">${item.title}</span>
-                        </div>
-                        ${isChecked ? `<span class="selection-number">${orderIndex + 1}</span>` : ''}
-                    </label>`;
-                
-                if (item.type === 'sub') sutraHtml += rowHtml;
-                else mainHtml += rowHtml;
-            });
+			// Hàm xử lý tìm kiếm
+			// Hàm tìm kiếm và hiển thị danh sách kết quả nhanh
+			function searchData() {
+				const query = document.getElementById('searchInput').value.toLowerCase().trim();
+				const resultsContainer = document.getElementById('searchResults');
+				
+				if (query.length < 2) {
+					resultsContainer.innerHTML = "";
+					resultsContainer.classList.add('hidden');
+					return;
+				}
 
-            mainContainer.innerHTML = mainHtml;
-            sutraContainer.innerHTML = sutraHtml;
-        }
+				// Lọc tất cả các kinh khớp với từ khóa
+				const matches = fullData.filter(item => item.title.toLowerCase().includes(query));
+
+				if (matches.length > 0) {
+					resultsContainer.classList.remove('hidden');
+					resultsContainer.innerHTML = matches.map(item => `
+						<div onclick="goToItem(${item.id})" class="p-3 hover:bg-indigo-50 border-b border-gray-100 text-sm text-gray-700 cursor-pointer flex justify-between items-center">
+							<span>${item.title}</span>
+							<span class="text-[10px] text-indigo-400 font-bold">${item.type === 'sub' ? 'KINH' : 'NGHI THỨC'}</span>
+						</div>
+					`).join('');
+				} else {
+					resultsContainer.innerHTML = "<div class='p-3 text-xs text-gray-400 italic'>Không tìm thấy...</div>";
+					resultsContainer.classList.remove('hidden');
+				}
+			}
+
+			// CẬP NHẬT LẠI hàm renderChecklists để hỗ trợ lọc (Thay thế hàm cũ của bạn)
+			// Hàm render mới: Giữ nguyên các mục đã chọn và hiển thị kết quả tìm kiếm
+			function renderChecklists() {
+				const mainContainer = document.getElementById('main-checklist');
+				const sutraContainer = document.getElementById('sutra-checklist');
+				let mainHtml = "";
+				let sutraHtml = "";
+
+				fullData.forEach(item => {
+					const orderIndex = selectedOrder.indexOf(item.id);
+					const isChecked = orderIndex !== -1;
+					
+					// Gán ID cho mỗi dòng là item-id (ví dụ: item-1, item-2)
+					const rowHtml = `
+						<div id="item-${item.id}" class="transition-all duration-300">
+							<label class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer border-b border-gray-50">
+								<div class="flex items-center gap-3">
+									<input type="checkbox" ${isChecked ? 'checked' : ''} 
+										   class="w-5 h-5 rounded text-indigo-600" 
+										   onchange="toggleSection(${item.id})">
+									<span class="text-sm ${isChecked ? 'text-indigo-800 font-bold' : 'text-gray-600'}">${item.title}</span>
+								</div>
+								${isChecked ? `<span class="selection-number">${orderIndex + 1}</span>` : ''}
+							</label>
+						</div>`;
+					
+					if (item.type === 'sub') sutraHtml += rowHtml;
+					else mainHtml += rowHtml;
+				});
+
+				mainContainer.innerHTML = mainHtml;
+				sutraContainer.innerHTML = sutraHtml;
+			}
+			
+			
+		// Hàm thực hiện việc cuộn và tạo hiệu ứng nhấp nháy
+		function goToItem(id) {
+			const targetElement = document.getElementById(`item-${id}`);
+			if (targetElement) {
+				// 1. Cuộn đến mục đó
+				targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+				// 2. Tạo hiệu ứng nhấp nháy
+				targetElement.classList.add('blink-target');
+				
+				// 3. Xóa hiệu ứng sau khi hoàn tất
+				setTimeout(() => {
+					targetElement.classList.remove('blink-target');
+				}, 2500);
+
+				// 4. (Tùy chọn) Ẩn danh sách kết quả sau khi chọn để dễ nhìn
+				document.getElementById('searchResults').classList.add('hidden');
+			}
+		}	
 
         function toggleSection(id) {
             const index = selectedOrder.indexOf(id);
@@ -17158,46 +17254,64 @@ function toggleModal(id) {
     `;
 }
 
-// Cuộn đến phân đoạn và đóng modal
-function scrollToSection(id) {
-    const element = document.getElementById(id);
-    if(element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        toggleModal('modal-list');
-    }
-}
+		// Cuộn đến phân đoạn và đóng modal
+		function scrollToSection(id) {
+			const element = document.getElementById(id);
+			if(element) {
+				element.scrollIntoView({ behavior: 'smooth' });
+				toggleModal('modal-list');
+			}
+		}
 
-// Xác nhận trước khi xóa
-function confirmClear() {
-    clearAll();
-    toggleModal('modal-list');
-}
+		// Xác nhận trước khi xóa
+		function confirmClear() {
+			clearAll();
+			toggleModal('modal-list');
+		}
 
-// Đóng modal khi click vào vùng bên ngoài (vùng nền mờ)
-window.onclick = function(event) {
-    const modalList = document.getElementById('modal-list');
-    const modalInfo = document.getElementById('modal-info');
+		// Đóng modal khi click vào vùng bên ngoài (vùng nền mờ)
+		window.onclick = function(event) {
+			const modalList = document.getElementById('modal-list');
+			const modalInfo = document.getElementById('modal-info');
 
-    // Nếu người dùng click trúng vào vùng nền của modal LIST
-    if (event.target == modalList) {
-        modalList.classList.add('hidden');
-    }
-    
-    // Nếu người dùng click trúng vào vùng nền của modal INFO
-    if (event.target == modalInfo) {
-        modalInfo.classList.add('hidden');
-    }
-}
+			// Nếu người dùng click trúng vào vùng nền của modal LIST
+			if (event.target == modalList) {
+				modalList.classList.add('hidden');
+			}
+			
+			// Nếu người dùng click trúng vào vùng nền của modal INFO
+			if (event.target == modalInfo) {
+				modalInfo.classList.add('hidden');
+			}
+		}
 
-// Thông báo khi tải lại trang
-window.addEventListener('beforeunload', function (e) {
-    const profileValue = document.getElementById('input_profile').value;
-    // Chỉ hiện thông báo nếu người dùng đã nhập dữ liệu
-    if (profileValue.trim() !== "" || selectedOrder.length > 0) {
-        e.preventDefault();
-        e.returnValue = 'NẾU BẠN TẢI LẠI TRANG, THÔNG TIN TRONG PHẦN HỒ SƠ SẼ BỊ MẤT. BẠN CÓ CHẮC CHẮN KHÔNG?';
-    }
-});
+		// Thông báo khi tải lại trang
+		window.addEventListener('beforeunload', function (e) {
+			const profileValue = document.getElementById('input_profile').value;
+			// Chỉ hiện thông báo nếu người dùng đã nhập dữ liệu
+			if (profileValue.trim() !== "" || selectedOrder.length > 0) {
+				e.preventDefault();
+				e.returnValue = 'NẾU BẠN TẢI LẠI TRANG, THÔNG TIN TRONG PHẦN HỒ SƠ SẼ BỊ MẤT. BẠN CÓ CHẮC CHẮN KHÔNG?';
+			}
+		});
+
+
+		// Lắng nghe sự kiện click trên toàn bộ cửa sổ (window)
+		window.addEventListener('click', function(event) {
+			const wrapper = document.getElementById('searchWrapper'); // Khung chứa ô nhập và kết quả
+			const btn = document.getElementById('searchBtn');       // Nút kính lúp
+			
+			// Kiểm tra: 
+			// 1. Nếu khung tìm kiếm ĐANG HIỆN (không có class 'hidden')
+			// 2. VÀ vị trí nhấp chuột (event.target) KHÔNG nằm bên trong wrapper
+			// 3. VÀ vị trí nhấp chuột KHÔNG phải là nút kính lúp (để tránh xung đột với hàm toggleSearch)
+			if (!wrapper.classList.contains('hidden')) {
+				if (!wrapper.contains(event.target) && !btn.contains(event.target)) {
+					toggleSearch(); // Gọi hàm để đóng khung tìm kiếm và xóa dữ liệu cũ
+				}
+			}
+		});
+
 
     </script>
 	<div class="mobile-only-btn fixed bottom-6 left-6 z-[100]">
@@ -17251,5 +17365,36 @@ window.addEventListener('beforeunload', function (e) {
 			
 		</div>
 	</div>
+	
+	
+	<div class="fixed top-0 right-0 z-[100] flex flex-col items-end gap-4">
+    
+		<button onclick="exportToPDF()" class="bg-emerald-600 text-white p-0 rounded-full shadow-2xl active:scale-90 transition-all border-2 border-white flex items-center justify-center w-14 h-14" title="Tải xuống PDF">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+			</svg>
+		</button>
+
+		<div class="relative flex flex-col items-end">
+			<div id="searchWrapper" class="hidden absolute right-16 top-0 flex flex-col items-end gap-2">
+				<input type="text" id="searchInput" oninput="searchData()" placeholder="Tìm tên kinh..." 
+					   class="w-72 md:w-80 p-3 bg-white text-indigo-900 rounded-2xl shadow-2xl border-2 border-indigo-600 outline-none">
+				
+				<div id="searchResults" class="w-72 md:w-80 max-h-48 overflow-y-auto bg-white rounded-xl shadow-2xl border border-gray-200 hidden">
+					</div>
+			</div>
+			
+			<button onclick="toggleSearch()" id="searchBtn" class="bg-indigo-600 text-white p-4 rounded-full shadow-2xl active:scale-90 transition-all border-2 border-white w-14 h-14 flex items-center justify-center" title="Tìm kiếm">
+				<svg xmlns="http://www.w3.org/2000/svg" id="searchIcon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+				</svg>
+			</button>
+		</div>
+	</div>
+	
+	
+	
+	
+	
 </body>
 </html>
